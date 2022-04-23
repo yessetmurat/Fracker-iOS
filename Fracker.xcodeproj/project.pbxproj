@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		41B6D50128144F7E00798014 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B6D50028144F7E00798014 /* AppDelegate.swift */; };
 		41B6D50328144F7E00798014 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B6D50228144F7E00798014 /* SceneDelegate.swift */; };
-		41B6D50528144F7E00798014 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B6D50428144F7E00798014 /* ViewController.swift */; };
-		41B6D50828144F7E00798014 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41B6D50628144F7E00798014 /* Main.storyboard */; };
 		41B6D50B28144F7E00798014 /* Fracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 41B6D50928144F7E00798014 /* Fracker.xcdatamodeld */; };
 		41B6D50D28144F8000798014 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41B6D50C28144F8000798014 /* Assets.xcassets */; };
 		41B6D51028144F8000798014 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41B6D50E28144F8000798014 /* LaunchScreen.storyboard */; };
@@ -40,8 +38,6 @@
 		41B6D4FD28144F7E00798014 /* Fracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		41B6D50028144F7E00798014 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		41B6D50228144F7E00798014 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		41B6D50428144F7E00798014 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		41B6D50728144F7E00798014 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		41B6D50A28144F7E00798014 /* Fracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Fracker.xcdatamodel; sourceTree = "<group>"; };
 		41B6D50C28144F8000798014 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		41B6D50F28144F8000798014 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -101,14 +97,8 @@
 		41B6D4FF28144F7E00798014 /* Fracker */ = {
 			isa = PBXGroup;
 			children = (
-				41B6D50028144F7E00798014 /* AppDelegate.swift */,
-				41B6D50228144F7E00798014 /* SceneDelegate.swift */,
-				41B6D50428144F7E00798014 /* ViewController.swift */,
-				41B6D50628144F7E00798014 /* Main.storyboard */,
-				41B6D50C28144F8000798014 /* Assets.xcassets */,
-				41B6D50E28144F8000798014 /* LaunchScreen.storyboard */,
-				41B6D51128144F8000798014 /* Info.plist */,
-				41B6D50928144F7E00798014 /* Fracker.xcdatamodeld */,
+				41B6D53428144FEF00798014 /* Pages */,
+				41B6D53328144FD900798014 /* Supporting */,
 			);
 			path = Fracker;
 			sourceTree = "<group>";
@@ -128,6 +118,26 @@
 				41B6D52628144F8000798014 /* FrackerUITestsLaunchTests.swift */,
 			);
 			path = FrackerUITests;
+			sourceTree = "<group>";
+		};
+		41B6D53328144FD900798014 /* Supporting */ = {
+			isa = PBXGroup;
+			children = (
+				41B6D50028144F7E00798014 /* AppDelegate.swift */,
+				41B6D50228144F7E00798014 /* SceneDelegate.swift */,
+				41B6D50C28144F8000798014 /* Assets.xcassets */,
+				41B6D50E28144F8000798014 /* LaunchScreen.storyboard */,
+				41B6D51128144F8000798014 /* Info.plist */,
+				41B6D50928144F7E00798014 /* Fracker.xcdatamodeld */,
+			);
+			path = Supporting;
+			sourceTree = "<group>";
+		};
+		41B6D53428144FEF00798014 /* Pages */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Pages;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -236,7 +246,6 @@
 			files = (
 				41B6D51028144F8000798014 /* LaunchScreen.storyboard in Resources */,
 				41B6D50D28144F8000798014 /* Assets.xcassets in Resources */,
-				41B6D50828144F7E00798014 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,7 +270,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				41B6D50528144F7E00798014 /* ViewController.swift in Sources */,
 				41B6D50128144F7E00798014 /* AppDelegate.swift in Sources */,
 				41B6D50B28144F7E00798014 /* Fracker.xcdatamodeld in Sources */,
 				41B6D50328144F7E00798014 /* SceneDelegate.swift in Sources */,
@@ -301,14 +309,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		41B6D50628144F7E00798014 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				41B6D50728144F7E00798014 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		41B6D50E28144F8000798014 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
