@@ -7,14 +7,45 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4129231B281489FB0001086C /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4129231A281489FB0001086C /* CategoryCell.swift */; };
+		4129231D28148E990001086C /* AddCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4129231C28148E990001086C /* AddCategoryCell.swift */; };
 		41B6D50128144F7E00798014 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B6D50028144F7E00798014 /* AppDelegate.swift */; };
-		41B6D50328144F7E00798014 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B6D50228144F7E00798014 /* SceneDelegate.swift */; };
 		41B6D50B28144F7E00798014 /* Fracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 41B6D50928144F7E00798014 /* Fracker.xcdatamodeld */; };
 		41B6D50D28144F8000798014 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41B6D50C28144F8000798014 /* Assets.xcassets */; };
 		41B6D51028144F8000798014 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41B6D50E28144F8000798014 /* LaunchScreen.storyboard */; };
 		41B6D51B28144F8000798014 /* FrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B6D51A28144F8000798014 /* FrackerTests.swift */; };
 		41B6D52528144F8000798014 /* FrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B6D52428144F8000798014 /* FrackerUITests.swift */; };
 		41B6D52728144F8000798014 /* FrackerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B6D52628144F8000798014 /* FrackerUITestsLaunchTests.swift */; };
+		41B6D53E281451AE00798014 /* AuthViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B6D538281451AE00798014 /* AuthViewInput.swift */; };
+		41B6D53F281451AE00798014 /* AuthRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B6D539281451AE00798014 /* AuthRouter.swift */; };
+		41B6D540281451AE00798014 /* AuthInteractorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B6D53A281451AE00798014 /* AuthInteractorInput.swift */; };
+		41B6D541281451AE00798014 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B6D53B281451AE00798014 /* AuthViewController.swift */; };
+		41B6D542281451AE00798014 /* AuthInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B6D53C281451AE00798014 /* AuthInteractor.swift */; };
+		41B6D543281451AE00798014 /* AuthRouterInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B6D53D281451AE00798014 /* AuthRouterInput.swift */; };
+		41B6D54628146B5D00798014 /* Base in Frameworks */ = {isa = PBXBuildFile; productRef = 41B6D54528146B5D00798014 /* Base */; };
+		41B6D54928146BBA00798014 /* Network11 in Frameworks */ = {isa = PBXBuildFile; productRef = 41B6D54828146BBA00798014 /* Network11 */; };
+		41B6D5532814732200798014 /* KeyValueStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B6D54E2814732100798014 /* KeyValueStore.swift */; };
+		41B6D5542814732200798014 /* CommonStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B6D54F2814732200798014 /* CommonStore.swift */; };
+		41B6D5552814732200798014 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B6D5502814732200798014 /* Endpoint.swift */; };
+		41B6D5562814732200798014 /* BaseImage + extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B6D5512814732200798014 /* BaseImage + extensions.swift */; };
+		41B6D5572814732200798014 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B6D5522814732200798014 /* Constants.swift */; };
+		41C69D3F2814A7720076B354 /* AuthType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C69D3E2814A7720076B354 /* AuthType.swift */; };
+		41C69D412814AB6D0076B354 /* AuthNetworkContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C69D402814AB6D0076B354 /* AuthNetworkContext.swift */; };
+		41C69D432814ABE30076B354 /* InteractorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C69D422814ABE30076B354 /* InteractorInput.swift */; };
+		41C69D452814AC520076B354 /* ErrorDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C69D442814AC520076B354 /* ErrorDescriptor.swift */; };
+		41C69D472814AC680076B354 /* DisplayedError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C69D462814AC680076B354 /* DisplayedError.swift */; };
+		41C69D492814B2BD0076B354 /* LocalError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C69D482814B2BD0076B354 /* LocalError.swift */; };
+		41C69D4B2814B30B0076B354 /* NetworkError + extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C69D4A2814B30B0076B354 /* NetworkError + extensions.swift */; };
+		41C69D4D2814B74B0076B354 /* yessetmurat.com.crt in Resources */ = {isa = PBXBuildFile; fileRef = 41C69D4C2814B74B0076B354 /* yessetmurat.com.crt */; };
+		41D6B8D5281476ED00595F6C /* RecordViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D6B8CF281476ED00595F6C /* RecordViewInput.swift */; };
+		41D6B8D6281476ED00595F6C /* RecordRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D6B8D0281476ED00595F6C /* RecordRouter.swift */; };
+		41D6B8D7281476ED00595F6C /* RecordInteractorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D6B8D1281476ED00595F6C /* RecordInteractorInput.swift */; };
+		41D6B8D8281476ED00595F6C /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D6B8D2281476ED00595F6C /* RecordViewController.swift */; };
+		41D6B8D9281476ED00595F6C /* RecordInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D6B8D3281476ED00595F6C /* RecordInteractor.swift */; };
+		41D6B8DA281476ED00595F6C /* RecordRouterInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D6B8D4281476ED00595F6C /* RecordRouterInput.swift */; };
+		41D6B8E02814785900595F6C /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D6B8DF2814785900595F6C /* KeyboardView.swift */; };
+		41D6B8E228147BE700595F6C /* PadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D6B8E128147BE700595F6C /* PadCell.swift */; };
+		41D6B8E428147CDD00595F6C /* PadCellTappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D6B8E328147CDD00595F6C /* PadCellTappable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,9 +66,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4129231A281489FB0001086C /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
+		4129231C28148E990001086C /* AddCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategoryCell.swift; sourceTree = "<group>"; };
 		41B6D4FD28144F7E00798014 /* Fracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		41B6D50028144F7E00798014 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		41B6D50228144F7E00798014 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		41B6D50A28144F7E00798014 /* Fracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Fracker.xcdatamodel; sourceTree = "<group>"; };
 		41B6D50C28144F8000798014 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		41B6D50F28144F8000798014 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +79,34 @@
 		41B6D52028144F8000798014 /* FrackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FrackerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		41B6D52428144F8000798014 /* FrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrackerUITests.swift; sourceTree = "<group>"; };
 		41B6D52628144F8000798014 /* FrackerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrackerUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		41B6D538281451AE00798014 /* AuthViewInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewInput.swift; sourceTree = "<group>"; };
+		41B6D539281451AE00798014 /* AuthRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRouter.swift; sourceTree = "<group>"; };
+		41B6D53A281451AE00798014 /* AuthInteractorInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthInteractorInput.swift; sourceTree = "<group>"; };
+		41B6D53B281451AE00798014 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
+		41B6D53C281451AE00798014 /* AuthInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthInteractor.swift; sourceTree = "<group>"; };
+		41B6D53D281451AE00798014 /* AuthRouterInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRouterInput.swift; sourceTree = "<group>"; };
+		41B6D54E2814732100798014 /* KeyValueStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyValueStore.swift; sourceTree = "<group>"; };
+		41B6D54F2814732200798014 /* CommonStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonStore.swift; sourceTree = "<group>"; };
+		41B6D5502814732200798014 /* Endpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		41B6D5512814732200798014 /* BaseImage + extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BaseImage + extensions.swift"; sourceTree = "<group>"; };
+		41B6D5522814732200798014 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		41C69D3E2814A7720076B354 /* AuthType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthType.swift; sourceTree = "<group>"; };
+		41C69D402814AB6D0076B354 /* AuthNetworkContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthNetworkContext.swift; sourceTree = "<group>"; };
+		41C69D422814ABE30076B354 /* InteractorInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractorInput.swift; sourceTree = "<group>"; };
+		41C69D442814AC520076B354 /* ErrorDescriptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorDescriptor.swift; sourceTree = "<group>"; };
+		41C69D462814AC680076B354 /* DisplayedError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayedError.swift; sourceTree = "<group>"; };
+		41C69D482814B2BD0076B354 /* LocalError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalError.swift; sourceTree = "<group>"; };
+		41C69D4A2814B30B0076B354 /* NetworkError + extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkError + extensions.swift"; sourceTree = "<group>"; };
+		41C69D4C2814B74B0076B354 /* yessetmurat.com.crt */ = {isa = PBXFileReference; lastKnownFileType = file; path = yessetmurat.com.crt; sourceTree = "<group>"; };
+		41D6B8CF281476ED00595F6C /* RecordViewInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewInput.swift; sourceTree = "<group>"; };
+		41D6B8D0281476ED00595F6C /* RecordRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordRouter.swift; sourceTree = "<group>"; };
+		41D6B8D1281476ED00595F6C /* RecordInteractorInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordInteractorInput.swift; sourceTree = "<group>"; };
+		41D6B8D2281476ED00595F6C /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
+		41D6B8D3281476ED00595F6C /* RecordInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordInteractor.swift; sourceTree = "<group>"; };
+		41D6B8D4281476ED00595F6C /* RecordRouterInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordRouterInput.swift; sourceTree = "<group>"; };
+		41D6B8DF2814785900595F6C /* KeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
+		41D6B8E128147BE700595F6C /* PadCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PadCell.swift; sourceTree = "<group>"; };
+		41D6B8E328147CDD00595F6C /* PadCellTappable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PadCellTappable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +114,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41B6D54628146B5D00798014 /* Base in Frameworks */,
+				41B6D54928146BBA00798014 /* Network11 in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				41B6D53428144FEF00798014 /* Pages */,
+				41B6D54D281472E000798014 /* Utils */,
 				41B6D53328144FD900798014 /* Supporting */,
 			);
 			path = Fracker;
@@ -123,8 +186,8 @@
 		41B6D53328144FD900798014 /* Supporting */ = {
 			isa = PBXGroup;
 			children = (
+				41C69D4C2814B74B0076B354 /* yessetmurat.com.crt */,
 				41B6D50028144F7E00798014 /* AppDelegate.swift */,
-				41B6D50228144F7E00798014 /* SceneDelegate.swift */,
 				41B6D50C28144F8000798014 /* Assets.xcassets */,
 				41B6D50E28144F8000798014 /* LaunchScreen.storyboard */,
 				41B6D51128144F8000798014 /* Info.plist */,
@@ -136,8 +199,132 @@
 		41B6D53428144FEF00798014 /* Pages */ = {
 			isa = PBXGroup;
 			children = (
+				41B6D5362814514E00798014 /* Auth */,
+				41B6D5352814514600798014 /* Add record */,
+				41B6D5372814515800798014 /* Analytics */,
 			);
 			path = Pages;
+			sourceTree = "<group>";
+		};
+		41B6D5352814514600798014 /* Add record */ = {
+			isa = PBXGroup;
+			children = (
+				41D6B8DE2814784C00595F6C /* Utils */,
+				41D6B8DD281476FC00595F6C /* Router */,
+				41D6B8DC281476F700595F6C /* Interactor */,
+				41D6B8DB281476F200595F6C /* View */,
+			);
+			path = "Add record";
+			sourceTree = "<group>";
+		};
+		41B6D5362814514E00798014 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				41C69D3D2814A7690076B354 /* Utils */,
+				41B6D54C28146BD300798014 /* Router */,
+				41B6D54B28146BCB00798014 /* Interactor */,
+				41B6D54A28146BC400798014 /* VIew */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		41B6D5372814515800798014 /* Analytics */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Analytics;
+			sourceTree = "<group>";
+		};
+		41B6D54A28146BC400798014 /* VIew */ = {
+			isa = PBXGroup;
+			children = (
+				41B6D538281451AE00798014 /* AuthViewInput.swift */,
+				41B6D53B281451AE00798014 /* AuthViewController.swift */,
+			);
+			name = VIew;
+			sourceTree = "<group>";
+		};
+		41B6D54B28146BCB00798014 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				41B6D53A281451AE00798014 /* AuthInteractorInput.swift */,
+				41B6D53C281451AE00798014 /* AuthInteractor.swift */,
+			);
+			name = Interactor;
+			sourceTree = "<group>";
+		};
+		41B6D54C28146BD300798014 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				41B6D539281451AE00798014 /* AuthRouter.swift */,
+				41B6D53D281451AE00798014 /* AuthRouterInput.swift */,
+			);
+			name = Router;
+			sourceTree = "<group>";
+		};
+		41B6D54D281472E000798014 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				41B6D5512814732200798014 /* BaseImage + extensions.swift */,
+				41B6D54F2814732200798014 /* CommonStore.swift */,
+				41B6D5522814732200798014 /* Constants.swift */,
+				41B6D5502814732200798014 /* Endpoint.swift */,
+				41B6D54E2814732100798014 /* KeyValueStore.swift */,
+				41C69D422814ABE30076B354 /* InteractorInput.swift */,
+				41C69D442814AC520076B354 /* ErrorDescriptor.swift */,
+				41C69D462814AC680076B354 /* DisplayedError.swift */,
+				41C69D482814B2BD0076B354 /* LocalError.swift */,
+				41C69D4A2814B30B0076B354 /* NetworkError + extensions.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		41C69D3D2814A7690076B354 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				41C69D402814AB6D0076B354 /* AuthNetworkContext.swift */,
+				41C69D3E2814A7720076B354 /* AuthType.swift */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
+		41D6B8DB281476F200595F6C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				41D6B8CF281476ED00595F6C /* RecordViewInput.swift */,
+				41D6B8D2281476ED00595F6C /* RecordViewController.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		41D6B8DC281476F700595F6C /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				41D6B8D1281476ED00595F6C /* RecordInteractorInput.swift */,
+				41D6B8D3281476ED00595F6C /* RecordInteractor.swift */,
+			);
+			name = Interactor;
+			sourceTree = "<group>";
+		};
+		41D6B8DD281476FC00595F6C /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				41D6B8D0281476ED00595F6C /* RecordRouter.swift */,
+				41D6B8D4281476ED00595F6C /* RecordRouterInput.swift */,
+			);
+			name = Router;
+			sourceTree = "<group>";
+		};
+		41D6B8DE2814784C00595F6C /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				41D6B8DF2814785900595F6C /* KeyboardView.swift */,
+				41D6B8E128147BE700595F6C /* PadCell.swift */,
+				41D6B8E328147CDD00595F6C /* PadCellTappable.swift */,
+				4129231A281489FB0001086C /* CategoryCell.swift */,
+				4129231C28148E990001086C /* AddCategoryCell.swift */,
+			);
+			name = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -156,6 +343,10 @@
 			dependencies = (
 			);
 			name = Fracker;
+			packageProductDependencies = (
+				41B6D54528146B5D00798014 /* Base */,
+				41B6D54828146BBA00798014 /* Network11 */,
+			);
 			productName = Fracker;
 			productReference = 41B6D4FD28144F7E00798014 /* Fracker.app */;
 			productType = "com.apple.product-type.application";
@@ -228,6 +419,10 @@
 				Base,
 			);
 			mainGroup = 41B6D4F428144F7E00798014;
+			packageReferences = (
+				41B6D54428146B5D00798014 /* XCRemoteSwiftPackageReference "Base" */,
+				41B6D54728146BBA00798014 /* XCRemoteSwiftPackageReference "Network11" */,
+			);
 			productRefGroup = 41B6D4FE28144F7E00798014 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -245,6 +440,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				41B6D51028144F8000798014 /* LaunchScreen.storyboard in Resources */,
+				41C69D4D2814B74B0076B354 /* yessetmurat.com.crt in Resources */,
 				41B6D50D28144F8000798014 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -270,9 +466,37 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41C69D3F2814A7720076B354 /* AuthType.swift in Sources */,
+				4129231B281489FB0001086C /* CategoryCell.swift in Sources */,
+				41D6B8D7281476ED00595F6C /* RecordInteractorInput.swift in Sources */,
+				41C69D432814ABE30076B354 /* InteractorInput.swift in Sources */,
+				41D6B8E428147CDD00595F6C /* PadCellTappable.swift in Sources */,
 				41B6D50128144F7E00798014 /* AppDelegate.swift in Sources */,
+				41D6B8D6281476ED00595F6C /* RecordRouter.swift in Sources */,
 				41B6D50B28144F7E00798014 /* Fracker.xcdatamodeld in Sources */,
-				41B6D50328144F7E00798014 /* SceneDelegate.swift in Sources */,
+				41C69D492814B2BD0076B354 /* LocalError.swift in Sources */,
+				41B6D53F281451AE00798014 /* AuthRouter.swift in Sources */,
+				41D6B8E228147BE700595F6C /* PadCell.swift in Sources */,
+				41C69D4B2814B30B0076B354 /* NetworkError + extensions.swift in Sources */,
+				41D6B8D9281476ED00595F6C /* RecordInteractor.swift in Sources */,
+				41B6D541281451AE00798014 /* AuthViewController.swift in Sources */,
+				41B6D543281451AE00798014 /* AuthRouterInput.swift in Sources */,
+				41C69D452814AC520076B354 /* ErrorDescriptor.swift in Sources */,
+				41B6D5532814732200798014 /* KeyValueStore.swift in Sources */,
+				41B6D542281451AE00798014 /* AuthInteractor.swift in Sources */,
+				41D6B8D8281476ED00595F6C /* RecordViewController.swift in Sources */,
+				41B6D540281451AE00798014 /* AuthInteractorInput.swift in Sources */,
+				4129231D28148E990001086C /* AddCategoryCell.swift in Sources */,
+				41B6D5542814732200798014 /* CommonStore.swift in Sources */,
+				41D6B8E02814785900595F6C /* KeyboardView.swift in Sources */,
+				41B6D5562814732200798014 /* BaseImage + extensions.swift in Sources */,
+				41D6B8D5281476ED00595F6C /* RecordViewInput.swift in Sources */,
+				41B6D5572814732200798014 /* Constants.swift in Sources */,
+				41D6B8DA281476ED00595F6C /* RecordRouterInput.swift in Sources */,
+				41B6D5552814732200798014 /* Endpoint.swift in Sources */,
+				41C69D412814AB6D0076B354 /* AuthNetworkContext.swift in Sources */,
+				41B6D53E281451AE00798014 /* AuthViewInput.swift in Sources */,
+				41C69D472814AC680076B354 /* DisplayedError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -370,7 +594,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -424,7 +648,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -443,12 +667,13 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3BSD22QPH9;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Fracker/Info.plist;
+				INFOPLIST_FILE = Fracker/Supporting/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -471,12 +696,13 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3BSD22QPH9;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Fracker/Info.plist;
+				INFOPLIST_FILE = Fracker/Supporting/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -606,6 +832,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		41B6D54428146B5D00798014 /* XCRemoteSwiftPackageReference "Base" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:yessetmurat/Base.git";
+			requirement = {
+				kind = exactVersion;
+				version = 0.2.11;
+			};
+		};
+		41B6D54728146BBA00798014 /* XCRemoteSwiftPackageReference "Network11" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:yessetmurat/Network11.git";
+			requirement = {
+				kind = exactVersion;
+				version = 0.5.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		41B6D54528146B5D00798014 /* Base */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 41B6D54428146B5D00798014 /* XCRemoteSwiftPackageReference "Base" */;
+			productName = Base;
+		};
+		41B6D54828146BBA00798014 /* Network11 */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 41B6D54728146BBA00798014 /* XCRemoteSwiftPackageReference "Network11" */;
+			productName = Network11;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		41B6D50928144F7E00798014 /* Fracker.xcdatamodeld */ = {
