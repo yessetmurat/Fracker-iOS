@@ -6,6 +6,13 @@
 //  Copyright (c) 2022 ___ORGANIZATIONNAME___. All rights reserved.
 //
 
-protocol RecordInteractorInput: AnyObject {
+import Foundation
 
+protocol RecordInteractorInput: AnyObject, InteractorInput {
+
+    func loadCategories()
+    func createCategory(with name: String)
+    func removeCategory(at indexPath: IndexPath)
+    func changeRecord(symbol: String)
+    func didSelectCategory(at indexPath: IndexPath)
 }

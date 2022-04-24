@@ -6,6 +6,8 @@
 //  Copyright (c) 2022 ___ORGANIZATIONNAME___. All rights reserved.
 //
 
+import Network11
+
 class RecordRouter {
 
     private unowned let commonStore: CommonStore
@@ -19,7 +21,12 @@ class RecordRouter {
         let viewController = RecordViewController()
         view = viewController
 
-        let interactor = RecordInteractor(view: viewController)
+        let networkService = NetworkWorker(sessionAdapter: commonStore.sessionAdapter)
+        let interactor = RecordInteractor(
+            view: viewController,
+            commonStore: commonStore,
+            networkService: networkService
+        )
         viewController.interactor = interactor
         viewController.router = self
 

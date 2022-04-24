@@ -10,7 +10,7 @@ import Base
 
 protocol KeyboardViewDelegate: AnyObject {
 
-    func keyboardView(_ keyboardView: KeyboardView, didTapOnPadAtIndex index: Int)
+    func keyboardView(_ keyboardView: KeyboardView, didTapOnPadSymbol symbol: String)
 }
 
 class KeyboardView: UIView {
@@ -33,6 +33,8 @@ class KeyboardView: UIView {
         flowLayout.itemSize = CGSize(width: 96, height: 64)
         flowLayout.minimumLineSpacing = 8
         flowLayout.minimumInteritemSpacing = 8
+
+        collectionView.backgroundColor = BaseColor.white
     }
 
     private func setActions() {
@@ -65,7 +67,16 @@ extension KeyboardView: UICollectionViewDelegate {
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        delegate?.keyboardView(self, didTapOnPadAtIndex: indexPath.item)
+        let string = String((indexPath.item + 1) % 11)
+        var symbol = string
+
+        switch indexPath.item {
+        case 9: symbol = "."
+        case 11: symbol = "delete"
+        default: break
+        }
+
+        delegate?.keyboardView(self, didTapOnPadSymbol: symbol)
     }
 
     func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {

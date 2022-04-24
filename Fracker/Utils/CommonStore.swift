@@ -10,6 +10,10 @@ import Network11
 
 class CommonStore {
 
+    let keyValueStore = KeyValueStore()
+
+    let localDatabaseManager = LocalDatabaseManager()
+
     let sessionAdapter = NetworkSessionAdapter()
 
     let sessionConfiguarion = URLSessionConfiguration.default
@@ -32,6 +36,8 @@ class CommonStore {
         return headers
     }
 
+    var isAuthorized: Bool { accessToken != nil }
+
     private var sslCertDataItems: [NSData] {
         var sslCertUrls: [URL] = []
 
@@ -48,7 +54,7 @@ class CommonStore {
         sessionAdapter.session = session
         sessionAdapter.certDataItems = sslCertDataItems
 
-        accessToken = KeyValueStore().getValue(for: .token)
+        accessToken = keyValueStore.getValue(for: .token)
 
         updateAdditionalHTTPHeaders()
 

@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import CoreData
 import Base
 
 @main
@@ -30,30 +29,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         self.window = window
 
+//        createCategories()
+
         return true
     }
 
-    lazy var persistentContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "Fracker")
-        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
-            if let error = error as NSError? {
-                fatalError("Unresolved error \(error), \(error.userInfo)")
-            }
-        })
-        return container
-    }()
+    private func createCategories() {
+        let categoryNames = ["Food", "Internet", "House", "Loan", "Groceries", "Taxi"]
 
-    func saveContext () {
-        let context = persistentContainer.viewContext
-        if context.hasChanges {
-            do {
-                try context.save()
-            } catch {
-                let nserror = error as NSError
-                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+        categoryNames.forEach { name in
+            commonStore.localDatabaseManager.create { (category: LocalCategory) in
+                category.id = UUID()
+                category.name = name
             }
         }
     }
-
 }
 

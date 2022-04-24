@@ -8,9 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		4129231B281489FB0001086C /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4129231A281489FB0001086C /* CategoryCell.swift */; };
-		4129231D28148E990001086C /* AddCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4129231C28148E990001086C /* AddCategoryCell.swift */; };
+		4129231D28148E990001086C /* CategoryAddCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4129231C28148E990001086C /* CategoryAddCell.swift */; };
+		412E3DA52815CAF200B8D8DD /* ShakableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412E3DA42815CAF200B8D8DD /* ShakableView.swift */; };
+		41881FD028155BDA00FFA4E2 /* CategoriesNetworkContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41881FCF28155BDA00FFA4E2 /* CategoriesNetworkContext.swift */; };
+		41881FD228155C9600FFA4E2 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41881FD128155C9600FFA4E2 /* Category.swift */; };
+		41881FD4281560E100FFA4E2 /* CategoryShimmerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41881FD3281560E100FFA4E2 /* CategoryShimmerCell.swift */; };
+		41881FD628158D5100FFA4E2 /* RemoveCategoryNetworkContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41881FD528158D5100FFA4E2 /* RemoveCategoryNetworkContext.swift */; };
+		41881FF22815939D00FFA4E2 /* LocalDatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41881FF12815939D00FFA4E2 /* LocalDatabaseManager.swift */; };
+		41881FF72815A3C800FFA4E2 /* LocalCategory+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41881FF32815A3C800FFA4E2 /* LocalCategory+CoreDataClass.swift */; };
+		41881FF82815A3C800FFA4E2 /* LocalCategory+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41881FF42815A3C800FFA4E2 /* LocalCategory+CoreDataProperties.swift */; };
+		41881FF92815A3C800FFA4E2 /* LocalRecord+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41881FF52815A3C800FFA4E2 /* LocalRecord+CoreDataClass.swift */; };
+		41881FFA2815A3C800FFA4E2 /* LocalRecord+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41881FF62815A3C800FFA4E2 /* LocalRecord+CoreDataProperties.swift */; };
+		41881FFC2815A6F900FFA4E2 /* Fracker.xcdatamodeld in Resources */ = {isa = PBXBuildFile; fileRef = 41B6D50928144F7E00798014 /* Fracker.xcdatamodeld */; };
+		41881FFE2815AC4100FFA4E2 /* CategoryTextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41881FFD2815AC4100FFA4E2 /* CategoryTextFieldCell.swift */; };
+		418820002815B5AE00FFA4E2 /* CreateCategoryNetworkContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41881FFF2815B5AE00FFA4E2 /* CreateCategoryNetworkContext.swift */; };
 		41B6D50128144F7E00798014 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B6D50028144F7E00798014 /* AppDelegate.swift */; };
-		41B6D50B28144F7E00798014 /* Fracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 41B6D50928144F7E00798014 /* Fracker.xcdatamodeld */; };
 		41B6D50D28144F8000798014 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41B6D50C28144F8000798014 /* Assets.xcassets */; };
 		41B6D51028144F8000798014 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41B6D50E28144F8000798014 /* LaunchScreen.storyboard */; };
 		41B6D51B28144F8000798014 /* FrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B6D51A28144F8000798014 /* FrackerTests.swift */; };
@@ -67,7 +79,19 @@
 
 /* Begin PBXFileReference section */
 		4129231A281489FB0001086C /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
-		4129231C28148E990001086C /* AddCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategoryCell.swift; sourceTree = "<group>"; };
+		4129231C28148E990001086C /* CategoryAddCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryAddCell.swift; sourceTree = "<group>"; };
+		412E3DA42815CAF200B8D8DD /* ShakableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakableView.swift; sourceTree = "<group>"; };
+		41881FCF28155BDA00FFA4E2 /* CategoriesNetworkContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesNetworkContext.swift; sourceTree = "<group>"; };
+		41881FD128155C9600FFA4E2 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		41881FD3281560E100FFA4E2 /* CategoryShimmerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryShimmerCell.swift; sourceTree = "<group>"; };
+		41881FD528158D5100FFA4E2 /* RemoveCategoryNetworkContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveCategoryNetworkContext.swift; sourceTree = "<group>"; };
+		41881FF12815939D00FFA4E2 /* LocalDatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDatabaseManager.swift; sourceTree = "<group>"; };
+		41881FF32815A3C800FFA4E2 /* LocalCategory+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocalCategory+CoreDataClass.swift"; sourceTree = "<group>"; };
+		41881FF42815A3C800FFA4E2 /* LocalCategory+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocalCategory+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		41881FF52815A3C800FFA4E2 /* LocalRecord+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocalRecord+CoreDataClass.swift"; sourceTree = "<group>"; };
+		41881FF62815A3C800FFA4E2 /* LocalRecord+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocalRecord+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		41881FFD2815AC4100FFA4E2 /* CategoryTextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTextFieldCell.swift; sourceTree = "<group>"; };
+		41881FFF2815B5AE00FFA4E2 /* CreateCategoryNetworkContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCategoryNetworkContext.swift; sourceTree = "<group>"; };
 		41B6D4FD28144F7E00798014 /* Fracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		41B6D50028144F7E00798014 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		41B6D50A28144F7E00798014 /* Fracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Fracker.xcdatamodel; sourceTree = "<group>"; };
@@ -136,6 +160,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		41881FCE28155BC100FFA4E2 /* NetworkContext */ = {
+			isa = PBXGroup;
+			children = (
+				41881FCF28155BDA00FFA4E2 /* CategoriesNetworkContext.swift */,
+				41881FD528158D5100FFA4E2 /* RemoveCategoryNetworkContext.swift */,
+				41881FFF2815B5AE00FFA4E2 /* CreateCategoryNetworkContext.swift */,
+			);
+			name = NetworkContext;
+			sourceTree = "<group>";
+		};
+		41881FE7281591FD00FFA4E2 /* Local entities */ = {
+			isa = PBXGroup;
+			children = (
+				41881FF32815A3C800FFA4E2 /* LocalCategory+CoreDataClass.swift */,
+				41881FF42815A3C800FFA4E2 /* LocalCategory+CoreDataProperties.swift */,
+				41881FF52815A3C800FFA4E2 /* LocalRecord+CoreDataClass.swift */,
+				41881FF62815A3C800FFA4E2 /* LocalRecord+CoreDataProperties.swift */,
+			);
+			name = "Local entities";
+			sourceTree = "<group>";
+		};
+		41881FE82815920E00FFA4E2 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				41881FD128155C9600FFA4E2 /* Category.swift */,
+			);
+			name = Entities;
+			sourceTree = "<group>";
+		};
 		41B6D4F428144F7E00798014 = {
 			isa = PBXGroup;
 			children = (
@@ -275,6 +328,8 @@
 				41C69D462814AC680076B354 /* DisplayedError.swift */,
 				41C69D482814B2BD0076B354 /* LocalError.swift */,
 				41C69D4A2814B30B0076B354 /* NetworkError + extensions.swift */,
+				41881FF12815939D00FFA4E2 /* LocalDatabaseManager.swift */,
+				412E3DA42815CAF200B8D8DD /* ShakableView.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -318,11 +373,16 @@
 		41D6B8DE2814784C00595F6C /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				41881FE82815920E00FFA4E2 /* Entities */,
+				41881FE7281591FD00FFA4E2 /* Local entities */,
+				41881FCE28155BC100FFA4E2 /* NetworkContext */,
 				41D6B8DF2814785900595F6C /* KeyboardView.swift */,
 				41D6B8E128147BE700595F6C /* PadCell.swift */,
 				41D6B8E328147CDD00595F6C /* PadCellTappable.swift */,
 				4129231A281489FB0001086C /* CategoryCell.swift */,
-				4129231C28148E990001086C /* AddCategoryCell.swift */,
+				4129231C28148E990001086C /* CategoryAddCell.swift */,
+				41881FD3281560E100FFA4E2 /* CategoryShimmerCell.swift */,
+				41881FFD2815AC4100FFA4E2 /* CategoryTextFieldCell.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -439,6 +499,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41881FFC2815A6F900FFA4E2 /* Fracker.xcdatamodeld in Resources */,
 				41B6D51028144F8000798014 /* LaunchScreen.storyboard in Resources */,
 				41C69D4D2814B74B0076B354 /* yessetmurat.com.crt in Resources */,
 				41B6D50D28144F8000798014 /* Assets.xcassets in Resources */,
@@ -468,26 +529,35 @@
 			files = (
 				41C69D3F2814A7720076B354 /* AuthType.swift in Sources */,
 				4129231B281489FB0001086C /* CategoryCell.swift in Sources */,
+				41881FF92815A3C800FFA4E2 /* LocalRecord+CoreDataClass.swift in Sources */,
 				41D6B8D7281476ED00595F6C /* RecordInteractorInput.swift in Sources */,
+				41881FD628158D5100FFA4E2 /* RemoveCategoryNetworkContext.swift in Sources */,
+				412E3DA52815CAF200B8D8DD /* ShakableView.swift in Sources */,
 				41C69D432814ABE30076B354 /* InteractorInput.swift in Sources */,
 				41D6B8E428147CDD00595F6C /* PadCellTappable.swift in Sources */,
 				41B6D50128144F7E00798014 /* AppDelegate.swift in Sources */,
 				41D6B8D6281476ED00595F6C /* RecordRouter.swift in Sources */,
-				41B6D50B28144F7E00798014 /* Fracker.xcdatamodeld in Sources */,
 				41C69D492814B2BD0076B354 /* LocalError.swift in Sources */,
 				41B6D53F281451AE00798014 /* AuthRouter.swift in Sources */,
+				41881FD4281560E100FFA4E2 /* CategoryShimmerCell.swift in Sources */,
 				41D6B8E228147BE700595F6C /* PadCell.swift in Sources */,
 				41C69D4B2814B30B0076B354 /* NetworkError + extensions.swift in Sources */,
+				418820002815B5AE00FFA4E2 /* CreateCategoryNetworkContext.swift in Sources */,
 				41D6B8D9281476ED00595F6C /* RecordInteractor.swift in Sources */,
 				41B6D541281451AE00798014 /* AuthViewController.swift in Sources */,
+				41881FD028155BDA00FFA4E2 /* CategoriesNetworkContext.swift in Sources */,
 				41B6D543281451AE00798014 /* AuthRouterInput.swift in Sources */,
+				41881FF72815A3C800FFA4E2 /* LocalCategory+CoreDataClass.swift in Sources */,
 				41C69D452814AC520076B354 /* ErrorDescriptor.swift in Sources */,
 				41B6D5532814732200798014 /* KeyValueStore.swift in Sources */,
+				41881FFE2815AC4100FFA4E2 /* CategoryTextFieldCell.swift in Sources */,
+				41881FF22815939D00FFA4E2 /* LocalDatabaseManager.swift in Sources */,
 				41B6D542281451AE00798014 /* AuthInteractor.swift in Sources */,
 				41D6B8D8281476ED00595F6C /* RecordViewController.swift in Sources */,
 				41B6D540281451AE00798014 /* AuthInteractorInput.swift in Sources */,
-				4129231D28148E990001086C /* AddCategoryCell.swift in Sources */,
+				4129231D28148E990001086C /* CategoryAddCell.swift in Sources */,
 				41B6D5542814732200798014 /* CommonStore.swift in Sources */,
+				41881FFA2815A3C800FFA4E2 /* LocalRecord+CoreDataProperties.swift in Sources */,
 				41D6B8E02814785900595F6C /* KeyboardView.swift in Sources */,
 				41B6D5562814732200798014 /* BaseImage + extensions.swift in Sources */,
 				41D6B8D5281476ED00595F6C /* RecordViewInput.swift in Sources */,
@@ -497,6 +567,8 @@
 				41C69D412814AB6D0076B354 /* AuthNetworkContext.swift in Sources */,
 				41B6D53E281451AE00798014 /* AuthViewInput.swift in Sources */,
 				41C69D472814AC680076B354 /* DisplayedError.swift in Sources */,
+				41881FD228155C9600FFA4E2 /* Category.swift in Sources */,
+				41881FF82815A3C800FFA4E2 /* LocalCategory+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -839,7 +911,7 @@
 			repositoryURL = "git@github.com:yessetmurat/Base.git";
 			requirement = {
 				kind = exactVersion;
-				version = 0.2.11;
+				version = 0.2.13;
 			};
 		};
 		41B6D54728146BBA00798014 /* XCRemoteSwiftPackageReference "Network11" */ = {
