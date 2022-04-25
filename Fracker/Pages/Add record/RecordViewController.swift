@@ -29,14 +29,11 @@ class RecordViewController: BaseViewController {
     }
 
     private var isCategoriesBeingRemoved = false {
-        didSet { collectionView.reloadData() }
+        didSet { reloadWithAnimation() }
     }
 
     private var isAddingCategory = false {
-        didSet {
-            let indexPath = IndexPath(item: categories.count, section: 0)
-            collectionView.reloadItems(at: [indexPath])
-        }
+        didSet { reloadWithAnimation() }
     }
 
     private var categories: [Category] = []
@@ -225,9 +222,7 @@ class RecordViewController: BaseViewController {
     }
 
     @objc private func longGestureRecognizerAction(_ gesture: UILongPressGestureRecognizer) {
-        guard gesture.state == .ended, !isCategoriesLoading, !isAddingCategory, !isCategoriesBeingRemoved else {
-            return
-        }
+        guard !isCategoriesLoading, !isAddingCategory, !isCategoriesBeingRemoved else { return }
         let generator = UISelectionFeedbackGenerator()
         generator.selectionChanged()
         isCategoriesBeingRemoved = true
@@ -274,6 +269,7 @@ extension RecordViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.item == categories.count, !isAddingCategory {
             isAddingCategory = true
+            collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
         } else {
             interactor?.didSelectCategory(at: indexPath)
         }
@@ -315,7 +311,7 @@ extension RecordViewController: UICollectionViewDataSource {
             cell.text = categories[indexPath.item].name
             cell.delegate = self
             cell.indexPath = indexPath
-            cell.isRemovable = isCategoriesBeingRemoved
+            cell.isRemoving = isCategoriesBeingRemoved
             return cell
         }
     }
@@ -333,8 +329,7 @@ extension RecordViewController: BaseTextViewDelegate {
     func baseTextView<Identifier>(_ identifier: Identifier, didChangeText text: String?) {}
 
     func baseTextView<Identifier>(_ identifier: Identifier, didEndEditingText text: String?) {
-        view.endEditing(true)
-        defer { isAddingCategory = false }
+        isAddingCategory = false
         guard let text = text, !text.isEmpty else { return }
         interactor?.createCategory(with: text)
     }
@@ -365,20 +360,27 @@ extension RecordViewController: RecordViewInput {
         reloadWithAnimation()
     }
 
+    func scrollToItem(at indexPath: IndexPath) {
+        collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+    }
+
     func setRecord(result: NSAttributedString) {
         placeholderLabel.text = result.string.isEmpty ? "0" : nil
         titleLabel.attributedText = result
     }
 
     func deselectItem(at indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+    }
+
+    func moveAmountToCategory(at indexPath: IndexPath) {
         placeholderLabel.text = "0"
         CATransaction.begin()
-
         CATransaction.setCompletionBlock { [weak self] in
             guard let viewController = self else { return }
             viewController.titleLabel.attributedText = nil
             viewController.titleLabel.layer.removeAllAnimations()
-            viewController.collectionView.scrollToItem(at: indexPath, at: .right, animated: true)
+            viewController.collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
             viewController.collectionView.deselectItem(at: indexPath, animated: true)
         }
 
@@ -386,9 +388,5 @@ extension RecordViewController: RecordViewInput {
         addTitleLabelScaleAnimation()
         addTitleLabelOpacityAnimation()
         CATransaction.commit()
-    }
-
-    func resetAmountAnimated() {
-
     }
 }

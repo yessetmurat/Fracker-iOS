@@ -209,8 +209,7 @@ extension RecordInteractor: RecordInteractorInput {
         let completion: () -> Void = { [weak self] in
             guard let interactor = self else { return }
             interactor.amountString = ""
-            interactor.view.deselectItem(at: indexPath)
-            interactor.view.resetAmountAnimated()
+            interactor.view.moveAmountToCategory(at: indexPath)
         }
 
         if commonStore.isAuthorized {

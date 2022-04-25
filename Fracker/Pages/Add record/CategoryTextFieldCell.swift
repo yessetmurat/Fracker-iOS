@@ -93,7 +93,7 @@ extension CategoryTextFieldCell: UITextFieldDelegate {
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         DispatchQueue.main.async {
-            self.textField.resignFirstResponder()
+            textField.resignFirstResponder()
         }
         return false
     }

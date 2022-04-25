@@ -24,7 +24,7 @@ class CategoryCell: UICollectionViewCell {
 
     override var isSelected: Bool {
         didSet {
-            guard !isRemovable else { return }
+            guard !isRemoving else { return }
             setSelected(isSelected)
         }
     }
@@ -34,10 +34,10 @@ class CategoryCell: UICollectionViewCell {
         set { titleLabel.text = newValue }
     }
 
-    var isRemovable = false {
+    var isRemoving = false {
         didSet {
-            removeButton.isHidden = !isRemovable
-            isRemovable ? startShaking() : stopShaking()
+            removeButton.isHidden = !isRemoving
+            isRemoving ? startShaking() : stopShaking()
         }
     }
 
@@ -56,7 +56,7 @@ class CategoryCell: UICollectionViewCell {
         delegate = nil
         indexPath = nil
         text = nil
-        isRemovable = false
+        isRemoving = false
     }
 
     private func addSubviews() {
