@@ -7,7 +7,7 @@
 
 class Constants {
 
-    class var host: String { "yessetmurat.com" }
+    class var host: String { "www.fracker.yessetmurat.com" }
 
     class var serverUrl: String { "https://" + host }
 
