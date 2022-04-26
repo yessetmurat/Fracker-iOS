@@ -256,7 +256,6 @@
 			children = (
 				41B6D5362814514E00798014 /* Auth */,
 				41B6D5352814514600798014 /* Add record */,
-				41B6D5372814515800798014 /* Analytics */,
 			);
 			path = Pages;
 			sourceTree = "<group>";
@@ -281,13 +280,6 @@
 				41B6D54A28146BC400798014 /* VIew */,
 			);
 			path = Auth;
-			sourceTree = "<group>";
-		};
-		41B6D5372814515800798014 /* Analytics */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Analytics;
 			sourceTree = "<group>";
 		};
 		41B6D54A28146BC400798014 /* VIew */ = {
