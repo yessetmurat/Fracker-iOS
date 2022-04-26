@@ -9,9 +9,7 @@ import Network11
 
 enum Endpoint: NetworkEndpoint {
 
-    // MARK: - Auth
-    case apiSignIn
-    case apiSignUp
+    case apiAuthApple
 
     case apiCategories
     case apiCategoriesId(id: String)
@@ -20,8 +18,7 @@ enum Endpoint: NetworkEndpoint {
 
     var apiUrl: String {
         switch self {
-        case .apiSignIn: return "/api/users/sign-in"
-        case .apiSignUp: return "/api/users/sign-up"
+        case .apiAuthApple: return "/api/auth/apple"
 
         case .apiCategories: return "/api/categories"
         case .apiCategoriesId(let id): return "/api/categories/" + id

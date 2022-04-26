@@ -6,8 +6,9 @@
 //  Copyright (c) 2022 ___ORGANIZATIONNAME___. All rights reserved.
 //
 
+import AuthenticationServices
+
 protocol AuthInteractorInput: AnyObject, InteractorInput {
 
-    func signIn(email: String, password: String)
-    func signUp(email: String, password: String, confirmPassword: String)
+    func signInWithApple(authorization: ASAuthorization)
 }

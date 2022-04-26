@@ -6,6 +6,7 @@
 //  Copyright (c) 2022 ___ORGANIZATIONNAME___. All rights reserved.
 //
 
+import AuthenticationServices
 import Network11
 
 class AuthInteractor {
@@ -23,50 +24,30 @@ class AuthInteractor {
 
 extension AuthInteractor: AuthInteractorInput {
 
-    func signIn(email: String, password: String) {
-        guard email.matches(Constants.emailRegex) else {
-            return view.showAlert(title: "Attention!", message: "Enter correct email address")
+    func signInWithApple(authorization: ASAuthorization) {
+        guard let credential = authorization.credential as? ASAuthorizationAppleIDCredential else {
+            return view.showAlert(message: "Unable to get credentials")
         }
 
-        view.set(isLoading: true)
-
-        let networkContext = AuthNetworkContext(authType: .signIn, email: email, password: password)
+        let data = AppleSignInData(
+            appleIdentityToken: credential.user,
+            firstName: credential.fullName?.givenName,
+            lastName: credential.fullName?.familyName
+        )
+        let networkContext = AppleSignInNetworkContext(data: data)
         networkService.performRequest(using: networkContext) { [weak self] response in
-            guard let interactor = self else { return }
-            interactor.view.set(isLoading: false)
-
-            if !interactor.handleFailure(response: response, view: interactor.view) {
-                guard let token = response.json?["token"] as? String else {
-                    return interactor.show(networkError: .dataLoad, view: interactor.view)
-                }
-
-                interactor.commonStore.accessToken = token
-                KeyValueStore().set(value: token, for: .token)
-
-                interactor.view.dismiss(animated: true)
+            guard let interactor = self, !interactor.handleFailure(response: response, view: interactor.view) else {
+                return
             }
-        }
-    }
 
-    func signUp(email: String, password: String, confirmPassword: String) {
-        guard email.matches(Constants.emailRegex) else {
-            return view.showAlert(title: "Attention!", message: "Enter correct email address")
-        }
-
-        guard password == confirmPassword else {
-            return view.showAlert(title: "Attention!", message: "Passwords must match")
-        }
-
-        view.set(isLoading: true)
-
-        let networkContext = AuthNetworkContext(authType: .signUp, email: email, password: password)
-        networkService.performRequest(using: networkContext) { [weak self] response in
-            guard let interactor = self else { return }
-            interactor.view.set(isLoading: false)
-
-            if !interactor.handleFailure(response: response, view: interactor.view) {
-                interactor.view.configureSignIn()
+            guard let token = response.json?["token"] as? String else {
+                return interactor.show(networkError: .dataLoad, view: interactor.view)
             }
+
+            interactor.commonStore.accessToken = token
+            KeyValueStore().set(value: token, for: .token)
+
+            interactor.view.dismiss(animated: true)
         }
     }
 }

@@ -10,6 +10,7 @@
 		4129231B281489FB0001086C /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4129231A281489FB0001086C /* CategoryCell.swift */; };
 		4129231D28148E990001086C /* CategoryAddCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4129231C28148E990001086C /* CategoryAddCell.swift */; };
 		412E3DA52815CAF200B8D8DD /* ShakableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412E3DA42815CAF200B8D8DD /* ShakableView.swift */; };
+		412FD6EE28171320008BC86C /* AppleSignInData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412FD6ED28171320008BC86C /* AppleSignInData.swift */; };
 		41881FD028155BDA00FFA4E2 /* CategoriesNetworkContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41881FCF28155BDA00FFA4E2 /* CategoriesNetworkContext.swift */; };
 		41881FD228155C9600FFA4E2 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41881FD128155C9600FFA4E2 /* Category.swift */; };
 		41881FD4281560E100FFA4E2 /* CategoryShimmerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41881FD3281560E100FFA4E2 /* CategoryShimmerCell.swift */; };
@@ -41,8 +42,7 @@
 		41B6D5552814732200798014 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B6D5502814732200798014 /* Endpoint.swift */; };
 		41B6D5562814732200798014 /* BaseImage + extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B6D5512814732200798014 /* BaseImage + extensions.swift */; };
 		41B6D5572814732200798014 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B6D5522814732200798014 /* Constants.swift */; };
-		41C69D3F2814A7720076B354 /* AuthType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C69D3E2814A7720076B354 /* AuthType.swift */; };
-		41C69D412814AB6D0076B354 /* AuthNetworkContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C69D402814AB6D0076B354 /* AuthNetworkContext.swift */; };
+		41C69D412814AB6D0076B354 /* AppleSignInNetworkContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C69D402814AB6D0076B354 /* AppleSignInNetworkContext.swift */; };
 		41C69D432814ABE30076B354 /* InteractorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C69D422814ABE30076B354 /* InteractorInput.swift */; };
 		41C69D452814AC520076B354 /* ErrorDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C69D442814AC520076B354 /* ErrorDescriptor.swift */; };
 		41C69D472814AC680076B354 /* DisplayedError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C69D462814AC680076B354 /* DisplayedError.swift */; };
@@ -81,6 +81,8 @@
 		4129231A281489FB0001086C /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
 		4129231C28148E990001086C /* CategoryAddCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryAddCell.swift; sourceTree = "<group>"; };
 		412E3DA42815CAF200B8D8DD /* ShakableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakableView.swift; sourceTree = "<group>"; };
+		412FD6EC28170B4B008BC86C /* Fracker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Fracker.entitlements; sourceTree = "<group>"; };
+		412FD6ED28171320008BC86C /* AppleSignInData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleSignInData.swift; sourceTree = "<group>"; };
 		41881FCF28155BDA00FFA4E2 /* CategoriesNetworkContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesNetworkContext.swift; sourceTree = "<group>"; };
 		41881FD128155C9600FFA4E2 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		41881FD3281560E100FFA4E2 /* CategoryShimmerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryShimmerCell.swift; sourceTree = "<group>"; };
@@ -114,8 +116,7 @@
 		41B6D5502814732200798014 /* Endpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		41B6D5512814732200798014 /* BaseImage + extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BaseImage + extensions.swift"; sourceTree = "<group>"; };
 		41B6D5522814732200798014 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		41C69D3E2814A7720076B354 /* AuthType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthType.swift; sourceTree = "<group>"; };
-		41C69D402814AB6D0076B354 /* AuthNetworkContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthNetworkContext.swift; sourceTree = "<group>"; };
+		41C69D402814AB6D0076B354 /* AppleSignInNetworkContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppleSignInNetworkContext.swift; sourceTree = "<group>"; };
 		41C69D422814ABE30076B354 /* InteractorInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractorInput.swift; sourceTree = "<group>"; };
 		41C69D442814AC520076B354 /* ErrorDescriptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorDescriptor.swift; sourceTree = "<group>"; };
 		41C69D462814AC680076B354 /* DisplayedError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayedError.swift; sourceTree = "<group>"; };
@@ -212,6 +213,7 @@
 		41B6D4FF28144F7E00798014 /* Fracker */ = {
 			isa = PBXGroup;
 			children = (
+				412FD6EC28170B4B008BC86C /* Fracker.entitlements */,
 				41B6D53428144FEF00798014 /* Pages */,
 				41B6D54D281472E000798014 /* Utils */,
 				41B6D53328144FD900798014 /* Supporting */,
@@ -337,8 +339,8 @@
 		41C69D3D2814A7690076B354 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				41C69D402814AB6D0076B354 /* AuthNetworkContext.swift */,
-				41C69D3E2814A7720076B354 /* AuthType.swift */,
+				41C69D402814AB6D0076B354 /* AppleSignInNetworkContext.swift */,
+				412FD6ED28171320008BC86C /* AppleSignInData.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -527,9 +529,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				41C69D3F2814A7720076B354 /* AuthType.swift in Sources */,
 				4129231B281489FB0001086C /* CategoryCell.swift in Sources */,
 				41881FF92815A3C800FFA4E2 /* LocalRecord+CoreDataClass.swift in Sources */,
+				412FD6EE28171320008BC86C /* AppleSignInData.swift in Sources */,
 				41D6B8D7281476ED00595F6C /* RecordInteractorInput.swift in Sources */,
 				41881FD628158D5100FFA4E2 /* RemoveCategoryNetworkContext.swift in Sources */,
 				412E3DA52815CAF200B8D8DD /* ShakableView.swift in Sources */,
@@ -564,7 +566,7 @@
 				41B6D5572814732200798014 /* Constants.swift in Sources */,
 				41D6B8DA281476ED00595F6C /* RecordRouterInput.swift in Sources */,
 				41B6D5552814732200798014 /* Endpoint.swift in Sources */,
-				41C69D412814AB6D0076B354 /* AuthNetworkContext.swift in Sources */,
+				41C69D412814AB6D0076B354 /* AppleSignInNetworkContext.swift in Sources */,
 				41B6D53E281451AE00798014 /* AuthViewInput.swift in Sources */,
 				41C69D472814AC680076B354 /* DisplayedError.swift in Sources */,
 				41881FD228155C9600FFA4E2 /* Category.swift in Sources */,
@@ -735,6 +737,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Fracker/Fracker.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
@@ -764,6 +767,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Fracker/Fracker.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;

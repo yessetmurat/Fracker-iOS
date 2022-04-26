@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AuthenticationServices
 import Base
 
 class AuthViewController: BaseViewController {
@@ -20,6 +21,7 @@ class AuthViewController: BaseViewController {
 
     private let imageView = UIImageView()
     private let stackView = UIStackView()
+    private let appleSignInButton = ASAuthorizationAppleIDButton()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +34,8 @@ class AuthViewController: BaseViewController {
 
     private func addSubviews() {
         view.addSubview(imageView)
+        view.addSubview(stackView)
+        stackView.addArrangedSubview(appleSignInButton)
     }
 
     private func setLayoutConstraints() {
@@ -39,11 +43,21 @@ class AuthViewController: BaseViewController {
 
         imageView.translatesAutoresizingMaskIntoConstraints = false
     	layoutConstraints += [
-            imageView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            imageView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -124),
             imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             imageView.widthAnchor.constraint(equalToConstant: 160),
             imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor)
     	]
+
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        layoutConstraints += [
+            stackView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 24),
+            stackView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -24),
+            stackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -32)
+        ]
+
+        appleSignInButton.translatesAutoresizingMaskIntoConstraints = false
+        layoutConstraints += [appleSignInButton.heightAnchor.constraint(equalToConstant: 54)]
 
     	NSLayoutConstraint.activate(layoutConstraints)
     }
@@ -56,7 +70,27 @@ class AuthViewController: BaseViewController {
     }
 
     private func setActions() {
+        appleSignInButton.addTarget(self, action: #selector(appleSignInButtonAction), for: .touchUpInside)
+    }
 
+    @objc private func appleSignInButtonAction() {
+        let provider = ASAuthorizationAppleIDProvider()
+        let request = provider.createRequest()
+        request.requestedScopes = [.email, .fullName]
+
+        let viewController = ASAuthorizationController(authorizationRequests: [request])
+        viewController.delegate = self
+        viewController.performRequests()
+    }
+}
+
+extension AuthViewController: ASAuthorizationControllerDelegate {
+
+    func authorizationController(
+        controller: ASAuthorizationController,
+        didCompleteWithAuthorization authorization: ASAuthorization
+    ) {
+        interactor?.signInWithApple(authorization: authorization)
     }
 }
 
