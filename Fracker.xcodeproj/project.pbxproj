@@ -58,6 +58,7 @@
 		41D6B8E02814785900595F6C /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D6B8DF2814785900595F6C /* KeyboardView.swift */; };
 		41D6B8E228147BE700595F6C /* PadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D6B8E128147BE700595F6C /* PadCell.swift */; };
 		41D6B8E428147CDD00595F6C /* PadCellTappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D6B8E328147CDD00595F6C /* PadCellTappable.swift */; };
+		41FD362B2819BE4F004B7A74 /* BatchCreateCategoryNetworkContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FD362A2819BE4F004B7A74 /* BatchCreateCategoryNetworkContext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -132,6 +133,7 @@
 		41D6B8DF2814785900595F6C /* KeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
 		41D6B8E128147BE700595F6C /* PadCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PadCell.swift; sourceTree = "<group>"; };
 		41D6B8E328147CDD00595F6C /* PadCellTappable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PadCellTappable.swift; sourceTree = "<group>"; };
+		41FD362A2819BE4F004B7A74 /* BatchCreateCategoryNetworkContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatchCreateCategoryNetworkContext.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +169,7 @@
 				41881FCF28155BDA00FFA4E2 /* CategoriesNetworkContext.swift */,
 				41881FD528158D5100FFA4E2 /* RemoveCategoryNetworkContext.swift */,
 				41881FFF2815B5AE00FFA4E2 /* CreateCategoryNetworkContext.swift */,
+				41FD362A2819BE4F004B7A74 /* BatchCreateCategoryNetworkContext.swift */,
 			);
 			name = NetworkContext;
 			sourceTree = "<group>";
@@ -476,6 +479,7 @@
 			packageReferences = (
 				41B6D54428146B5D00798014 /* XCRemoteSwiftPackageReference "Base" */,
 				41B6D54728146BBA00798014 /* XCRemoteSwiftPackageReference "Network11" */,
+				4151180628181FF200FF800F /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 			);
 			productRefGroup = 41B6D4FE28144F7E00798014 /* Products */;
 			projectDirPath = "";
@@ -529,6 +533,7 @@
 				412E3DA52815CAF200B8D8DD /* ShakableView.swift in Sources */,
 				41C69D432814ABE30076B354 /* InteractorInput.swift in Sources */,
 				41D6B8E428147CDD00595F6C /* PadCellTappable.swift in Sources */,
+				41FD362B2819BE4F004B7A74 /* BatchCreateCategoryNetworkContext.swift in Sources */,
 				41B6D50128144F7E00798014 /* AppDelegate.swift in Sources */,
 				41D6B8D6281476ED00595F6C /* RecordRouter.swift in Sources */,
 				41C69D492814B2BD0076B354 /* LocalError.swift in Sources */,
@@ -898,6 +903,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		4151180628181FF200FF800F /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
+			requirement = {
+				kind = exactVersion;
+				version = 6.1.0;
+			};
+		};
 		41B6D54428146B5D00798014 /* XCRemoteSwiftPackageReference "Base" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "git@github.com:yessetmurat/Base.git";

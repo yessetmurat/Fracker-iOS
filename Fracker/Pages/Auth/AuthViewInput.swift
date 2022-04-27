@@ -10,6 +10,6 @@ import Base
 
 protocol AuthViewInput: BaseViewInput {
 
-    func set(isLoading: Bool)
+    func startLoading()
     func configureSignIn()
 }

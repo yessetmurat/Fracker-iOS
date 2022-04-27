@@ -167,10 +167,7 @@ class RecordViewController: BaseViewController {
     }
 
     private func reloadWithAnimation() {
-        collectionView.performBatchUpdates { [weak self] in
-            guard let viewController = self else { return }
-            viewController.collectionView.reloadSections(IndexSet(integer: 0))
-        }
+        collectionView.performBatchUpdates { collectionView.reloadSections(IndexSet(integer: 0)) }
     }
 
     private func addPositionAnimation(for indexPath: IndexPath) {

@@ -16,6 +16,7 @@ class RecordInteractor {
     private unowned let commonStore: CommonStore
     private let networkService: NetworkService
 
+    private var categoryNames: [String] { ["🍗 Food", "🚗 Transport", "🏠 Communal payments", "💊 Health"] }
     private var amountString: String = ""
     private var categories: [Category] = []
     private var attributes: [NSAttributedString.Key: Any] {
@@ -28,6 +29,24 @@ class RecordInteractor {
         self.view = view
         self.commonStore = commonStore
         self.networkService = networkService
+
+        createDefaultCategoriesIfNeeded()
+    }
+
+    private func createDefaultCategoriesIfNeeded() {
+        do {
+            try commonStore.localDatabaseManager.all { (localCategories: [LocalCategory]) in
+                guard localCategories.isEmpty else { return }
+                categoryNames.forEach { name in
+                    commonStore.localDatabaseManager.create { (category: LocalCategory) in
+                        category.id = UUID()
+                        category.name = name
+                    }
+                }
+            }
+        } catch {
+            return
+        }
     }
 }
 

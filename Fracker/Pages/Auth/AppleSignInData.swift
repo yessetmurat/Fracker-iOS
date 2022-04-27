@@ -7,7 +7,7 @@
 
 struct AppleSignInData: Encodable {
 
-    let appleIdentityToken: String
+    let idToken: String
     let firstName: String?
     let lastName: String?
 }

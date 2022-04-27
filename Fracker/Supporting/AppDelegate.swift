@@ -29,20 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         self.window = window
 
-//        createCategories()
-
         return true
-    }
-
-    private func createCategories() {
-        let categoryNames = ["Food", "Internet", "House", "Loan", "Groceries", "Taxi"]
-
-        categoryNames.forEach { name in
-            commonStore.localDatabaseManager.create { (category: LocalCategory) in
-                category.id = UUID()
-                category.name = name
-            }
-        }
     }
 }
 

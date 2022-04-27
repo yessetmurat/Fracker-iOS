@@ -20,8 +20,20 @@ class AuthViewController: BaseViewController {
     override var preferredStatusBarStyle: UIStatusBarStyle { .lightContent }
 
     private let imageView = UIImageView()
-    private let stackView = UIStackView()
+    private let loadingStackView = UIStackView()
+    private let activityIndicatorView = UIActivityIndicatorView(style: .medium)
+    private let loadingLabel = UILabel()
+    private let signInStackView = UIStackView()
     private let appleSignInButton = ASAuthorizationAppleIDButton()
+
+    private lazy var signInStackViewTopConstraint = signInStackView.topAnchor.constraint(
+        equalTo: view.bottomAnchor,
+        constant: 32
+    )
+    private lazy var signInStackViewBottomConstraint = signInStackView.bottomAnchor.constraint(
+        equalTo: view.safeAreaLayoutGuide.bottomAnchor,
+        constant: -32
+    )
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,8 +46,11 @@ class AuthViewController: BaseViewController {
 
     private func addSubviews() {
         view.addSubview(imageView)
-        view.addSubview(stackView)
-        stackView.addArrangedSubview(appleSignInButton)
+        view.addSubview(loadingStackView)
+        loadingStackView.addArrangedSubview(loadingLabel)
+        loadingStackView.addArrangedSubview(activityIndicatorView)
+        view.addSubview(signInStackView)
+        signInStackView.addArrangedSubview(appleSignInButton)
     }
 
     private func setLayoutConstraints() {
@@ -49,11 +64,21 @@ class AuthViewController: BaseViewController {
             imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor)
     	]
 
-        stackView.translatesAutoresizingMaskIntoConstraints = false
+        loadingStackView.translatesAutoresizingMaskIntoConstraints = false
         layoutConstraints += [
-            stackView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 24),
-            stackView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -24),
-            stackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -32)
+            loadingStackView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 24),
+            loadingStackView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -24),
+            loadingStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -32)
+        ]
+
+        loadingLabel.translatesAutoresizingMaskIntoConstraints = false
+        layoutConstraints += [loadingLabel.heightAnchor.constraint(equalToConstant: 54)]
+
+        signInStackView.translatesAutoresizingMaskIntoConstraints = false
+        layoutConstraints += [
+            signInStackView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 24),
+            signInStackView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -24),
+            signInStackViewBottomConstraint
         ]
 
         appleSignInButton.translatesAutoresizingMaskIntoConstraints = false
@@ -67,10 +92,54 @@ class AuthViewController: BaseViewController {
 
         imageView.image = BaseImage.logo.uiImage
         imageView.contentMode = .scaleAspectFit
+
+        loadingStackView.alpha = 0
+        loadingStackView.axis = .vertical
+        loadingStackView.spacing = 8
+
+        loadingLabel.text = "Signing in..."
+        loadingLabel.font = BaseFont.regular
+        loadingLabel.textAlignment = .center
+        loadingLabel.textColor = BaseColor.gray
+
+        activityIndicatorView.color = BaseColor.blue
+        activityIndicatorView.hidesWhenStopped = false
+
+        signInStackView.axis = .vertical
+        signInStackView.spacing = 24
     }
 
     private func setActions() {
         appleSignInButton.addTarget(self, action: #selector(appleSignInButtonAction), for: .touchUpInside)
+    }
+
+    private func dismissSignInStackViewAnimated() {
+        UIView.animate(
+            withDuration: 0.3,
+            delay: 0,
+            usingSpringWithDamping: 1,
+            initialSpringVelocity: 1,
+            options: .curveEaseInOut
+        ) { [weak self] in
+            guard let viewController = self else { return }
+            viewController.signInStackViewBottomConstraint.isActive = false
+            viewController.signInStackViewTopConstraint.isActive = true
+            viewController.view.layoutIfNeeded()
+        }
+    }
+
+    private func presentLoadingStackViewAnimated() {
+        UIView.animate(
+            withDuration: 0.3,
+            delay: 0.3,
+            usingSpringWithDamping: 1,
+            initialSpringVelocity: 1,
+            options: .curveEaseInOut
+        ) { [weak self] in
+            guard let viewController = self else { return }
+            viewController.loadingStackView.alpha = 1
+            viewController.activityIndicatorView.startAnimating()
+        }
     }
 
     @objc private func appleSignInButtonAction() {
@@ -96,8 +165,9 @@ extension AuthViewController: ASAuthorizationControllerDelegate {
 
 extension AuthViewController: AuthViewInput {
 
-    func set(isLoading: Bool) {
-
+    func startLoading() {
+        dismissSignInStackViewAnimated()
+        presentLoadingStackViewAnimated()
     }
 
     func configureSignIn() {
