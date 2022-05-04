@@ -248,12 +248,12 @@ extension RecordViewController: UICollectionViewDelegateFlowLayout {
         let addCategory = isCategoriesLoading ? indexPath.item == 2 : indexPath.item == categories.count
 
         if addCategory && !isCategoriesBeingRemoved {
-            return CGSize(width: isAddingCategory ? 140 : 62, height: 62)
+            return CGSize(width: isAddingCategory ? 164 : 62, height: 62)
         } else if isCategoriesLoading {
             return CGSize(width: 100, height: 62)
         }
 
-        let titleWidth = categories[indexPath.item].name
+        let titleWidth = categories[indexPath.item].description
             .size(withAttributes: [.font: BaseFont.semibold.withSize(14)])
             .width
 
@@ -305,7 +305,7 @@ extension RecordViewController: UICollectionViewDataSource {
             return cell
         } else {
             let cell: CategoryCell = collectionView.dequeueReusableCell(for: indexPath)
-            cell.text = categories[indexPath.item].name
+            cell.text = categories[indexPath.item].description
             cell.delegate = self
             cell.indexPath = indexPath
             cell.isRemoving = isCategoriesBeingRemoved
@@ -321,19 +321,13 @@ extension RecordViewController: CategoryCellDelegate {
     }
 }
 
-extension RecordViewController: BaseTextViewDelegate {
+extension RecordViewController: CategoryTextFieldDelegate {
 
-    func baseTextView<Identifier>(_ identifier: Identifier, didChangeText text: String?) {}
-
-    func baseTextView<Identifier>(_ identifier: Identifier, didEndEditingText text: String?) {
+    func textFieldDidEndEditing(withEmoji emoji: String, text: String) {
         isAddingCategory = false
-        guard let text = text, !text.isEmpty else { return }
-        interactor?.createCategory(with: text)
+
+        if !text.isEmpty { interactor?.createCategory(withEmoji: emoji, name: text) }
     }
-
-    func baseTextViewShouldBeginEditing<Identifier>(_ identifier: Identifier) -> Bool { true }
-
-    func baseTextViewDidTapOnAccessoryButton<Identifier>(_ identifier: Identifier) {}
 }
 
 extension RecordViewController: KeyboardViewDelegate {

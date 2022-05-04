@@ -21,12 +21,8 @@ class RecordRouter {
         let viewController = RecordViewController()
         view = viewController
 
-        let networkService = NetworkWorker(sessionAdapter: commonStore.sessionAdapter)
-        let interactor = RecordInteractor(
-            view: viewController,
-            commonStore: commonStore,
-            networkService: networkService
-        )
+        let categoriesService = CategoriesWorker(commonStore: commonStore)
+        let interactor = RecordInteractor(view: viewController, categoriesService: categoriesService)
         viewController.interactor = interactor
         viewController.router = self
 

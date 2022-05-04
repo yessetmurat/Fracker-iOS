@@ -21,39 +21,13 @@ class AuthInteractor {
         self.commonStore = commonStore
         self.networkService = networkService
     }
-
-    private func saveLocalDataToRemoteIfNeeded() {
-        do {
-            try commonStore.localDatabaseManager.all { (localCategories: [LocalCategory]) in
-                let categories = localCategories.compactMap { localCategory -> Category? in
-                    guard let name = localCategory.name else { return nil }
-                    return Category(id: localCategory.id, name: name)
-                }
-
-                if let request = batchCreate(categories: categories) {
-                    networkManager.requests.append(request)
-                }
-            }
-        } catch {
-            return view.dismiss(animated: true)
-        }
-
-        networkManager.perform(inSequence: true) { [weak self] in
-            guard let interactor = self else { return }
-            interactor.view.dismiss(animated: true)
-        }
-    }
 }
 
 extension AuthInteractor {
 
     private func batchCreate(categories: [Category]) -> ManageableNetworkRequest? {
         let networkContext = BatchCreateCategoryNetworkContext(categories: categories)
-        let request = networkService.buildRequest(from: networkContext) { [weak self] response in
-            guard let interactor = self else { return }
-            _ = interactor.handleFailure(response: response, view: interactor.view)
-        }
-
+        let request = networkService.buildRequest(from: networkContext) { _ in }
         return request as? ManageableNetworkRequest
     }
 }
@@ -85,7 +59,7 @@ extension AuthInteractor: AuthInteractorInput {
 
                 interactor.commonStore.accessToken = token
                 KeyValueStore().set(value: token, for: .token)
-                interactor.saveLocalDataToRemoteIfNeeded()
+//                interactor.saveLocalDataToRemoteIfNeeded()
             }
         }
     }

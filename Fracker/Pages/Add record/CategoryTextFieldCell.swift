@@ -8,12 +8,19 @@
 import UIKit
 import Base
 
+protocol CategoryTextFieldDelegate: AnyObject {
+
+    func textFieldDidEndEditing(withEmoji emoji: String, text: String)
+}
+
 class CategoryTextFieldCell: UICollectionViewCell {
 
     private let containerView = UIView()
+    private let stackView = UIStackView()
+    private let emojiTextField = EmojiTextField()
     private let textField = UITextField()
 
-    weak var delegate: BaseTextViewDelegate?
+    weak var delegate: CategoryTextFieldDelegate?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -27,13 +34,17 @@ class CategoryTextFieldCell: UICollectionViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         delegate = nil
+        emojiTextField.text = nil
+        emojiTextField.resignFirstResponder()
         textField.text = nil
         textField.resignFirstResponder()
     }
 
     private func addSubviews() {
         contentView.addSubview(containerView)
-        containerView.addSubview(textField)
+        containerView.addSubview(stackView)
+        stackView.addArrangedSubview(emojiTextField)
+        stackView.addArrangedSubview(textField)
     }
 
     private func setLayoutConstraints() {
@@ -48,8 +59,11 @@ class CategoryTextFieldCell: UICollectionViewCell {
             bottom: 10
         )
 
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        layoutConstraints += textField.getLayoutConstraints(over: containerView, left: 12, right: 12)
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        layoutConstraints += stackView.getLayoutConstraints(over: containerView, left: 12, right: 12)
+
+        emojiTextField.translatesAutoresizingMaskIntoConstraints = false
+        layoutConstraints += [emojiTextField.widthAnchor.constraint(equalToConstant: 24)]
 
         NSLayoutConstraint.activate(layoutConstraints)
     }
@@ -59,6 +73,11 @@ class CategoryTextFieldCell: UICollectionViewCell {
         containerView.layer.cornerRadius = 10
         containerView.clipsToBounds = true
 
+        stackView.axis = .horizontal
+
+        emojiTextField.font = BaseFont.semibold.withSize(14)
+        emojiTextField.textColor = BaseColor.black
+
         textField.font = BaseFont.semibold.withSize(14)
         textField.placeholder = "Enter name..."
         textField.returnKeyType = .done
@@ -66,18 +85,13 @@ class CategoryTextFieldCell: UICollectionViewCell {
     }
 
     private func setActions() {
+        emojiTextField.delegate = self
         textField.delegate = self
-        textField.addTarget(self, action: #selector(textFieldEditingChanged), for: .editingChanged)
-    }
-
-    @objc private func textFieldEditingChanged() {
-        guard let delegate = delegate else { return }
-        delegate.baseTextView(UUID(), didChangeText: textField.text)
     }
 
     func startEditing() {
         DispatchQueue.main.async {
-            self.textField.becomeFirstResponder()
+            self.emojiTextField.becomeFirstResponder()
         }
     }
 
@@ -86,9 +100,32 @@ class CategoryTextFieldCell: UICollectionViewCell {
 
 extension CategoryTextFieldCell: UITextFieldDelegate {
 
+    func textField(
+        _ textField: UITextField,
+        shouldChangeCharactersIn range: NSRange,
+        replacementString string: String
+    ) -> Bool {
+        let text = textField.text ?? ""
+        let updatedText = (text as NSString).replacingCharacters(in: range, with: string)
+
+        if textField == emojiTextField, updatedText.count == 1 {
+            textField.text = updatedText
+            DispatchQueue.main.async { self.textField.becomeFirstResponder() }
+            return false
+        }
+
+        return true
+    }
+
     func textFieldDidEndEditing(_ textField: UITextField) {
-        guard let delegate = delegate else { return }
-        delegate.baseTextView(UUID(), didEndEditingText: textField.text)
+        guard let delegate = delegate,
+              let emoji = emojiTextField.text,
+              let text = self.textField.text,
+              !emoji.isEmpty,
+              !text.isEmpty else {
+            return
+        }
+        delegate.textFieldDidEndEditing(withEmoji: emoji, text: text)
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

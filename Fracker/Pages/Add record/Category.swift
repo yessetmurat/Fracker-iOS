@@ -7,8 +7,14 @@
 
 import Foundation
 
-struct Category: Codable {
+struct Category: Codable, Hashable {
 
-    let id: UUID?
+    let id: UUID
+    let emoji: String
     let name: String
+}
+
+extension Category {
+
+    var description: String { emoji + " " + name }
 }

@@ -11,7 +11,7 @@ import Foundation
 protocol RecordInteractorInput: AnyObject, InteractorInput {
 
     func loadCategories()
-    func createCategory(with name: String)
+    func createCategory(withEmoji emoji: String, name: String)
     func removeCategory(at indexPath: IndexPath)
     func changeRecord(symbol: String)
     func didSelectCategory(at indexPath: IndexPath)

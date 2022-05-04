@@ -107,6 +107,8 @@ class AuthViewController: BaseViewController {
 
         signInStackView.axis = .vertical
         signInStackView.spacing = 24
+
+        appleSignInButton.cornerRadius = 10
     }
 
     private func setActions() {

@@ -15,6 +15,9 @@ enum Endpoint: NetworkEndpoint {
     case apiCategoriesBatch
     case apiCategoriesId(id: String)
 
+    case apiRecords
+    case apiRecordsBatch
+
     var serverUrl: String { Constants.serverUrl }
 
     var apiUrl: String {
@@ -24,6 +27,9 @@ enum Endpoint: NetworkEndpoint {
         case .apiCategories: return "/api/categories"
         case .apiCategoriesBatch: return "/api/categories/batch"
         case .apiCategoriesId(let id): return "/api/categories/" + id
+
+        case .apiRecords: return "/api/records"
+        case .apiRecordsBatch: return "/api/records/batch"
         }
     }
 }

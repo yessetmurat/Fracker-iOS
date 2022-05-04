@@ -2,13 +2,12 @@
 //  LocalCategory+CoreDataProperties.swift
 //  Fracker
 //
-//  Created by Yesset Murat on 4/24/22.
+//  Created by Yesset Murat on 5/4/22.
 //
 //
 
 import Foundation
 import CoreData
-
 
 extension LocalCategory {
 
@@ -16,8 +15,9 @@ extension LocalCategory {
         return NSFetchRequest<LocalCategory>(entityName: "LocalCategory")
     }
 
-    @NSManaged public var id: UUID?
-    @NSManaged public var name: String?
+    @NSManaged public var id: UUID
+    @NSManaged public var emoji: String
+    @NSManaged public var name: String
     @NSManaged public var records: NSSet?
 }
 

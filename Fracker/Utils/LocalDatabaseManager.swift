@@ -16,6 +16,7 @@ class LocalDatabaseManager {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }
         })
+        container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
         return container
     }()
 
@@ -38,20 +39,20 @@ class LocalDatabaseManager {
         saveContext()
     }
 
-    func object<T: NSManagedObject>(with predicate: NSPredicate, completion: (T?) -> Void) throws {
+    func object<T: NSManagedObject>(with predicate: NSPredicate) throws -> T? {
         let request: NSFetchRequest<T> = NSFetchRequest<T>(entityName: String(describing: T.self))
         request.predicate = predicate
 
         let result = try context.fetch(request)
-        completion(result.first)
+        return result.first
     }
 
-    func all<T: NSManagedObject>(with predicate: NSPredicate? = nil, completion: ([T]) -> Void) throws {
+    func all<T: NSManagedObject>(with predicate: NSPredicate? = nil) throws -> [T] {
         let request: NSFetchRequest<T> = NSFetchRequest<T>(entityName: String(describing: T.self))
         request.predicate = predicate
 
         let result = try context.fetch(request)
-        completion(result)
+        return result
     }
 
     func delete<T: NSManagedObject>(object: T) {
