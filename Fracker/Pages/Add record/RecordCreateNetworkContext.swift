@@ -1,5 +1,5 @@
 //
-//  CreateRecordNetworkContext.swift
+//  RecordCreateNetworkContext.swift
 //  Fracker
 //
 //  Created by Yesset Murat on 5/4/22.
@@ -8,7 +8,7 @@
 import Foundation
 import Network11
 
-class CreateRecordNetworkContext: NetworkContext {
+class RecordCreateNetworkContext: NetworkContext {
 
     var endpoint: NetworkEndpoint { Endpoint.apiRecords }
     var method: NetworkMethod { .POST }

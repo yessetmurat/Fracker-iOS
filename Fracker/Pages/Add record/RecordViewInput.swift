@@ -18,4 +18,5 @@ protocol RecordViewInput: BaseViewInput, ShakableView {
     func setRecord(result: NSAttributedString)
     func deselectItem(at indexPath: IndexPath)
     func moveAmountToCategory(at indexPath: IndexPath)
+    func presentAuthorizationPage()
 }

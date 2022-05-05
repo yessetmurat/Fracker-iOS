@@ -13,10 +13,9 @@ import Base
 class RecordInteractor {
 
     private unowned let view: RecordViewInput
+    private unowned let commonStore: CommonStore
     private let categoriesService: CategoriesService
-
-    private var amountString = ""
-    private var categories: [Category] = []
+    private let recordsService: RecordsService
 
     private var attributes: [NSAttributedString.Key: Any] {
         return [.font: BaseFont.semibold.withSize(64), .foregroundColor: BaseColor.black]
@@ -28,15 +27,32 @@ class RecordInteractor {
 
     private let textValidator = AmountTextValidator()
 
-    init(view: RecordViewInput, categoriesService: CategoriesService) {
+    private var amountString = ""
+    private var categories: [Category] = []
+
+    init(view: RecordViewInput, commonStore: CommonStore) {
         self.view = view
-        self.categoriesService = categoriesService
+        self.commonStore = commonStore
+        categoriesService = CategoriesWorker(commonStore: commonStore)
+        recordsService = RecordsWorker(commonStore: commonStore)
 
         categoriesService.createDefaultCategoriesIfNeeded()
+        categoriesService.syncronize(completion: nil)
+
+        recordsService.syncronize(completion: nil)
+    }
+
+    private func deselectWithDelay(at indexPath: IndexPath) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in self?.view.deselectItem(at: indexPath) }
     }
 }
 
 extension RecordInteractor: RecordInteractorInput {
+
+    func didTapOnLeftButton() {
+        guard commonStore.authorizationStatus == .none else { return }
+        view.presentAuthorizationPage()
+    }
 
     func loadCategories() {
         categoriesService.load { [weak self] result in
@@ -49,7 +65,6 @@ extension RecordInteractor: RecordInteractorInput {
                 interactor.categories = categories
                 interactor.view.pass(categories: interactor.categories)
                 interactor.view.reloadCollectionView()
-                interactor.categoriesService.syncronize()
             case .failure:
                 return
             }
@@ -57,25 +72,19 @@ extension RecordInteractor: RecordInteractorInput {
     }
 
     func createCategory(withEmoji emoji: String, name: String) {
-
+        categoriesService.create(withEmoji: emoji, name: name) { [weak self] in self?.loadCategories() }
     }
 
     func removeCategory(at indexPath: IndexPath) {
-//        guard let id = categories[indexPath.item].id?.uuidString else { return }
-//
-//        let completion: () -> Void = { [weak self] in
-//            guard let interactor = self else { return }
-//
-//            interactor.categories.remove(at: indexPath.item)
-//            interactor.view.pass(categories: interactor.categories)
-//            interactor.view.reloadCollectionView()
-//        }
-//
-//        if commonStore.isAuthorized {
-//            removeRemoteCategory(with: id, completion: completion)
-//        } else {
-//            removeLocalCategory(with: id, completion: completion)
-//        }
+        let id = categories[indexPath.item].id
+
+        categoriesService.delete(with: id) { [weak self] in
+            guard let interactor = self else { return }
+
+            interactor.categories.remove(at: indexPath.item)
+            interactor.view.pass(categories: interactor.categories)
+            interactor.view.reloadCollectionView()
+        }
     }
 
     func changeRecord(symbol: String) {
@@ -98,20 +107,16 @@ extension RecordInteractor: RecordInteractorInput {
 
     func didSelectCategory(at indexPath: IndexPath) {
         guard let amount = amountString.amount, amount > 0 else {
-            view.deselectItem(at: indexPath)
+            deselectWithDelay(at: indexPath)
             return view.shake()
         }
 
-        let completion: () -> Void = { [weak self] in
+        recordsService.create(with: amount, category: categories[indexPath.item]) { [weak self] in
             guard let interactor = self else { return }
+
             interactor.amountString = ""
             interactor.view.moveAmountToCategory(at: indexPath)
+            interactor.deselectWithDelay(at: indexPath)
         }
-
-//        if commonStore.isAuthorized {
-//            addRemoteRecord(for: categories[indexPath.item], with: amount, completion: completion)
-//        } else {
-//            addLocalRecord(for: categories[indexPath.item], with: amount, completion: completion)
-//        }
     }
 }

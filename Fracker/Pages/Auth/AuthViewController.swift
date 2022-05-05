@@ -98,7 +98,7 @@ class AuthViewController: BaseViewController {
         loadingStackView.spacing = 8
 
         loadingLabel.text = "Signing in..."
-        loadingLabel.font = BaseFont.regular
+        loadingLabel.font = BaseFont.semibold
         loadingLabel.textAlignment = .center
         loadingLabel.textColor = BaseColor.gray
 
@@ -174,5 +174,16 @@ extension AuthViewController: AuthViewInput {
 
     func configureSignIn() {
 
+    }
+
+    func set(statusText: String) {
+        let animation = CATransition()
+        animation.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+        animation.type = .moveIn
+        animation.subtype = .fromTop
+        animation.duration = 0.4
+        loadingLabel.layer.add(animation, forKey: CATransitionType.moveIn.rawValue)
+
+        loadingLabel.text = statusText
     }
 }

@@ -166,6 +166,38 @@ class RecordViewController: BaseViewController {
         }
     }
 
+
+
+    @objc private func leftBarButtonItemAction() {
+        interactor?.didTapOnLeftButton()
+    }
+
+    @objc private func rightBarButtonItemAction() {
+
+    }
+
+    @objc private func longGestureRecognizerAction(_ gesture: UILongPressGestureRecognizer) {
+        guard !isCategoriesLoading, !isAddingCategory, !isCategoriesBeingRemoved else { return }
+        let generator = UISelectionFeedbackGenerator()
+        generator.selectionChanged()
+        isCategoriesBeingRemoved = true
+    }
+
+    @objc private func tapGestureAction() {
+        view.endEditing(true)
+
+        if isAddingCategory {
+            isAddingCategory = false
+        }
+
+        if isCategoriesBeingRemoved {
+            isCategoriesBeingRemoved = false
+        }
+    }
+}
+
+extension RecordViewController {
+
     private func reloadWithAnimation() {
         collectionView.performBatchUpdates { collectionView.reloadSections(IndexSet(integer: 0)) }
     }
@@ -208,33 +240,6 @@ class RecordViewController: BaseViewController {
         animation.toValue = 0
 
         titleLabel.layer.add(animation, forKey: "titleLabelOpacity")
-    }
-
-    @objc private func leftBarButtonItemAction() {
-        router?.presentAuthPage()
-    }
-
-    @objc private func rightBarButtonItemAction() {
-
-    }
-
-    @objc private func longGestureRecognizerAction(_ gesture: UILongPressGestureRecognizer) {
-        guard !isCategoriesLoading, !isAddingCategory, !isCategoriesBeingRemoved else { return }
-        let generator = UISelectionFeedbackGenerator()
-        generator.selectionChanged()
-        isCategoriesBeingRemoved = true
-    }
-
-    @objc private func tapGestureAction() {
-        view.endEditing(true)
-
-        if isAddingCategory {
-            isAddingCategory = false
-        }
-
-        if isCategoriesBeingRemoved {
-            isCategoriesBeingRemoved = false
-        }
     }
 }
 
@@ -366,6 +371,7 @@ extension RecordViewController: RecordViewInput {
 
     func moveAmountToCategory(at indexPath: IndexPath) {
         placeholderLabel.text = "0"
+
         CATransaction.begin()
         CATransaction.setCompletionBlock { [weak self] in
             guard let viewController = self else { return }
@@ -379,5 +385,9 @@ extension RecordViewController: RecordViewInput {
         addTitleLabelScaleAnimation()
         addTitleLabelOpacityAnimation()
         CATransaction.commit()
+    }
+
+    func presentAuthorizationPage() {
+        router?.presentAuthorizationPage()
     }
 }

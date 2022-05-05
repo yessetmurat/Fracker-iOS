@@ -13,18 +13,12 @@ class CategoriesWorker: CategoriesService {
 
     unowned let commonStore: CommonStore
     let networkService: NetworkService
-    let procedureCallManager: ProcedureCallManager
 
     private var localDatabaseManager: LocalDatabaseManager { commonStore.localDatabaseManager }
 
-    private var networkError: NetworkError?
-    private var categories: [Category] = []
-
     init(commonStore: CommonStore) {
         self.commonStore = commonStore
-
         networkService = NetworkWorker(sessionAdapter: commonStore.sessionAdapter)
-        procedureCallManager = ProcedureCallManager()
     }
 
     private func convert(_ localCategory: LocalCategory) -> Category {
@@ -33,50 +27,6 @@ class CategoriesWorker: CategoriesService {
 }
 
 extension CategoriesWorker {
-
-    private var loadLocalCategoriesItem: ProcedureCallItem {
-        return ProcedureCallItem { [weak self] completion in
-            guard let service = self,
-                  let localCategories: [LocalCategory] = try? service.localDatabaseManager.all() else {
-                return completion()
-            }
-
-            service.categories = localCategories.compactMap(service.convert)
-            completion()
-        }
-    }
-
-    private var loadRemoteCategoriesItem: ProcedureCallItem {
-        return ProcedureCallItem { [weak self] completion in
-            guard let service = self, service.commonStore.isAuthorized else { return completion() }
-
-            let networkContext = CategoriesNetworkContext()
-            service.networkService.performRequest(
-                using: networkContext
-            ) { [weak service] (result: Result<[Category], NetworkError>) in
-                guard let service = service else { return }
-
-                switch result {
-                case .success(let categories):
-                    categories.forEach { category in
-                        service.localDatabaseManager.create { (object: LocalCategory) in
-                            object.id = category.id
-                            object.emoji = category.emoji
-                            object.name = category.name
-                        }
-                    }
-
-                    if let localCategories: [LocalCategory] = try? service.localDatabaseManager.all() {
-                        service.categories = localCategories.map(service.convert)
-                    }
-                case .failure(let error):
-                    service.networkError = error
-                }
-
-                completion()
-            }
-        }
-    }
 
     func createDefaultCategoriesIfNeeded() {
         guard let localCategories: [LocalCategory] = try? localDatabaseManager.all(), localCategories.isEmpty else {
@@ -92,32 +42,78 @@ extension CategoriesWorker {
         }
     }
 
-    func syncronize() {
-        guard let localCategories: [LocalCategory] = try? localDatabaseManager.all() else { return }
+    func syncronize(completion: (() -> Void)?) {
+        guard commonStore.authorizationStatus == .authorized,
+              let localCategories: [LocalCategory] = try? localDatabaseManager.all() else {
+            return
+        }
 
-        let networkContext = BatchCreateCategoryNetworkContext(categories: localCategories.map(convert))
-        networkService.performRequest(using: networkContext) { _ in }
+        let networkContext = CategoriesBatchCreateNetworkContext(categories: localCategories.map(convert))
+        networkService.performRequest(using: networkContext) { _ in completion?() }
     }
 
     func load(completion: @escaping (Result<[Category], NetworkError>) -> Void) {
-        procedureCallManager.items.removeAll()
-        procedureCallManager.items = [loadLocalCategoriesItem, loadRemoteCategoriesItem]
-        procedureCallManager.perform(inSequence: true) { [weak self] in
-            guard let service = self else { return }
+        guard let localCategories: [LocalCategory] = try? localDatabaseManager.all() else { return }
 
-            if let networkError = service.networkError {
-                completion(.failure(networkError))
-            } else {
-                completion(.success(service.categories))
+        let categories = localCategories.map(convert)
+        completion(.success(categories))
+
+        if commonStore.authorizationStatus == .authorized {
+            let networkContext = CategoriesNetworkContext()
+            networkService.performRequest(
+                using: networkContext
+            ) { [weak self] (result: Result<[Category], NetworkError>) in
+                guard let service = self else { return }
+
+                switch result {
+                case .success(let categories):
+                    categories.forEach { category in
+                        service.localDatabaseManager.create { (object: LocalCategory) in
+                            object.id = category.id
+                            object.emoji = category.emoji
+                            object.name = category.name
+                        }
+                    }
+
+                    if let localCategories: [LocalCategory] = try? service.localDatabaseManager.all() {
+                        let categories = localCategories.map(service.convert)
+                        completion(.success(categories))
+                    }
+                case .failure(let error):
+                    completion(.failure(error))
+                }
             }
         }
     }
 
-    func create(withEmoji emoji: String, name: String, completion: @escaping (Result<Void, NetworkError>) -> Void) {
+    func create(withEmoji emoji: String, name: String, completion: @escaping () -> Void) {
+        let category = Category(id: UUID(), emoji: emoji, name: name)
 
+        localDatabaseManager.create { (object: LocalCategory) in
+            object.id = category.id
+            object.emoji = category.emoji
+            object.name = category.name
+        }
+
+        if commonStore.authorizationStatus == .authorized {
+            let networkContext = CategoryCreateNetworkContext(data: category)
+            networkService.performRequest(using: networkContext) { _ in }
+        }
+
+        completion()
     }
 
-    func delete(with id: UUID, completion: @escaping (Result<Void, NetworkError>) -> Void) {
+    func delete(with id: UUID, completion: @escaping () -> Void) {
+        let predicate = NSPredicate(format: "id = %@", id.uuidString)
 
+        guard let localCategory: LocalCategory = try? localDatabaseManager.object(with: predicate) else { return }
+        localDatabaseManager.delete(object: localCategory)
+
+        if commonStore.authorizationStatus == .authorized {
+            let networkContext = CategoryRemoveNetworkContext(id: id.uuidString)
+            networkService.performRequest(using: networkContext) { _ in }
+        }
+
+        completion()
     }
 }

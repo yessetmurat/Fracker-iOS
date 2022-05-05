@@ -7,6 +7,7 @@
 //
 
 import AuthenticationServices
+import Base
 import Network11
 
 class AuthInteractor {
@@ -15,20 +16,50 @@ class AuthInteractor {
     private unowned let commonStore: CommonStore
     private let networkService: NetworkService
     private let networkManager = NetworkManager()
+    private let procedureCallManager = ProcedureCallManager()
+    private let categoriesService: CategoriesService
+    private let recordsService: RecordsService
 
     init(view: AuthViewInput, commonStore: CommonStore, networkService: NetworkService) {
         self.view = view
         self.commonStore = commonStore
         self.networkService = networkService
+
+        categoriesService = CategoriesWorker(commonStore: commonStore)
+        recordsService = RecordsWorker(commonStore: commonStore)
     }
-}
 
-extension AuthInteractor {
+    private func executeWithDelay(completion: @escaping () -> Void) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: completion)
+    }
 
-    private func batchCreate(categories: [Category]) -> ManageableNetworkRequest? {
-        let networkContext = BatchCreateCategoryNetworkContext(categories: categories)
-        let request = networkService.buildRequest(from: networkContext) { _ in }
-        return request as? ManageableNetworkRequest
+    private func syncronize() {
+        let categoriesItem = ProcedureCallItem { [weak self] completion in
+            guard let interactor = self else { return }
+
+            interactor.view.set(statusText: "Syncing categories...")
+            interactor.executeWithDelay { [weak interactor] in
+                interactor?.categoriesService.syncronize(completion: completion)
+            }
+        }
+
+        let recordsItem = ProcedureCallItem { [weak self] completion in
+            guard let interactor = self else { return }
+
+            interactor.view.set(statusText: "Syncing records...")
+            interactor.executeWithDelay { [weak interactor] in
+                interactor?.recordsService.syncronize(completion: completion)
+            }
+        }
+
+        procedureCallManager.items.removeAll()
+        procedureCallManager.items = [categoriesItem, recordsItem]
+        procedureCallManager.perform(inSequence: true) { [weak self] in
+            guard let interactor = self else { return }
+
+            interactor.view.set(statusText: "Done!")
+            interactor.executeWithDelay { [weak interactor] in interactor?.view.dismiss(animated: true) }
+        }
     }
 }
 
@@ -42,6 +73,7 @@ extension AuthInteractor: AuthInteractorInput {
         }
 
         view.startLoading()
+        view.set(statusText: "Signing in...")
 
         let data = AppleSignInData(
             idToken: identityTokenString,
@@ -59,7 +91,7 @@ extension AuthInteractor: AuthInteractorInput {
 
                 interactor.commonStore.accessToken = token
                 KeyValueStore().set(value: token, for: .token)
-//                interactor.saveLocalDataToRemoteIfNeeded()
+                interactor.syncronize()
             }
         }
     }

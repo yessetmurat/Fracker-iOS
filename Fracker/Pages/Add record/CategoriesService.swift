@@ -13,11 +13,11 @@ protocol CategoriesService {
 
     var commonStore: CommonStore { get }
     var networkService: NetworkService { get }
-    var procedureCallManager: ProcedureCallManager { get }
 
     func createDefaultCategoriesIfNeeded()
-    func syncronize()
+    func syncronize(completion: (() -> Void)?)
+
     func load(completion: @escaping (Result<[Category], NetworkError>) -> Void)
-    func create(withEmoji emoji: String, name: String, completion: @escaping (Result<Void, NetworkError>) -> Void)
-    func delete(with id: UUID, completion: @escaping (Result<Void, NetworkError>) -> Void)
+    func create(withEmoji emoji: String, name: String, completion: @escaping () -> Void)
+    func delete(with id: UUID, completion: @escaping () -> Void)
 }

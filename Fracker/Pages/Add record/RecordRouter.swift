@@ -21,8 +21,7 @@ class RecordRouter {
         let viewController = RecordViewController()
         view = viewController
 
-        let categoriesService = CategoriesWorker(commonStore: commonStore)
-        let interactor = RecordInteractor(view: viewController, categoriesService: categoriesService)
+        let interactor = RecordInteractor(view: viewController, commonStore: commonStore)
         viewController.interactor = interactor
         viewController.router = self
 
@@ -32,7 +31,7 @@ class RecordRouter {
 
 extension RecordRouter: RecordRouterInput {
 
-    func presentAuthPage() {
+    func presentAuthorizationPage() {
         let router = AuthRouter(commonStore: commonStore)
         let viewController = router.compose()
 

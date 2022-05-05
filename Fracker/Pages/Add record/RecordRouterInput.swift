@@ -8,5 +8,5 @@
 
 protocol RecordRouterInput: AnyObject {
 
-    func presentAuthPage()
+    func presentAuthorizationPage()
 }

@@ -10,6 +10,8 @@ import Network11
 
 class CommonStore {
 
+    enum AuthorizationStatus { case authorized, none }
+
     let keyValueStore = KeyValueStore()
 
     let localDatabaseManager = LocalDatabaseManager()
@@ -36,7 +38,7 @@ class CommonStore {
         return headers
     }
 
-    var isAuthorized: Bool { accessToken != nil }
+    var authorizationStatus: AuthorizationStatus { accessToken != nil ? .authorized : .none }
 
     private var sslCertDataItems: [NSData] {
         var sslCertUrls: [URL] = []

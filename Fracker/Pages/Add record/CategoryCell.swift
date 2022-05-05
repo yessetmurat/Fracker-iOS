@@ -128,10 +128,11 @@ class CategoryCell: UICollectionViewCell {
         let stopAngle = -startAngle
         let animation = CABasicAnimation(keyPath: "transform.rotation")
         animation.fromValue = NSNumber(value: startAngle)
-        animation.toValue = NSNumber(value: 3 * stopAngle)
+        animation.toValue = NSNumber(value: 1.5 * stopAngle)
         animation.autoreverses = true
-        animation.duration = 0.15
+        animation.duration = 0.16
         animation.repeatCount = .infinity
+        animation.isRemovedOnCompletion = false
 
         layer.add(animation, forKey: "shake")
     }

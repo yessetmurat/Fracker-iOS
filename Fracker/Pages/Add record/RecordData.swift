@@ -9,7 +9,7 @@ import Foundation
 
 struct RecordData: Encodable {
 
-    let id: UUID?
-    let amount: Decimal?
+    let id: UUID
+    let amount: Decimal
     let category: UUID?
 }

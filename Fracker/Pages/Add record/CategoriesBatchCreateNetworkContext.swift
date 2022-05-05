@@ -1,5 +1,5 @@
 //
-//  BatchCreateCategoryNetworkContext.swift
+//  CategoriesBatchCreateNetworkContext.swift
 //  Fracker
 //
 //  Created by Yesset Murat on 4/28/22.
@@ -8,7 +8,7 @@
 import Foundation
 import Network11
 
-class BatchCreateCategoryNetworkContext: NetworkContext {
+class CategoriesBatchCreateNetworkContext: NetworkContext {
 
     var endpoint: NetworkEndpoint { Endpoint.apiCategoriesBatch }
     var method: NetworkMethod { .POST }

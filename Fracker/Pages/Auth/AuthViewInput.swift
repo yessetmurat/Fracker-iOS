@@ -12,4 +12,5 @@ protocol AuthViewInput: BaseViewInput {
 
     func startLoading()
     func configureSignIn()
+    func set(statusText: String)
 }
