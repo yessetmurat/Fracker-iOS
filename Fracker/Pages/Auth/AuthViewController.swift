@@ -8,7 +8,8 @@
 
 import UIKit
 import AuthenticationServices
-import Base
+import BaseKit
+import GoogleSignIn
 
 class AuthViewController: BaseViewController {
 
@@ -19,21 +20,12 @@ class AuthViewController: BaseViewController {
 
     override var preferredStatusBarStyle: UIStatusBarStyle { .lightContent }
 
-    private let imageView = UIImageView()
     private let loadingStackView = UIStackView()
     private let activityIndicatorView = UIActivityIndicatorView(style: .medium)
     private let loadingLabel = UILabel()
     private let signInStackView = UIStackView()
+    private let googleSignInButton = UIButton(type: .system)
     private let appleSignInButton = ASAuthorizationAppleIDButton()
-
-    private lazy var signInStackViewTopConstraint = signInStackView.topAnchor.constraint(
-        equalTo: view.bottomAnchor,
-        constant: 32
-    )
-    private lazy var signInStackViewBottomConstraint = signInStackView.bottomAnchor.constraint(
-        equalTo: view.safeAreaLayoutGuide.bottomAnchor,
-        constant: -32
-    )
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,41 +37,37 @@ class AuthViewController: BaseViewController {
     }
 
     private func addSubviews() {
-        view.addSubview(imageView)
         view.addSubview(loadingStackView)
         loadingStackView.addArrangedSubview(loadingLabel)
         loadingStackView.addArrangedSubview(activityIndicatorView)
         view.addSubview(signInStackView)
+        signInStackView.addArrangedSubview(googleSignInButton)
         signInStackView.addArrangedSubview(appleSignInButton)
     }
 
     private func setLayoutConstraints() {
     	var layoutConstraints = [NSLayoutConstraint]()
 
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-    	layoutConstraints += [
-            imageView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -124),
-            imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            imageView.widthAnchor.constraint(equalToConstant: 160),
-            imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor)
-    	]
-
         loadingStackView.translatesAutoresizingMaskIntoConstraints = false
         layoutConstraints += [
+            loadingStackView.centerYAnchor.constraint(equalTo: signInStackView.centerYAnchor),
             loadingStackView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 24),
             loadingStackView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -24),
-            loadingStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -32)
+            loadingStackView.heightAnchor.constraint(equalToConstant: 58)
         ]
-
-        loadingLabel.translatesAutoresizingMaskIntoConstraints = false
-        layoutConstraints += [loadingLabel.heightAnchor.constraint(equalToConstant: 54)]
 
         signInStackView.translatesAutoresizingMaskIntoConstraints = false
         layoutConstraints += [
+            signInStackView.topAnchor.constraint(greaterThanOrEqualTo: view.topAnchor, constant: 24),
+            signInStackView.bottomAnchor.constraint(
+                lessThanOrEqualTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -24
+            ),
             signInStackView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 24),
-            signInStackView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -24),
-            signInStackViewBottomConstraint
+            signInStackView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -24)
         ]
+
+        googleSignInButton.translatesAutoresizingMaskIntoConstraints = false
+        layoutConstraints += [googleSignInButton.heightAnchor.constraint(equalToConstant: 54)]
 
         appleSignInButton.translatesAutoresizingMaskIntoConstraints = false
         layoutConstraints += [appleSignInButton.heightAnchor.constraint(equalToConstant: 54)]
@@ -90,12 +78,9 @@ class AuthViewController: BaseViewController {
     private func stylize() {
         view.backgroundColor = BaseColor.white
 
-        imageView.image = BaseImage.logo.uiImage
-        imageView.contentMode = .scaleAspectFit
-
         loadingStackView.alpha = 0
         loadingStackView.axis = .vertical
-        loadingStackView.spacing = 8
+        loadingStackView.spacing = 16
 
         loadingLabel.text = "Signing in..."
         loadingLabel.font = BaseFont.semibold
@@ -106,12 +91,23 @@ class AuthViewController: BaseViewController {
         activityIndicatorView.hidesWhenStopped = false
 
         signInStackView.axis = .vertical
-        signInStackView.spacing = 24
+        signInStackView.spacing = 16
+
+        googleSignInButton.backgroundColor = BaseColor.blue
+        googleSignInButton.setImage(
+            BaseImage.google.uiImage?.fitThenCenter(in: CGSize(width: 16, height: 16)), for: .normal
+        )
+        googleSignInButton.setTitle("Sign in with Google", for: .normal)
+        googleSignInButton.tintColor = BaseColor.white
+        googleSignInButton.titleLabel?.font = BaseFont.medium.withSize(20)
+        googleSignInButton.titleEdgeInsets.left = 15
+        googleSignInButton.layer.cornerRadius = 10
 
         appleSignInButton.cornerRadius = 10
     }
 
     private func setActions() {
+        googleSignInButton.addTarget(self, action: #selector(googleSignInButtonAction), for: .touchUpInside)
         appleSignInButton.addTarget(self, action: #selector(appleSignInButtonAction), for: .touchUpInside)
     }
 
@@ -124,9 +120,7 @@ class AuthViewController: BaseViewController {
             options: .curveEaseInOut
         ) { [weak self] in
             guard let viewController = self else { return }
-            viewController.signInStackViewBottomConstraint.isActive = false
-            viewController.signInStackViewTopConstraint.isActive = true
-            viewController.view.layoutIfNeeded()
+            viewController.signInStackView.alpha = 0
         }
     }
 
@@ -142,6 +136,10 @@ class AuthViewController: BaseViewController {
             viewController.loadingStackView.alpha = 1
             viewController.activityIndicatorView.startAnimating()
         }
+    }
+
+    @objc private func googleSignInButtonAction() {
+        interactor?.signInWithGoogle()
     }
 
     @objc private func appleSignInButtonAction() {
@@ -163,6 +161,11 @@ extension AuthViewController: ASAuthorizationControllerDelegate {
     ) {
         interactor?.signInWithApple(authorization: authorization)
     }
+}
+
+extension AuthViewController {
+
+    var contentViewHeight: CGFloat { 24 + signInStackView.bounds.height + 24 }
 }
 
 extension AuthViewController: AuthViewInput {

@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import Network11
+import NetworkKit
 
 class RecordsWorker: RecordsService {
 
@@ -20,8 +20,8 @@ class RecordsWorker: RecordsService {
         networkService = NetworkWorker(sessionAdapter: commonStore.sessionAdapter)
     }
 
-    private func convert(_ localRecord: LocalRecord) -> RecordData {
-        return RecordData(
+    private func convert(_ localRecord: LocalRecord) -> RecordRequestData {
+        return RecordRequestData(
             id: localRecord.id,
             amount: localRecord.amount.decimalValue,
             category: localRecord.category?.id
@@ -46,7 +46,7 @@ extension RecordsWorker {
     }
 
     func create(with amount: Decimal, category: Category, completion: () -> Void) {
-        let record = RecordData(id: UUID(), amount: amount, category: category.id)
+        let record = RecordRequestData(id: UUID(), amount: amount, category: category.id)
         let predicate = NSPredicate(format: "id = %@", category.id.uuidString)
 
         guard let localCategory: LocalCategory = try? localDatabaseManager.object(with: predicate) else { return }

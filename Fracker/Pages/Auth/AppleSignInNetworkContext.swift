@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import Network11
+import NetworkKit
 
 class AppleSignInNetworkContext: NetworkContext {
 
@@ -15,7 +15,7 @@ class AppleSignInNetworkContext: NetworkContext {
     var encoding: NetworkEncoding { .json }
     let httpBody: Data?
 
-    init(data: AppleSignInData) {
+    init(data: SignInData) {
         httpBody = try? JSONEncoder().encode(data)
     }
 }

@@ -11,9 +11,9 @@
 		4129231B281489FB0001086C /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4129231A281489FB0001086C /* CategoryCell.swift */; };
 		4129231D28148E990001086C /* CategoryAddCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4129231C28148E990001086C /* CategoryAddCell.swift */; };
 		412E3DA52815CAF200B8D8DD /* ShakableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412E3DA42815CAF200B8D8DD /* ShakableView.swift */; };
-		412FD6EE28171320008BC86C /* AppleSignInData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412FD6ED28171320008BC86C /* AppleSignInData.swift */; };
+		412FD6EE28171320008BC86C /* SignInData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412FD6ED28171320008BC86C /* SignInData.swift */; };
 		4147FE0E2822B93000813606 /* RecordCreateNetworkContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4147FE0D2822B93000813606 /* RecordCreateNetworkContext.swift */; };
-		4147FE102822BA3100813606 /* RecordData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4147FE0F2822BA3100813606 /* RecordData.swift */; };
+		4147FE102822BA3100813606 /* RecordRequestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4147FE0F2822BA3100813606 /* RecordRequestData.swift */; };
 		414BBFF52822DB7A00A3AAE4 /* CategoriesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414BBFF42822DB7A00A3AAE4 /* CategoriesService.swift */; };
 		414BBFF72822DB8400A3AAE4 /* CategoriesWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414BBFF62822DB8400A3AAE4 /* CategoriesWorker.swift */; };
 		414BBFFD2822F06A00A3AAE4 /* LocalRecord+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414BBFF92822F06A00A3AAE4 /* LocalRecord+CoreDataClass.swift */; };
@@ -28,6 +28,18 @@
 		41881FFC2815A6F900FFA4E2 /* Fracker.xcdatamodeld in Resources */ = {isa = PBXBuildFile; fileRef = 41B6D50928144F7E00798014 /* Fracker.xcdatamodeld */; };
 		41881FFE2815AC4100FFA4E2 /* CategoryTextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41881FFD2815AC4100FFA4E2 /* CategoryTextFieldCell.swift */; };
 		418820002815B5AE00FFA4E2 /* CategoryCreateNetworkContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41881FFF2815B5AE00FFA4E2 /* CategoryCreateNetworkContext.swift */; };
+		418F45F1282505A2006E6338 /* ProfileViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418F45EB282505A2006E6338 /* ProfileViewInput.swift */; };
+		418F45F2282505A2006E6338 /* ProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418F45EC282505A2006E6338 /* ProfileRouter.swift */; };
+		418F45F3282505A2006E6338 /* ProfileInteractorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418F45ED282505A2006E6338 /* ProfileInteractorInput.swift */; };
+		418F45F4282505A2006E6338 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418F45EE282505A2006E6338 /* ProfileViewController.swift */; };
+		418F45F5282505A2006E6338 /* ProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418F45EF282505A2006E6338 /* ProfileInteractor.swift */; };
+		418F45F6282505A2006E6338 /* ProfileRouterInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418F45F0282505A2006E6338 /* ProfileRouterInput.swift */; };
+		418F460128250C5B006E6338 /* AnalyticsViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418F45FB28250C5B006E6338 /* AnalyticsViewInput.swift */; };
+		418F460228250C5B006E6338 /* AnalyticsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418F45FC28250C5B006E6338 /* AnalyticsRouter.swift */; };
+		418F460328250C5B006E6338 /* AnalyticsInteractorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418F45FD28250C5B006E6338 /* AnalyticsInteractorInput.swift */; };
+		418F460428250C5B006E6338 /* AnalyticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418F45FE28250C5B006E6338 /* AnalyticsViewController.swift */; };
+		418F460528250C5B006E6338 /* AnalyticsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418F45FF28250C5B006E6338 /* AnalyticsInteractor.swift */; };
+		418F460628250C5B006E6338 /* AnalyticsRouterInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418F460028250C5B006E6338 /* AnalyticsRouterInput.swift */; };
 		41B6D50128144F7E00798014 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B6D50028144F7E00798014 /* AppDelegate.swift */; };
 		41B6D50D28144F8000798014 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41B6D50C28144F8000798014 /* Assets.xcassets */; };
 		41B6D51028144F8000798014 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41B6D50E28144F8000798014 /* LaunchScreen.storyboard */; };
@@ -40,8 +52,6 @@
 		41B6D541281451AE00798014 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B6D53B281451AE00798014 /* AuthViewController.swift */; };
 		41B6D542281451AE00798014 /* AuthInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B6D53C281451AE00798014 /* AuthInteractor.swift */; };
 		41B6D543281451AE00798014 /* AuthRouterInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B6D53D281451AE00798014 /* AuthRouterInput.swift */; };
-		41B6D54628146B5D00798014 /* Base in Frameworks */ = {isa = PBXBuildFile; productRef = 41B6D54528146B5D00798014 /* Base */; };
-		41B6D54928146BBA00798014 /* Network11 in Frameworks */ = {isa = PBXBuildFile; productRef = 41B6D54828146BBA00798014 /* Network11 */; };
 		41B6D5532814732200798014 /* KeyValueStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B6D54E2814732100798014 /* KeyValueStore.swift */; };
 		41B6D5542814732200798014 /* CommonStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B6D54F2814732200798014 /* CommonStore.swift */; };
 		41B6D5552814732200798014 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B6D5502814732200798014 /* Endpoint.swift */; };
@@ -67,6 +77,16 @@
 		41E3DD6B28242F070023363D /* RecordsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E3DD6A28242F070023363D /* RecordsWorker.swift */; };
 		41E3DD6D282431A10023363D /* RecordsBatchCreateNetworkContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E3DD6C282431A10023363D /* RecordsBatchCreateNetworkContext.swift */; };
 		41F144EF281D6B3400221A31 /* EmojiTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F144EE281D6B3400221A31 /* EmojiTextField.swift */; };
+		41F942F72825693E0059C693 /* NetworkKit in Frameworks */ = {isa = PBXBuildFile; productRef = 41F942F62825693E0059C693 /* NetworkKit */; };
+		41F942F92825693E0059C693 /* BaseKit in Frameworks */ = {isa = PBXBuildFile; productRef = 41F942F82825693E0059C693 /* BaseKit */; };
+		41F942FB2825693E0059C693 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 41F942FA2825693E0059C693 /* GoogleSignIn */; };
+		41F942FD28258F910059C693 /* GoogleSignInNetworkContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F942FC28258F910059C693 /* GoogleSignInNetworkContext.swift */; };
+		41F94300282599C00059C693 /* AnalyticsAmountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F942FF282599C00059C693 /* AnalyticsAmountView.swift */; };
+		41F9430228259F260059C693 /* UIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F9430128259F260059C693 /* UIConstants.swift */; };
+		41F943042825A0690059C693 /* AnalyticsChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F943032825A0690059C693 /* AnalyticsChartView.swift */; };
+		41F943062825A89F0059C693 /* ChartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F943052825A89F0059C693 /* ChartCell.swift */; };
+		41F943082825B51E0059C693 /* SelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F943072825B51E0059C693 /* SelectorView.swift */; };
+		41F9430B2825B7710059C693 /* SelectorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41F9430A2825B7710059C693 /* SelectorCell.swift */; };
 		41FD362B2819BE4F004B7A74 /* CategoriesBatchCreateNetworkContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FD362A2819BE4F004B7A74 /* CategoriesBatchCreateNetworkContext.swift */; };
 /* End PBXBuildFile section */
 
@@ -93,9 +113,9 @@
 		4129231C28148E990001086C /* CategoryAddCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryAddCell.swift; sourceTree = "<group>"; };
 		412E3DA42815CAF200B8D8DD /* ShakableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakableView.swift; sourceTree = "<group>"; };
 		412FD6EC28170B4B008BC86C /* Fracker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Fracker.entitlements; sourceTree = "<group>"; };
-		412FD6ED28171320008BC86C /* AppleSignInData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleSignInData.swift; sourceTree = "<group>"; };
+		412FD6ED28171320008BC86C /* SignInData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInData.swift; sourceTree = "<group>"; };
 		4147FE0D2822B93000813606 /* RecordCreateNetworkContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordCreateNetworkContext.swift; sourceTree = "<group>"; };
-		4147FE0F2822BA3100813606 /* RecordData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordData.swift; sourceTree = "<group>"; };
+		4147FE0F2822BA3100813606 /* RecordRequestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordRequestData.swift; sourceTree = "<group>"; };
 		414BBFF42822DB7A00A3AAE4 /* CategoriesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CategoriesService.swift; path = "../Pages/Add record/CategoriesService.swift"; sourceTree = "<group>"; };
 		414BBFF62822DB8400A3AAE4 /* CategoriesWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CategoriesWorker.swift; path = "../Pages/Add record/CategoriesWorker.swift"; sourceTree = "<group>"; };
 		414BBFF92822F06A00A3AAE4 /* LocalRecord+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocalRecord+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -109,6 +129,18 @@
 		41881FF12815939D00FFA4E2 /* LocalDatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDatabaseManager.swift; sourceTree = "<group>"; };
 		41881FFD2815AC4100FFA4E2 /* CategoryTextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTextFieldCell.swift; sourceTree = "<group>"; };
 		41881FFF2815B5AE00FFA4E2 /* CategoryCreateNetworkContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCreateNetworkContext.swift; sourceTree = "<group>"; };
+		418F45EB282505A2006E6338 /* ProfileViewInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewInput.swift; sourceTree = "<group>"; };
+		418F45EC282505A2006E6338 /* ProfileRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRouter.swift; sourceTree = "<group>"; };
+		418F45ED282505A2006E6338 /* ProfileInteractorInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInteractorInput.swift; sourceTree = "<group>"; };
+		418F45EE282505A2006E6338 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		418F45EF282505A2006E6338 /* ProfileInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInteractor.swift; sourceTree = "<group>"; };
+		418F45F0282505A2006E6338 /* ProfileRouterInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRouterInput.swift; sourceTree = "<group>"; };
+		418F45FB28250C5B006E6338 /* AnalyticsViewInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsViewInput.swift; sourceTree = "<group>"; };
+		418F45FC28250C5B006E6338 /* AnalyticsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsRouter.swift; sourceTree = "<group>"; };
+		418F45FD28250C5B006E6338 /* AnalyticsInteractorInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsInteractorInput.swift; sourceTree = "<group>"; };
+		418F45FE28250C5B006E6338 /* AnalyticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsViewController.swift; sourceTree = "<group>"; };
+		418F45FF28250C5B006E6338 /* AnalyticsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsInteractor.swift; sourceTree = "<group>"; };
+		418F460028250C5B006E6338 /* AnalyticsRouterInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsRouterInput.swift; sourceTree = "<group>"; };
 		41B6D4FD28144F7E00798014 /* Fracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		41B6D50028144F7E00798014 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		41B6D50A28144F7E00798014 /* Fracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Fracker.xcdatamodel; sourceTree = "<group>"; };
@@ -151,6 +183,13 @@
 		41E3DD6A28242F070023363D /* RecordsWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordsWorker.swift; sourceTree = "<group>"; };
 		41E3DD6C282431A10023363D /* RecordsBatchCreateNetworkContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordsBatchCreateNetworkContext.swift; sourceTree = "<group>"; };
 		41F144EE281D6B3400221A31 /* EmojiTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiTextField.swift; sourceTree = "<group>"; };
+		41F942FC28258F910059C693 /* GoogleSignInNetworkContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSignInNetworkContext.swift; sourceTree = "<group>"; };
+		41F942FF282599C00059C693 /* AnalyticsAmountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsAmountView.swift; sourceTree = "<group>"; };
+		41F9430128259F260059C693 /* UIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIConstants.swift; sourceTree = "<group>"; };
+		41F943032825A0690059C693 /* AnalyticsChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsChartView.swift; sourceTree = "<group>"; };
+		41F943052825A89F0059C693 /* ChartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartCell.swift; sourceTree = "<group>"; };
+		41F943072825B51E0059C693 /* SelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectorView.swift; sourceTree = "<group>"; };
+		41F9430A2825B7710059C693 /* SelectorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectorCell.swift; sourceTree = "<group>"; };
 		41FD362A2819BE4F004B7A74 /* CategoriesBatchCreateNetworkContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesBatchCreateNetworkContext.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -159,8 +198,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				41B6D54628146B5D00798014 /* Base in Frameworks */,
-				41B6D54928146BBA00798014 /* Network11 in Frameworks */,
+				41F942F92825693E0059C693 /* BaseKit in Frameworks */,
+				41F942F72825693E0059C693 /* NetworkKit in Frameworks */,
+				41F942FB2825693E0059C693 /* GoogleSignIn in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -210,9 +250,74 @@
 			children = (
 				41881FD128155C9600FFA4E2 /* Category.swift */,
 				411714F8281D3F5B004D2509 /* Record.swift */,
-				4147FE0F2822BA3100813606 /* RecordData.swift */,
+				4147FE0F2822BA3100813606 /* RecordRequestData.swift */,
 			);
 			name = Entities;
+			sourceTree = "<group>";
+		};
+		418F45F7282505A6006E6338 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				418F45EB282505A2006E6338 /* ProfileViewInput.swift */,
+				418F45EE282505A2006E6338 /* ProfileViewController.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		418F45F8282505AA006E6338 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				418F45ED282505A2006E6338 /* ProfileInteractorInput.swift */,
+				418F45EF282505A2006E6338 /* ProfileInteractor.swift */,
+			);
+			name = Interactor;
+			sourceTree = "<group>";
+		};
+		418F45F9282505B1006E6338 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				418F45F0282505A2006E6338 /* ProfileRouterInput.swift */,
+				418F45EC282505A2006E6338 /* ProfileRouter.swift */,
+			);
+			name = Router;
+			sourceTree = "<group>";
+		};
+		418F45FA28250C4C006E6338 /* Analytics */ = {
+			isa = PBXGroup;
+			children = (
+				41F942FE282599790059C693 /* Utils */,
+				418F460928250C6A006E6338 /* Router */,
+				418F460828250C65006E6338 /* Interactor */,
+				418F460728250C60006E6338 /* View */,
+			);
+			path = Analytics;
+			sourceTree = "<group>";
+		};
+		418F460728250C60006E6338 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				418F45FB28250C5B006E6338 /* AnalyticsViewInput.swift */,
+				418F45FE28250C5B006E6338 /* AnalyticsViewController.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		418F460828250C65006E6338 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				418F45FD28250C5B006E6338 /* AnalyticsInteractorInput.swift */,
+				418F45FF28250C5B006E6338 /* AnalyticsInteractor.swift */,
+			);
+			name = Interactor;
+			sourceTree = "<group>";
+		};
+		418F460928250C6A006E6338 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				418F460028250C5B006E6338 /* AnalyticsRouterInput.swift */,
+				418F45FC28250C5B006E6338 /* AnalyticsRouter.swift */,
+			);
+			name = Router;
 			sourceTree = "<group>";
 		};
 		41B6D4F428144F7E00798014 = {
@@ -222,6 +327,7 @@
 				41B6D51928144F8000798014 /* FrackerTests */,
 				41B6D52328144F8000798014 /* FrackerUITests */,
 				41B6D4FE28144F7E00798014 /* Products */,
+				41F942F52825693E0059C693 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -280,7 +386,9 @@
 			isa = PBXGroup;
 			children = (
 				41B6D5362814514E00798014 /* Auth */,
+				41DE58FE282503DA00D47F81 /* Profile */,
 				41B6D5352814514600798014 /* Add record */,
+				418F45FA28250C4C006E6338 /* Analytics */,
 			);
 			path = Pages;
 			sourceTree = "<group>";
@@ -350,6 +458,7 @@
 				41C69D482814B2BD0076B354 /* LocalError.swift */,
 				41C69D4A2814B30B0076B354 /* NetworkError + extensions.swift */,
 				41881FF12815939D00FFA4E2 /* LocalDatabaseManager.swift */,
+				41F9430128259F260059C693 /* UIConstants.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -358,7 +467,8 @@
 			isa = PBXGroup;
 			children = (
 				41C69D402814AB6D0076B354 /* AppleSignInNetworkContext.swift */,
-				412FD6ED28171320008BC86C /* AppleSignInData.swift */,
+				41F942FC28258F910059C693 /* GoogleSignInNetworkContext.swift */,
+				412FD6ED28171320008BC86C /* SignInData.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -384,8 +494,8 @@
 		41D6B8DD281476FC00595F6C /* Router */ = {
 			isa = PBXGroup;
 			children = (
-				41D6B8D0281476ED00595F6C /* RecordRouter.swift */,
 				41D6B8D4281476ED00595F6C /* RecordRouterInput.swift */,
+				41D6B8D0281476ED00595F6C /* RecordRouter.swift */,
 			);
 			name = Router;
 			sourceTree = "<group>";
@@ -407,6 +517,16 @@
 			name = Utils;
 			sourceTree = "<group>";
 		};
+		41DE58FE282503DA00D47F81 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				418F45F9282505B1006E6338 /* Router */,
+				418F45F8282505AA006E6338 /* Interactor */,
+				418F45F7282505A6006E6338 /* View */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
 		41E3DD6728242EE70023363D /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -421,10 +541,37 @@
 		41F144ED281D6B1B00221A31 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				41F943092825B5C20059C693 /* Selector view */,
 				412E3DA42815CAF200B8D8DD /* ShakableView.swift */,
 				41F144EE281D6B3400221A31 /* EmojiTextField.swift */,
 			);
 			name = Views;
+			sourceTree = "<group>";
+		};
+		41F942F52825693E0059C693 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		41F942FE282599790059C693 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				41F942FF282599C00059C693 /* AnalyticsAmountView.swift */,
+				41F943032825A0690059C693 /* AnalyticsChartView.swift */,
+				41F943052825A89F0059C693 /* ChartCell.swift */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
+		41F943092825B5C20059C693 /* Selector view */ = {
+			isa = PBXGroup;
+			children = (
+				41F943072825B51E0059C693 /* SelectorView.swift */,
+				41F9430A2825B7710059C693 /* SelectorCell.swift */,
+			);
+			name = "Selector view";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -444,8 +591,9 @@
 			);
 			name = Fracker;
 			packageProductDependencies = (
-				41B6D54528146B5D00798014 /* Base */,
-				41B6D54828146BBA00798014 /* Network11 */,
+				41F942F62825693E0059C693 /* NetworkKit */,
+				41F942F82825693E0059C693 /* BaseKit */,
+				41F942FA2825693E0059C693 /* GoogleSignIn */,
 			);
 			productName = Fracker;
 			productReference = 41B6D4FD28144F7E00798014 /* Fracker.app */;
@@ -520,9 +668,9 @@
 			);
 			mainGroup = 41B6D4F428144F7E00798014;
 			packageReferences = (
-				41B6D54428146B5D00798014 /* XCRemoteSwiftPackageReference "Base" */,
-				41B6D54728146BBA00798014 /* XCRemoteSwiftPackageReference "Network11" */,
-				4151180628181FF200FF800F /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+				41F942EB282565FA0059C693 /* XCRemoteSwiftPackageReference "NetworkKit" */,
+				41F942EF282568720059C693 /* XCRemoteSwiftPackageReference "BaseKit" */,
+				41F942F2282568C80059C693 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 			);
 			productRefGroup = 41B6D4FE28144F7E00798014 /* Products */;
 			projectDirPath = "";
@@ -569,9 +717,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				4129231B281489FB0001086C /* CategoryCell.swift in Sources */,
-				412FD6EE28171320008BC86C /* AppleSignInData.swift in Sources */,
+				412FD6EE28171320008BC86C /* SignInData.swift in Sources */,
 				414BBFFE2822F06A00A3AAE4 /* LocalRecord+CoreDataProperties.swift in Sources */,
+				418F460128250C5B006E6338 /* AnalyticsViewInput.swift in Sources */,
+				418F45F1282505A2006E6338 /* ProfileViewInput.swift in Sources */,
 				41D6B8D7281476ED00595F6C /* RecordInteractorInput.swift in Sources */,
+				41F9430228259F260059C693 /* UIConstants.swift in Sources */,
 				41881FD628158D5100FFA4E2 /* CategoryRemoveNetworkContext.swift in Sources */,
 				414BBFFD2822F06A00A3AAE4 /* LocalRecord+CoreDataClass.swift in Sources */,
 				412E3DA52815CAF200B8D8DD /* ShakableView.swift in Sources */,
@@ -580,24 +731,33 @@
 				41C69D432814ABE30076B354 /* InteractorInput.swift in Sources */,
 				41D6B8E428147CDD00595F6C /* PadCellTappable.swift in Sources */,
 				41FD362B2819BE4F004B7A74 /* CategoriesBatchCreateNetworkContext.swift in Sources */,
+				41F942FD28258F910059C693 /* GoogleSignInNetworkContext.swift in Sources */,
 				414BBFFF2822F06A00A3AAE4 /* LocalCategory+CoreDataClass.swift in Sources */,
 				41B6D50128144F7E00798014 /* AppDelegate.swift in Sources */,
 				41D6B8D6281476ED00595F6C /* RecordRouter.swift in Sources */,
+				41F94300282599C00059C693 /* AnalyticsAmountView.swift in Sources */,
 				41C69D492814B2BD0076B354 /* LocalError.swift in Sources */,
 				41B6D53F281451AE00798014 /* AuthRouter.swift in Sources */,
 				41881FD4281560E100FFA4E2 /* CategoryShimmerCell.swift in Sources */,
 				41E3DD6928242F010023363D /* RecordsService.swift in Sources */,
 				41D6B8E228147BE700595F6C /* PadCell.swift in Sources */,
+				418F45F6282505A2006E6338 /* ProfileRouterInput.swift in Sources */,
 				41E3DD6D282431A10023363D /* RecordsBatchCreateNetworkContext.swift in Sources */,
 				41C69D4B2814B30B0076B354 /* NetworkError + extensions.swift in Sources */,
 				418820002815B5AE00FFA4E2 /* CategoryCreateNetworkContext.swift in Sources */,
+				41F943082825B51E0059C693 /* SelectorView.swift in Sources */,
 				41D6B8D9281476ED00595F6C /* RecordInteractor.swift in Sources */,
+				41F943062825A89F0059C693 /* ChartCell.swift in Sources */,
 				41F144EF281D6B3400221A31 /* EmojiTextField.swift in Sources */,
 				41B6D541281451AE00798014 /* AuthViewController.swift in Sources */,
 				41881FD028155BDA00FFA4E2 /* CategoriesNetworkContext.swift in Sources */,
+				418F45F5282505A2006E6338 /* ProfileInteractor.swift in Sources */,
+				418F460428250C5B006E6338 /* AnalyticsViewController.swift in Sources */,
 				414BBFF72822DB8400A3AAE4 /* CategoriesWorker.swift in Sources */,
+				418F460528250C5B006E6338 /* AnalyticsInteractor.swift in Sources */,
 				41B6D543281451AE00798014 /* AuthRouterInput.swift in Sources */,
 				41C69D452814AC520076B354 /* ErrorDescriptor.swift in Sources */,
+				41F9430B2825B7710059C693 /* SelectorCell.swift in Sources */,
 				41B6D5532814732200798014 /* KeyValueStore.swift in Sources */,
 				41881FFE2815AC4100FFA4E2 /* CategoryTextFieldCell.swift in Sources */,
 				41881FF22815939D00FFA4E2 /* LocalDatabaseManager.swift in Sources */,
@@ -608,16 +768,23 @@
 				41B6D5542814732200798014 /* CommonStore.swift in Sources */,
 				41D6B8E02814785900595F6C /* KeyboardView.swift in Sources */,
 				41B6D5562814732200798014 /* BaseImage + extensions.swift in Sources */,
+				418F460628250C5B006E6338 /* AnalyticsRouterInput.swift in Sources */,
 				41D6B8D5281476ED00595F6C /* RecordViewInput.swift in Sources */,
 				41B6D5572814732200798014 /* Constants.swift in Sources */,
 				41D6B8DA281476ED00595F6C /* RecordRouterInput.swift in Sources */,
+				418F45F3282505A2006E6338 /* ProfileInteractorInput.swift in Sources */,
 				41B6D5552814732200798014 /* Endpoint.swift in Sources */,
+				418F45F4282505A2006E6338 /* ProfileViewController.swift in Sources */,
 				41C69D412814AB6D0076B354 /* AppleSignInNetworkContext.swift in Sources */,
+				41F943042825A0690059C693 /* AnalyticsChartView.swift in Sources */,
 				41E3DD6B28242F070023363D /* RecordsWorker.swift in Sources */,
 				414BBFF52822DB7A00A3AAE4 /* CategoriesService.swift in Sources */,
+				418F45F2282505A2006E6338 /* ProfileRouter.swift in Sources */,
+				418F460328250C5B006E6338 /* AnalyticsInteractorInput.swift in Sources */,
 				41B6D53E281451AE00798014 /* AuthViewInput.swift in Sources */,
-				4147FE102822BA3100813606 /* RecordData.swift in Sources */,
+				4147FE102822BA3100813606 /* RecordRequestData.swift in Sources */,
 				41C69D472814AC680076B354 /* DisplayedError.swift in Sources */,
+				418F460228250C5B006E6338 /* AnalyticsRouter.swift in Sources */,
 				41881FD228155C9600FFA4E2 /* Category.swift in Sources */,
 				4147FE0E2822B93000813606 /* RecordCreateNetworkContext.swift in Sources */,
 			);
@@ -955,7 +1122,23 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		4151180628181FF200FF800F /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+		41F942EB282565FA0059C693 /* XCRemoteSwiftPackageReference "NetworkKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:yessetmurat/NetworkKit.git";
+			requirement = {
+				kind = exactVersion;
+				version = 0.0.2;
+			};
+		};
+		41F942EF282568720059C693 /* XCRemoteSwiftPackageReference "BaseKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:yessetmurat/BaseKit.git";
+			requirement = {
+				kind = exactVersion;
+				version = 0.5.2;
+			};
+		};
+		41F942F2282568C80059C693 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
 			requirement = {
@@ -963,34 +1146,23 @@
 				version = 6.1.0;
 			};
 		};
-		41B6D54428146B5D00798014 /* XCRemoteSwiftPackageReference "Base" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "git@github.com:yessetmurat/Base.git";
-			requirement = {
-				kind = exactVersion;
-				version = 0.3.2;
-			};
-		};
-		41B6D54728146BBA00798014 /* XCRemoteSwiftPackageReference "Network11" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "git@github.com:yessetmurat/Network11.git";
-			requirement = {
-				kind = exactVersion;
-				version = 0.5.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		41B6D54528146B5D00798014 /* Base */ = {
+		41F942F62825693E0059C693 /* NetworkKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 41B6D54428146B5D00798014 /* XCRemoteSwiftPackageReference "Base" */;
-			productName = Base;
+			package = 41F942EB282565FA0059C693 /* XCRemoteSwiftPackageReference "NetworkKit" */;
+			productName = NetworkKit;
 		};
-		41B6D54828146BBA00798014 /* Network11 */ = {
+		41F942F82825693E0059C693 /* BaseKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 41B6D54728146BBA00798014 /* XCRemoteSwiftPackageReference "Network11" */;
-			productName = Network11;
+			package = 41F942EF282568720059C693 /* XCRemoteSwiftPackageReference "BaseKit" */;
+			productName = BaseKit;
+		};
+		41F942FA2825693E0059C693 /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 41F942F2282568C80059C693 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignIn;
 		};
 /* End XCSwiftPackageProductDependency section */
 

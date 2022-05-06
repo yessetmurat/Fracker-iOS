@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Base
+import BaseKit
 
 class RecordViewController: BaseViewController {
 
@@ -16,6 +16,7 @@ class RecordViewController: BaseViewController {
 
     var viewToShake: UIView? { placeholderLabel.text == nil ? titleLabel : placeholderLabel }
 
+    private let navigationView = BaseNavigationView()
     private let placeholderLabel = UILabel()
     private let titleLabel = UILabel()
     private let flowLayout = UICollectionViewFlowLayout()
@@ -38,14 +39,6 @@ class RecordViewController: BaseViewController {
 
     private var categories: [Category] = []
 
-    override func navigationController(
-        _ navigationController: UINavigationController,
-        willShow viewController: UIViewController,
-        animated: Bool
-    ) {
-        navigationController.setNavigationBarHidden(false, animated: false)
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -56,6 +49,7 @@ class RecordViewController: BaseViewController {
     }
 
     private func addSubviews() {
+        view.addSubview(navigationView)
         view.addSubview(placeholderLabel)
         view.addSubview(titleLabel)
         view.addSubview(collectionView)
@@ -66,9 +60,16 @@ class RecordViewController: BaseViewController {
     private func setLayoutConstraints() {
     	var layoutConstraints = [NSLayoutConstraint]()
 
+        navigationView.translatesAutoresizingMaskIntoConstraints = false
+        layoutConstraints += [
+            navigationView.topAnchor.constraint(equalTo: view.topAnchor),
+            navigationView.leftAnchor.constraint(equalTo: view.leftAnchor),
+            navigationView.rightAnchor.constraint(equalTo: view.rightAnchor)
+        ]
+
         placeholderLabel.translatesAutoresizingMaskIntoConstraints = false
         layoutConstraints += [
-            placeholderLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            placeholderLabel.topAnchor.constraint(equalTo: navigationView.bottomAnchor),
             placeholderLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20),
             placeholderLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20),
             placeholderLabel.bottomAnchor.constraint(equalTo: collectionView.topAnchor)
@@ -104,6 +105,11 @@ class RecordViewController: BaseViewController {
     private func stylize() {
         view.backgroundColor = BaseColor.white
 
+        navigationView.leftButtonIcon = .user
+        navigationView.leftButtonInset = 16
+        navigationView.rightButtonIcon = .barChart
+        navigationView.rightButtonInset = 16
+
         placeholderLabel.text = "0"
         placeholderLabel.font = BaseFont.semibold.withSize(64)
         placeholderLabel.textAlignment = .center
@@ -125,23 +131,12 @@ class RecordViewController: BaseViewController {
         collectionView.alwaysBounceHorizontal = true
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.backgroundColor = BaseColor.white
-
-        navigationItem.leftBarButtonItem = UIBarButtonItem(
-            image: BaseImage.user.uiImage,
-            style: .plain,
-            target: self,
-            action: #selector(leftBarButtonItemAction)
-        )
-
-        navigationItem.rightBarButtonItem = UIBarButtonItem(
-            image: BaseImage.barChart.uiImage,
-            style: .plain,
-            target: self,
-            action: #selector(rightBarButtonItemAction)
-        )
     }
 
     private func setActions() {
+        navigationView.leftButtonAction = { [weak self] in self?.interactor?.didTapOnLeftButton() }
+        navigationView.rightButtonAction = { [weak self] in self?.router?.routeToAnalyticsPage() }
+
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(CategoryShimmerCell.self)
@@ -164,16 +159,6 @@ class RecordViewController: BaseViewController {
         if let interactor = interactor {
             interactor.loadCategories()
         }
-    }
-
-
-
-    @objc private func leftBarButtonItemAction() {
-        interactor?.didTapOnLeftButton()
-    }
-
-    @objc private func rightBarButtonItemAction() {
-
     }
 
     @objc private func longGestureRecognizerAction(_ gesture: UILongPressGestureRecognizer) {
@@ -208,7 +193,7 @@ extension RecordViewController {
         let convertedPoint = collectionView.convert(attributes.center, to: view.coordinateSpace)
 
         let animation = CABasicAnimation(keyPath: "position")
-        animation.duration = 0.4
+        animation.duration = 0.3
         animation.fillMode = .forwards
         animation.isRemovedOnCompletion = false
         animation.timingFunction = .init(name: CAMediaTimingFunctionName.easeIn)
@@ -220,7 +205,7 @@ extension RecordViewController {
 
     private func addTitleLabelScaleAnimation() {
         let animation = CABasicAnimation(keyPath: "transform.scale")
-        animation.duration = 0.4
+        animation.duration = 0.3
         animation.fillMode = .forwards
         animation.isRemovedOnCompletion = false
         animation.timingFunction = .init(name: CAMediaTimingFunctionName.easeIn)
@@ -232,7 +217,7 @@ extension RecordViewController {
 
     private func addTitleLabelOpacityAnimation() {
         let animation = CABasicAnimation(keyPath: "opacity")
-        animation.duration = 0.4
+        animation.duration = 0.3
         animation.fillMode = .forwards
         animation.isRemovedOnCompletion = false
         animation.timingFunction = .init(name: CAMediaTimingFunctionName.easeIn)

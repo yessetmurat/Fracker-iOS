@@ -6,9 +6,9 @@
 //  Copyright (c) 2022 ___ORGANIZATIONNAME___. All rights reserved.
 //
 
-import Base
+import BaseKit
 
-protocol AuthViewInput: BaseViewInput {
+protocol AuthViewInput: BaseViewInput, DrawerContentViewControllerProtocol {
 
     func startLoading()
     func configureSignIn()

@@ -9,4 +9,5 @@
 protocol RecordRouterInput: AnyObject {
 
     func presentAuthorizationPage()
+    func routeToAnalyticsPage()
 }

@@ -7,8 +7,8 @@
 //
 
 import Foundation
-import Network11
-import Base
+import NetworkKit
+import BaseKit
 
 class RecordInteractor {
 
@@ -43,7 +43,7 @@ class RecordInteractor {
     }
 
     private func deselectWithDelay(at indexPath: IndexPath) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in self?.view.deselectItem(at: indexPath) }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in self?.view.deselectItem(at: indexPath) }
     }
 }
 

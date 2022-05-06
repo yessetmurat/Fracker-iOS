@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import Network11
+import NetworkKit
 
 class CommonStore {
 
@@ -60,7 +60,7 @@ class CommonStore {
 
         updateAdditionalHTTPHeaders()
 
-        Network11.Globals.networkLoggingEnabled = true
+        NetworkKit.Globals.networkLoggingEnabled = true
     }
 
     private func updateAdditionalHTTPHeaders() {

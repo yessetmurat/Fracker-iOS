@@ -6,7 +6,7 @@
 //  Copyright (c) 2022 ___ORGANIZATIONNAME___. All rights reserved.
 //
 
-import Network11
+import NetworkKit
 
 class RecordRouter {
 
@@ -35,6 +35,13 @@ extension RecordRouter: RecordRouterInput {
         let router = AuthRouter(commonStore: commonStore)
         let viewController = router.compose()
 
-        view?.present(viewController, animated: true)
+        view?.presentBottomDrawerViewController(with: viewController)
+    }
+
+    func routeToAnalyticsPage() {
+        let router = AnalyticsRouter(commonStore: commonStore)
+        let viewController = router.compose()
+
+        view?.push(viewController)
     }
 }

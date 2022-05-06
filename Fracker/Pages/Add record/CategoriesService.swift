@@ -6,8 +6,8 @@
 //
 
 import Foundation
-import Base
-import Network11
+import BaseKit
+import NetworkKit
 
 protocol CategoriesService {
 

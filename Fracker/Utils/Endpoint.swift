@@ -5,11 +5,12 @@
 //  Created by Yesset Murat on 4/23/22.
 //
 
-import Network11
+import NetworkKit
 
 enum Endpoint: NetworkEndpoint {
 
     case apiAuthApple
+    case apiAuthGoogle
 
     case apiCategories
     case apiCategoriesBatch
@@ -23,6 +24,7 @@ enum Endpoint: NetworkEndpoint {
     var apiUrl: String {
         switch self {
         case .apiAuthApple: return "/api/auth/apple"
+        case .apiAuthGoogle: return "/api/auth/google"
 
         case .apiCategories: return "/api/categories"
         case .apiCategoriesBatch: return "/api/categories/batch"

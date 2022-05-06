@@ -1,11 +1,11 @@
 //
-//  AppleSignInData.swift
+//  SignInData.swift
 //  Fracker
 //
 //  Created by Yesset Murat on 4/25/22.
 //
 
-struct AppleSignInData: Encodable {
+struct SignInData: Encodable {
 
     let idToken: String
     let firstName: String?

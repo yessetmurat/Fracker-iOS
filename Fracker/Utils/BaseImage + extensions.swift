@@ -5,7 +5,7 @@
 //  Created by Yesset Murat on 4/15/22.
 //
 
-import Base
+import BaseKit
 
 extension BaseImage {
 
@@ -17,4 +17,7 @@ extension BaseImage {
     static var plus: BaseImage { .init(from: .main) }
     static var eye: BaseImage { .init(from: .main) }
     static var eyeOff: BaseImage { .init(from: .main) }
+    static var google: BaseImage { .init(from: .main) }
+    static var arrowDown: BaseImage { .init(from: .main) }
+    static var arrowUp: BaseImage { .init(from: .main) }
 }

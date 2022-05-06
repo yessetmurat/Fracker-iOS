@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import Network11
+import NetworkKit
 
 class RecordCreateNetworkContext: NetworkContext {
 
@@ -15,7 +15,7 @@ class RecordCreateNetworkContext: NetworkContext {
     var encoding: NetworkEncoding { .json }
     let httpBody: Data?
 
-    init(data: RecordData) {
+    init(data: RecordRequestData) {
         httpBody = try? JSONEncoder().encode(data)
     }
 }

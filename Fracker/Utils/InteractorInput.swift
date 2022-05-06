@@ -5,8 +5,8 @@
 //  Created by Yesset Murat on 4/24/22.
 //
 
-import Base
-import Network11
+import BaseKit
+import NetworkKit
 
 protocol InteractorInput {
 

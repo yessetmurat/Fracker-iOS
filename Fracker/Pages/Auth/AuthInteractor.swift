@@ -7,8 +7,9 @@
 //
 
 import AuthenticationServices
-import Base
-import Network11
+import BaseKit
+import NetworkKit
+import GoogleSignIn
 
 class AuthInteractor {
 
@@ -58,7 +59,7 @@ class AuthInteractor {
             guard let interactor = self else { return }
 
             interactor.view.set(statusText: "Done!")
-            interactor.executeWithDelay { [weak interactor] in interactor?.view.dismiss(animated: true) }
+            interactor.executeWithDelay { [weak interactor] in interactor?.view.dismissDrawer(completion: nil) }
         }
     }
 }
@@ -75,7 +76,7 @@ extension AuthInteractor: AuthInteractorInput {
         view.startLoading()
         view.set(statusText: "Signing in...")
 
-        let data = AppleSignInData(
+        let data = SignInData(
             idToken: identityTokenString,
             firstName: credential.fullName?.givenName,
             lastName: credential.fullName?.familyName
@@ -92,6 +93,40 @@ extension AuthInteractor: AuthInteractorInput {
                 interactor.commonStore.accessToken = token
                 KeyValueStore().set(value: token, for: .token)
                 interactor.syncronize()
+            }
+        }
+    }
+
+    func signInWithGoogle() {
+        view.startLoading()
+        view.set(statusText: "Signing in...")
+
+        let configuration = GIDConfiguration(clientID: Constants.googleClientId)
+        GIDSignIn.sharedInstance.signIn(with: configuration, presenting: view) { [weak self] user, error in
+            guard let interactor = self else { return }
+            guard error == nil, let idToken = user?.authentication.idToken else {
+                return interactor.show(networkError: .dataLoad, view: interactor.view)
+            }
+
+            let data = SignInData(
+                idToken: idToken,
+                firstName: user?.profile?.givenName,
+                lastName: user?.profile?.familyName
+            )
+
+            let networkContext = GoogleSignInNetworkContext(data: data)
+            interactor.networkService.performRequest(using: networkContext) { [weak interactor] response in
+                guard let interactor = interactor else { return }
+
+                if !interactor.handleFailure(response: response, view: interactor.view) {
+                    guard let token = response.json?["token"] as? String else {
+                        return interactor.show(networkError: .dataLoad, view: interactor.view)
+                    }
+
+                    interactor.commonStore.accessToken = token
+                    KeyValueStore().set(value: token, for: .token)
+                    interactor.syncronize()
+                }
             }
         }
     }

@@ -6,29 +6,17 @@
 //
 
 import Foundation
-import Network11
+import NetworkKit
 
 class ErrorDescriptor {
 
     class func convert(_ response: NetworkResponse) -> DisplayedError {
         let text: String
 
-        if let response = response as? FailureNetworkResponse, let json = response.json {
-            let unknownErrorDescriptions = [
-                "Something goes wrong. User Server response failed.",
-                "Incorrect login or password",
-                "The number of incorrect passwords has been exceeded! Your account has been temporarily suspended!",
-                "user blocked"
-            ]
-            let errorKeys = ["description", "error_description", "value", "errorMessage"]
-            if response.statusCode == 401 && json["error"] as? String == "unauthorized",
-               let errorDescription = json["reason"] as? String,
-               unknownErrorDescriptions.contains(errorDescription) {
-                return DisplayedError(text: "The service is temporarily unavailable. Please try again later")
-            } else if let errorKey = errorKeys.first(where: { json[$0] != nil }),
-                      let errorDescription = json[errorKey] as? String {
-                return DisplayedError(text: errorDescription, json: json)
-            }
+        if let response = response as? FailureNetworkResponse,
+           let json = response.json,
+           let reason = json["reason"] as? String {
+            return DisplayedError(text: reason, json: json)
         }
 
         if let networkError = response.error {

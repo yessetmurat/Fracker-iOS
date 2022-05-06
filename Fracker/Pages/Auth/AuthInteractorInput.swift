@@ -11,4 +11,5 @@ import AuthenticationServices
 protocol AuthInteractorInput: AnyObject, InteractorInput {
 
     func signInWithApple(authorization: ASAuthorization)
+    func signInWithGoogle()
 }

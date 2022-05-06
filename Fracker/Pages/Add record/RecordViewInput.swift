@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import Base
+import BaseKit
 
 protocol RecordViewInput: BaseViewInput, ShakableView {
 

@@ -6,7 +6,7 @@
 //  Copyright (c) 2022 ___ORGANIZATIONNAME___. All rights reserved.
 //
 
-import Network11
+import NetworkKit
 
 class AuthRouter {
 

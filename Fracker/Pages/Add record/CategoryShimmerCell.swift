@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import Base
+import BaseKit
 
 class CategoryShimmerCell: UICollectionViewCell {
 
