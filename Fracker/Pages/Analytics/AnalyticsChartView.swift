@@ -19,7 +19,16 @@ class AnalyticsChartView: UIView {
     private let flowLayout = UICollectionViewFlowLayout()
     private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
     private let selectorView = SelectorView()
-    private let separatorView = UIView()
+
+    private var data: Chart?
+    private var filters: [AnalyticsFilter] = []
+    private var selectedFilter: AnalyticsFilter = .week
+
+    weak var delegate: AnalyticsChartViewDelegate?
+
+    weak var selectorDelegate: SelectorViewDelegate? {
+        didSet { selectorView.delegate = selectorDelegate }
+    }
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -39,7 +48,6 @@ class AnalyticsChartView: UIView {
         titleStackView.addArrangedSubview(minimumLabel)
         stackView.addArrangedSubview(collectionView)
         addSubview(selectorView)
-        addSubview(separatorView)
     }
 
     private func setLayoutConstraints() {
@@ -67,16 +75,8 @@ class AnalyticsChartView: UIView {
             selectorView.topAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 16),
             selectorView.leftAnchor.constraint(equalTo: leftAnchor),
             selectorView.rightAnchor.constraint(equalTo: rightAnchor),
-            selectorView.bottomAnchor.constraint(equalTo: separatorView.topAnchor, constant: -32),
+            selectorView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8),
             selectorView.heightAnchor.constraint(equalToConstant: 58)
-        ]
-
-        separatorView.translatesAutoresizingMaskIntoConstraints = false
-        layoutConstraints += [
-            separatorView.leftAnchor.constraint(equalTo: leftAnchor, constant: 24),
-            separatorView.rightAnchor.constraint(equalTo: rightAnchor, constant: -24),
-            separatorView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            separatorView.heightAnchor.constraint(equalToConstant: 2)
         ]
 
         NSLayoutConstraint.activate(layoutConstraints)
@@ -94,10 +94,6 @@ class AnalyticsChartView: UIView {
         titleStackView.axis = .vertical
         titleStackView.distribution = .equalCentering
 
-        minimumLabel.text = "0"
-        averageLabel.text = "35k"
-        maximumLabel.text = "70k"
-
         [minimumLabel, averageLabel, maximumLabel].forEach { label in
             label.font = BaseFont.semibold.withSize(12)
             label.textColor = BaseColor.gray
@@ -112,17 +108,26 @@ class AnalyticsChartView: UIView {
         collectionView.alwaysBounceHorizontal = true
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.showsVerticalScrollIndicator = false
-
-        selectorView.titles = ["Week", "Month", "Year"]
-
-        separatorView.backgroundColor = BaseColor.lightGray
-        separatorView.layer.cornerRadius = 1
     }
 
     private func setActions() {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(ChartCell.self)
+    }
+
+    func set(data: Chart?, filters: [AnalyticsFilter], selectedFilter: AnalyticsFilter) {
+        self.data = data
+        self.filters = filters
+        self.selectedFilter = selectedFilter
+
+        minimumLabel.text = data?.minimum
+        averageLabel.text = data?.average
+        maximumLabel.text = data?.maximum
+
+        selectorView.titles = filters.map { $0.title }
+        selectorView.selectedIndex = filters.firstIndex(of: selectedFilter)
+        selectorView.delegate = selectorDelegate
     }
 
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
@@ -141,6 +146,9 @@ extension AnalyticsChartView: UICollectionViewDelegateFlowLayout {
 
 extension AnalyticsChartView: UICollectionViewDelegate {
 
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        delegate?.analyticsChartView(self, didSelectItemIndex: indexPath.item)
+    }
 }
 
 extension AnalyticsChartView: UICollectionViewDataSource {
@@ -149,14 +157,17 @@ extension AnalyticsChartView: UICollectionViewDataSource {
         _ collectionView: UICollectionView,
         numberOfItemsInSection section: Int
     ) -> Int {
-        return 16
+        return data?.items.count ?? 0
     }
 
     func collectionView(
         _ collectionView: UICollectionView,
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
+        let item = data?.items[indexPath.item]
         let cell: ChartCell = collectionView.dequeueReusableCell(for: indexPath)
+        cell.title = item?.title
+        cell.value = item?.value ?? 0
         return cell
     }
 }
@@ -164,6 +175,13 @@ extension AnalyticsChartView: UICollectionViewDataSource {
 extension AnalyticsChartView: ResettableView {
 
     func reset() {
-
+        data = nil
+        filters = []
+        selectedFilter = .week
+        delegate = nil
+        minimumLabel.text = nil
+        averageLabel.text = nil
+        maximumLabel.text = nil
+        selectorView.reset()
     }
 }

@@ -19,7 +19,7 @@ class AnalyticsRouter {
         let viewController = AnalyticsViewController(style: .grouped)
         view = viewController
 
-        let interactor = AnalyticsInteractor(view: viewController)
+        let interactor = AnalyticsInteractor(view: viewController, commonStore: commonStore)
         viewController.interactor = interactor
         viewController.router = self
 

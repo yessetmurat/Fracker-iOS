@@ -6,6 +6,9 @@
 //  Copyright (c) 2022 ___ORGANIZATIONNAME___. All rights reserved.
 //
 
-protocol AnalyticsInteractorInput: AnyObject {
+protocol AnalyticsInteractorInput: AnyObject, InteractorInput {
 
+    func setSections()
+    func loadAnalytics()
+    func didSelectFilter(at index: Int)
 }

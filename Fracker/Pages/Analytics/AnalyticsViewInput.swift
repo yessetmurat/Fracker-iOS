@@ -7,7 +7,12 @@
 //
 
 import BaseKit
+import Foundation
 
 protocol AnalyticsViewInput: BaseViewInput {
 
+    func pass(sections: [AnalyticsSection])
+    func pass(isLoading: Bool)
+    func reloadData()
+    func update(row: AnalyticsRow, at indexPath: IndexPath)
 }

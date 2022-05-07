@@ -18,6 +18,33 @@ class AnalyticsAmountView: UIView {
     private let imageView = UIImageView()
     private let percentLabel = UILabel()
 
+    var title: String? {
+        get { titleLabel.text }
+        set { titleLabel.text = newValue }
+    }
+
+    var descriptionString: String? {
+        get { descriptionLabel.text }
+        set { descriptionLabel.text = newValue }
+    }
+
+    var didRise: Bool? {
+        didSet {
+            guard let didRise = didRise else {
+                imageView.image = BaseImage.minus.uiImage
+                percentLabel.textColor = BaseColor.blue
+                return
+            }
+            imageView.image = didRise ? BaseImage.arrowUp.uiImage : BaseImage.arrowDown.uiImage
+            percentLabel.textColor = didRise ? BaseColor.red : BaseColor.green
+        }
+    }
+
+    var percent: String? {
+        get { percentLabel.text }
+        set { percentLabel.text = newValue }
+    }
+
     override init(frame: CGRect) {
         super.init(frame: frame)
 
@@ -60,14 +87,12 @@ class AnalyticsAmountView: UIView {
         stackView.axis = .vertical
         stackView.alignment = .leading
 
-        titleLabel.text = "70 000₸"
         titleLabel.font = BaseFont.semibold.withSize(32)
         titleLabel.textColor = BaseColor.black
 
         descriptionStackView.axis = .horizontal
         descriptionStackView.spacing = 8
 
-        descriptionLabel.text = "Total spent whis week"
         descriptionLabel.font = BaseFont.semibold.withSize(14)
         descriptionLabel.textColor = BaseColor.gray
 
@@ -77,7 +102,6 @@ class AnalyticsAmountView: UIView {
         imageView.image = BaseImage.arrowDown.uiImage
         imageView.contentMode = .scaleAspectFit
 
-        percentLabel.text = "5%"
         percentLabel.font = BaseFont.semibold.withSize(14)
         percentLabel.textColor = BaseColor.green
     }
@@ -88,6 +112,9 @@ class AnalyticsAmountView: UIView {
 extension AnalyticsAmountView: ResettableView {
 
     func reset() {
-
+        title = nil
+        descriptionString = nil
+        didRise = nil
+        percent = nil
     }
 }

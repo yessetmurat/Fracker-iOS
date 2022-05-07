@@ -2,7 +2,7 @@
 //  LocalRecord+CoreDataClass.swift
 //  Fracker
 //
-//  Created by Yesset Murat on 5/4/22.
+//  Created by Yesset Murat on 5/7/22.
 //
 //
 

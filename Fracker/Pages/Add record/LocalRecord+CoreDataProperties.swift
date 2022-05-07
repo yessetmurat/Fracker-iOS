@@ -2,7 +2,7 @@
 //  LocalRecord+CoreDataProperties.swift
 //  Fracker
 //
-//  Created by Yesset Murat on 5/4/22.
+//  Created by Yesset Murat on 5/7/22.
 //
 //
 
@@ -17,6 +17,7 @@ extension LocalRecord {
 
     @NSManaged public var id: UUID
     @NSManaged public var amount: NSDecimalNumber
+    @NSManaged public var createdAt: Date
     @NSManaged public var category: LocalCategory?
 }
 

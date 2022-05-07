@@ -13,7 +13,19 @@ class ChartCell: UICollectionViewCell {
     private let view = UIView()
     private let label = UILabel()
 
-    private lazy var viewHeightConstraint = view.heightAnchor.constraint(equalToConstant: 100)
+    private lazy var viewHeightConstraint = view.heightAnchor.constraint(equalToConstant: 0)
+
+    var title: String? {
+        get { label.text }
+        set { label.text = newValue }
+    }
+
+    var value: Float = 0 {
+        didSet {
+            guard 0...1 ~= value else { return }
+            viewHeightConstraint.constant = 122 * CGFloat(value)
+        }
+    }
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -21,6 +33,13 @@ class ChartCell: UICollectionViewCell {
         addSubviews()
         setLayoutConstraints()
         stylize()
+    }
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+
+        title = nil
+        value = 0
     }
 
     private func addSubviews() {
@@ -58,7 +77,6 @@ class ChartCell: UICollectionViewCell {
         view.layer.cornerRadius = 3
         view.clipsToBounds = true
 
-        label.text = "🍗"
         label.font = BaseFont.semibold.withSize(12)
         label.textAlignment = .center
     }

@@ -7,6 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		410D63C528264CCB00901296 /* AnalyticsCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410D63C428264CCB00901296 /* AnalyticsCategoryView.swift */; };
+		410D63C728266A2E00901296 /* SeparatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410D63C628266A2E00901296 /* SeparatorView.swift */; };
+		410D63C928266FB900901296 /* AnalyticsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410D63C828266FB900901296 /* AnalyticsSection.swift */; };
+		410D63CB28266FD700901296 /* AnalyticsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410D63CA28266FD700901296 /* AnalyticsRow.swift */; };
+		410D63CD2826717D00901296 /* Chart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410D63CC2826717D00901296 /* Chart.swift */; };
+		410D63CF2826721400901296 /* AnalyticsFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410D63CE2826721400901296 /* AnalyticsFilter.swift */; };
+		410D63D12826784500901296 /* SelectorViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410D63D02826784500901296 /* SelectorViewDelegate.swift */; };
+		410D63D32826796700901296 /* AnalyticsChartViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410D63D22826796700901296 /* AnalyticsChartViewDelegate.swift */; };
+		410D63D7282682EE00901296 /* AnalyticsCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410D63D6282682EE00901296 /* AnalyticsCategory.swift */; };
+		410D63D92826849E00901296 /* AnalyticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410D63D82826849E00901296 /* AnalyticsService.swift */; };
+		410D63DB282684A600901296 /* AnalyticsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410D63DA282684A600901296 /* AnalyticsWorker.swift */; };
+		410D63DD2826857F00901296 /* Analytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410D63DC2826857F00901296 /* Analytics.swift */; };
+		410D63DF282692B300901296 /* LocalRecord+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410D63DE282692B300901296 /* LocalRecord+CoreDataProperties.swift */; };
+		410D63E12826948600901296 /* LocalRecord+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410D63E02826948600901296 /* LocalRecord+CoreDataClass.swift */; };
+		410D63E32826C09200901296 /* AnalyticsAmountShimmerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410D63E22826C09200901296 /* AnalyticsAmountShimmerView.swift */; };
+		410D63E52826C0A400901296 /* AnalyticsChartShimmerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410D63E42826C0A400901296 /* AnalyticsChartShimmerView.swift */; };
+		410D63E72826C0C800901296 /* AnalyticsCategoryShimmerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410D63E62826C0C800901296 /* AnalyticsCategoryShimmerView.swift */; };
+		410D63EA2826FC2900901296 /* AnalyticsNetworkContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410D63E92826FC2900901296 /* AnalyticsNetworkContext.swift */; };
+		410D63EC2826FF7700901296 /* NothingToShowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410D63EB2826FF7600901296 /* NothingToShowView.swift */; };
 		411714F9281D3F5B004D2509 /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411714F8281D3F5B004D2509 /* Record.swift */; };
 		4129231B281489FB0001086C /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4129231A281489FB0001086C /* CategoryCell.swift */; };
 		4129231D28148E990001086C /* CategoryAddCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4129231C28148E990001086C /* CategoryAddCell.swift */; };
@@ -16,8 +35,6 @@
 		4147FE102822BA3100813606 /* RecordRequestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4147FE0F2822BA3100813606 /* RecordRequestData.swift */; };
 		414BBFF52822DB7A00A3AAE4 /* CategoriesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414BBFF42822DB7A00A3AAE4 /* CategoriesService.swift */; };
 		414BBFF72822DB8400A3AAE4 /* CategoriesWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414BBFF62822DB8400A3AAE4 /* CategoriesWorker.swift */; };
-		414BBFFD2822F06A00A3AAE4 /* LocalRecord+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414BBFF92822F06A00A3AAE4 /* LocalRecord+CoreDataClass.swift */; };
-		414BBFFE2822F06A00A3AAE4 /* LocalRecord+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414BBFFA2822F06A00A3AAE4 /* LocalRecord+CoreDataProperties.swift */; };
 		414BBFFF2822F06A00A3AAE4 /* LocalCategory+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414BBFFB2822F06A00A3AAE4 /* LocalCategory+CoreDataClass.swift */; };
 		414BC0002822F06A00A3AAE4 /* LocalCategory+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414BBFFC2822F06A00A3AAE4 /* LocalCategory+CoreDataProperties.swift */; };
 		41881FD028155BDA00FFA4E2 /* CategoriesNetworkContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41881FCF28155BDA00FFA4E2 /* CategoriesNetworkContext.swift */; };
@@ -108,6 +125,25 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		410D63C428264CCB00901296 /* AnalyticsCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsCategoryView.swift; sourceTree = "<group>"; };
+		410D63C628266A2E00901296 /* SeparatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatorView.swift; sourceTree = "<group>"; };
+		410D63C828266FB900901296 /* AnalyticsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsSection.swift; sourceTree = "<group>"; };
+		410D63CA28266FD700901296 /* AnalyticsRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsRow.swift; sourceTree = "<group>"; };
+		410D63CC2826717D00901296 /* Chart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chart.swift; sourceTree = "<group>"; };
+		410D63CE2826721400901296 /* AnalyticsFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsFilter.swift; sourceTree = "<group>"; };
+		410D63D02826784500901296 /* SelectorViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectorViewDelegate.swift; sourceTree = "<group>"; };
+		410D63D22826796700901296 /* AnalyticsChartViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsChartViewDelegate.swift; sourceTree = "<group>"; };
+		410D63D6282682EE00901296 /* AnalyticsCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsCategory.swift; sourceTree = "<group>"; };
+		410D63D82826849E00901296 /* AnalyticsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsService.swift; sourceTree = "<group>"; };
+		410D63DA282684A600901296 /* AnalyticsWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsWorker.swift; sourceTree = "<group>"; };
+		410D63DC2826857F00901296 /* Analytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Analytics.swift; sourceTree = "<group>"; };
+		410D63DE282692B300901296 /* LocalRecord+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocalRecord+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		410D63E02826948600901296 /* LocalRecord+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocalRecord+CoreDataClass.swift"; sourceTree = "<group>"; };
+		410D63E22826C09200901296 /* AnalyticsAmountShimmerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsAmountShimmerView.swift; sourceTree = "<group>"; };
+		410D63E42826C0A400901296 /* AnalyticsChartShimmerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsChartShimmerView.swift; sourceTree = "<group>"; };
+		410D63E62826C0C800901296 /* AnalyticsCategoryShimmerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsCategoryShimmerView.swift; sourceTree = "<group>"; };
+		410D63E92826FC2900901296 /* AnalyticsNetworkContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsNetworkContext.swift; sourceTree = "<group>"; };
+		410D63EB2826FF7600901296 /* NothingToShowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NothingToShowView.swift; sourceTree = "<group>"; };
 		411714F8281D3F5B004D2509 /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
 		4129231A281489FB0001086C /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
 		4129231C28148E990001086C /* CategoryAddCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryAddCell.swift; sourceTree = "<group>"; };
@@ -118,8 +154,6 @@
 		4147FE0F2822BA3100813606 /* RecordRequestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordRequestData.swift; sourceTree = "<group>"; };
 		414BBFF42822DB7A00A3AAE4 /* CategoriesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CategoriesService.swift; path = "../Pages/Add record/CategoriesService.swift"; sourceTree = "<group>"; };
 		414BBFF62822DB8400A3AAE4 /* CategoriesWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CategoriesWorker.swift; path = "../Pages/Add record/CategoriesWorker.swift"; sourceTree = "<group>"; };
-		414BBFF92822F06A00A3AAE4 /* LocalRecord+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocalRecord+CoreDataClass.swift"; sourceTree = "<group>"; };
-		414BBFFA2822F06A00A3AAE4 /* LocalRecord+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocalRecord+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		414BBFFB2822F06A00A3AAE4 /* LocalCategory+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocalCategory+CoreDataClass.swift"; sourceTree = "<group>"; };
 		414BBFFC2822F06A00A3AAE4 /* LocalCategory+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocalCategory+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		41881FCF28155BDA00FFA4E2 /* CategoriesNetworkContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesNetworkContext.swift; sourceTree = "<group>"; };
@@ -221,6 +255,42 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		410D63D4282682CB00901296 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				41F942FF282599C00059C693 /* AnalyticsAmountView.swift */,
+				41F943032825A0690059C693 /* AnalyticsChartView.swift */,
+				410D63D22826796700901296 /* AnalyticsChartViewDelegate.swift */,
+				41F943052825A89F0059C693 /* ChartCell.swift */,
+				410D63C428264CCB00901296 /* AnalyticsCategoryView.swift */,
+				410D63E22826C09200901296 /* AnalyticsAmountShimmerView.swift */,
+				410D63E42826C0A400901296 /* AnalyticsChartShimmerView.swift */,
+				410D63E62826C0C800901296 /* AnalyticsCategoryShimmerView.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		410D63D5282682D700901296 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				410D63C828266FB900901296 /* AnalyticsSection.swift */,
+				410D63CA28266FD700901296 /* AnalyticsRow.swift */,
+				410D63CC2826717D00901296 /* Chart.swift */,
+				410D63CE2826721400901296 /* AnalyticsFilter.swift */,
+				410D63DC2826857F00901296 /* Analytics.swift */,
+				410D63D6282682EE00901296 /* AnalyticsCategory.swift */,
+			);
+			name = Entities;
+			sourceTree = "<group>";
+		};
+		410D63E82826FC1900901296 /* NetworkContext */ = {
+			isa = PBXGroup;
+			children = (
+				410D63E92826FC2900901296 /* AnalyticsNetworkContext.swift */,
+			);
+			name = NetworkContext;
+			sourceTree = "<group>";
+		};
 		41881FCE28155BC100FFA4E2 /* NetworkContext */ = {
 			isa = PBXGroup;
 			children = (
@@ -237,8 +307,8 @@
 		41881FE7281591FD00FFA4E2 /* Local entities */ = {
 			isa = PBXGroup;
 			children = (
-				414BBFF92822F06A00A3AAE4 /* LocalRecord+CoreDataClass.swift */,
-				414BBFFA2822F06A00A3AAE4 /* LocalRecord+CoreDataProperties.swift */,
+				410D63E02826948600901296 /* LocalRecord+CoreDataClass.swift */,
+				410D63DE282692B300901296 /* LocalRecord+CoreDataProperties.swift */,
 				414BBFFB2822F06A00A3AAE4 /* LocalCategory+CoreDataClass.swift */,
 				414BBFFC2822F06A00A3AAE4 /* LocalCategory+CoreDataProperties.swift */,
 			);
@@ -534,6 +604,8 @@
 				414BBFF62822DB8400A3AAE4 /* CategoriesWorker.swift */,
 				41E3DD6828242F010023363D /* RecordsService.swift */,
 				41E3DD6A28242F070023363D /* RecordsWorker.swift */,
+				410D63D82826849E00901296 /* AnalyticsService.swift */,
+				410D63DA282684A600901296 /* AnalyticsWorker.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -544,6 +616,8 @@
 				41F943092825B5C20059C693 /* Selector view */,
 				412E3DA42815CAF200B8D8DD /* ShakableView.swift */,
 				41F144EE281D6B3400221A31 /* EmojiTextField.swift */,
+				410D63C628266A2E00901296 /* SeparatorView.swift */,
+				410D63EB2826FF7600901296 /* NothingToShowView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -558,9 +632,9 @@
 		41F942FE282599790059C693 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				41F942FF282599C00059C693 /* AnalyticsAmountView.swift */,
-				41F943032825A0690059C693 /* AnalyticsChartView.swift */,
-				41F943052825A89F0059C693 /* ChartCell.swift */,
+				410D63E82826FC1900901296 /* NetworkContext */,
+				410D63D5282682D700901296 /* Entities */,
+				410D63D4282682CB00901296 /* Views */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -569,6 +643,7 @@
 			isa = PBXGroup;
 			children = (
 				41F943072825B51E0059C693 /* SelectorView.swift */,
+				410D63D02826784500901296 /* SelectorViewDelegate.swift */,
 				41F9430A2825B7710059C693 /* SelectorCell.swift */,
 			);
 			name = "Selector view";
@@ -716,29 +791,37 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				410D63CD2826717D00901296 /* Chart.swift in Sources */,
 				4129231B281489FB0001086C /* CategoryCell.swift in Sources */,
 				412FD6EE28171320008BC86C /* SignInData.swift in Sources */,
-				414BBFFE2822F06A00A3AAE4 /* LocalRecord+CoreDataProperties.swift in Sources */,
 				418F460128250C5B006E6338 /* AnalyticsViewInput.swift in Sources */,
 				418F45F1282505A2006E6338 /* ProfileViewInput.swift in Sources */,
+				410D63E72826C0C800901296 /* AnalyticsCategoryShimmerView.swift in Sources */,
 				41D6B8D7281476ED00595F6C /* RecordInteractorInput.swift in Sources */,
+				410D63E32826C09200901296 /* AnalyticsAmountShimmerView.swift in Sources */,
 				41F9430228259F260059C693 /* UIConstants.swift in Sources */,
+				410D63C528264CCB00901296 /* AnalyticsCategoryView.swift in Sources */,
 				41881FD628158D5100FFA4E2 /* CategoryRemoveNetworkContext.swift in Sources */,
-				414BBFFD2822F06A00A3AAE4 /* LocalRecord+CoreDataClass.swift in Sources */,
 				412E3DA52815CAF200B8D8DD /* ShakableView.swift in Sources */,
 				411714F9281D3F5B004D2509 /* Record.swift in Sources */,
 				414BC0002822F06A00A3AAE4 /* LocalCategory+CoreDataProperties.swift in Sources */,
 				41C69D432814ABE30076B354 /* InteractorInput.swift in Sources */,
+				410D63EA2826FC2900901296 /* AnalyticsNetworkContext.swift in Sources */,
+				410D63CB28266FD700901296 /* AnalyticsRow.swift in Sources */,
 				41D6B8E428147CDD00595F6C /* PadCellTappable.swift in Sources */,
 				41FD362B2819BE4F004B7A74 /* CategoriesBatchCreateNetworkContext.swift in Sources */,
+				410D63D32826796700901296 /* AnalyticsChartViewDelegate.swift in Sources */,
 				41F942FD28258F910059C693 /* GoogleSignInNetworkContext.swift in Sources */,
 				414BBFFF2822F06A00A3AAE4 /* LocalCategory+CoreDataClass.swift in Sources */,
 				41B6D50128144F7E00798014 /* AppDelegate.swift in Sources */,
+				410D63DB282684A600901296 /* AnalyticsWorker.swift in Sources */,
 				41D6B8D6281476ED00595F6C /* RecordRouter.swift in Sources */,
 				41F94300282599C00059C693 /* AnalyticsAmountView.swift in Sources */,
+				410D63D7282682EE00901296 /* AnalyticsCategory.swift in Sources */,
 				41C69D492814B2BD0076B354 /* LocalError.swift in Sources */,
 				41B6D53F281451AE00798014 /* AuthRouter.swift in Sources */,
 				41881FD4281560E100FFA4E2 /* CategoryShimmerCell.swift in Sources */,
+				410D63DD2826857F00901296 /* Analytics.swift in Sources */,
 				41E3DD6928242F010023363D /* RecordsService.swift in Sources */,
 				41D6B8E228147BE700595F6C /* PadCell.swift in Sources */,
 				418F45F6282505A2006E6338 /* ProfileRouterInput.swift in Sources */,
@@ -753,7 +836,10 @@
 				41881FD028155BDA00FFA4E2 /* CategoriesNetworkContext.swift in Sources */,
 				418F45F5282505A2006E6338 /* ProfileInteractor.swift in Sources */,
 				418F460428250C5B006E6338 /* AnalyticsViewController.swift in Sources */,
+				410D63C928266FB900901296 /* AnalyticsSection.swift in Sources */,
 				414BBFF72822DB8400A3AAE4 /* CategoriesWorker.swift in Sources */,
+				410D63DF282692B300901296 /* LocalRecord+CoreDataProperties.swift in Sources */,
+				410D63EC2826FF7700901296 /* NothingToShowView.swift in Sources */,
 				418F460528250C5B006E6338 /* AnalyticsInteractor.swift in Sources */,
 				41B6D543281451AE00798014 /* AuthRouterInput.swift in Sources */,
 				41C69D452814AC520076B354 /* ErrorDescriptor.swift in Sources */,
@@ -761,7 +847,9 @@
 				41B6D5532814732200798014 /* KeyValueStore.swift in Sources */,
 				41881FFE2815AC4100FFA4E2 /* CategoryTextFieldCell.swift in Sources */,
 				41881FF22815939D00FFA4E2 /* LocalDatabaseManager.swift in Sources */,
+				410D63CF2826721400901296 /* AnalyticsFilter.swift in Sources */,
 				41B6D542281451AE00798014 /* AuthInteractor.swift in Sources */,
+				410D63E52826C0A400901296 /* AnalyticsChartShimmerView.swift in Sources */,
 				41D6B8D8281476ED00595F6C /* RecordViewController.swift in Sources */,
 				41B6D540281451AE00798014 /* AuthInteractorInput.swift in Sources */,
 				4129231D28148E990001086C /* CategoryAddCell.swift in Sources */,
@@ -770,6 +858,9 @@
 				41B6D5562814732200798014 /* BaseImage + extensions.swift in Sources */,
 				418F460628250C5B006E6338 /* AnalyticsRouterInput.swift in Sources */,
 				41D6B8D5281476ED00595F6C /* RecordViewInput.swift in Sources */,
+				410D63E12826948600901296 /* LocalRecord+CoreDataClass.swift in Sources */,
+				410D63C728266A2E00901296 /* SeparatorView.swift in Sources */,
+				410D63D12826784500901296 /* SelectorViewDelegate.swift in Sources */,
 				41B6D5572814732200798014 /* Constants.swift in Sources */,
 				41D6B8DA281476ED00595F6C /* RecordRouterInput.swift in Sources */,
 				418F45F3282505A2006E6338 /* ProfileInteractorInput.swift in Sources */,
@@ -781,6 +872,7 @@
 				414BBFF52822DB7A00A3AAE4 /* CategoriesService.swift in Sources */,
 				418F45F2282505A2006E6338 /* ProfileRouter.swift in Sources */,
 				418F460328250C5B006E6338 /* AnalyticsInteractorInput.swift in Sources */,
+				410D63D92826849E00901296 /* AnalyticsService.swift in Sources */,
 				41B6D53E281451AE00798014 /* AuthViewInput.swift in Sources */,
 				4147FE102822BA3100813606 /* RecordRequestData.swift in Sources */,
 				41C69D472814AC680076B354 /* DisplayedError.swift in Sources */,
@@ -1135,7 +1227,7 @@
 			repositoryURL = "git@github.com:yessetmurat/BaseKit.git";
 			requirement = {
 				kind = exactVersion;
-				version = 0.5.2;
+				version = 0.5.5;
 			};
 		};
 		41F942F2282568C80059C693 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {

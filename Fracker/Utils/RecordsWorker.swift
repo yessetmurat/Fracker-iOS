@@ -54,6 +54,7 @@ extension RecordsWorker {
         localDatabaseManager.create { (object: LocalRecord) in
             object.id = record.id
             object.amount = NSDecimalNumber(decimal: record.amount)
+            object.createdAt = Date()
             object.category = localCategory
         }
 

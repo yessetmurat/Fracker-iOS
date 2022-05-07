@@ -15,6 +15,18 @@ class SelectorView: UIView {
 
     var titles: [String] = []
 
+    var selectedIndex: Int? {
+        didSet {
+            guard let selectedIndex = selectedIndex else { return }
+
+            collectionView.selectItem(
+                at: IndexPath(item: selectedIndex, section: 0), animated: true, scrollPosition: .left
+            )
+        }
+    }
+
+    weak var delegate: SelectorViewDelegate?
+
     override init(frame: CGRect) {
         super.init(frame: frame)
 
@@ -28,7 +40,7 @@ class SelectorView: UIView {
         flowLayout.minimumInteritemSpacing = 10
         flowLayout.scrollDirection = .horizontal
 
-        collectionView.backgroundColor = BaseColor.white
+        collectionView.backgroundColor = .clear
         collectionView.contentInset.left = 24
         collectionView.contentInset.right = 24
         collectionView.alwaysBounceHorizontal = true
@@ -62,6 +74,13 @@ extension SelectorView: UICollectionViewDelegateFlowLayout {
 
 extension SelectorView: UICollectionViewDelegate {
 
+    func collectionView(
+        _ collectionView: UICollectionView,
+        didSelectItemAt indexPath: IndexPath
+    ) {
+        selectedIndex = indexPath.item
+        delegate?.selectorView(self, didSelectItemAtIndex: indexPath.item)
+    }
 }
 
 extension SelectorView: UICollectionViewDataSource {
@@ -87,5 +106,7 @@ extension SelectorView: ResettableView {
 
     func reset() {
         titles = []
+        selectedIndex = nil
+        delegate = nil
     }
 }

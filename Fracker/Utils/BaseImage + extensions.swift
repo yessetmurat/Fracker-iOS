@@ -20,4 +20,6 @@ extension BaseImage {
     static var google: BaseImage { .init(from: .main) }
     static var arrowDown: BaseImage { .init(from: .main) }
     static var arrowUp: BaseImage { .init(from: .main) }
+    static var minus: BaseImage { .init(from: .main) }
+    static var sad: BaseImage { .init(from: .main) }
 }

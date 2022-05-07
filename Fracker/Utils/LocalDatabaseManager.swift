@@ -50,6 +50,7 @@ class LocalDatabaseManager {
     func all<T: NSManagedObject>(with predicate: NSPredicate? = nil) throws -> [T] {
         let request: NSFetchRequest<T> = NSFetchRequest<T>(entityName: String(describing: T.self))
         request.predicate = predicate
+        request.returnsObjectsAsFaults = false
 
         let result = try context.fetch(request)
         return result
