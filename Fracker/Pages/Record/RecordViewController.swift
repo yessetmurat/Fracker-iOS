@@ -372,7 +372,15 @@ extension RecordViewController: RecordViewInput {
         CATransaction.commit()
     }
 
-    func presentAuthorizationPage() {
-        router?.presentAuthorizationPage()
+    func presentAuthPage() {
+        router?.presentAuthPage()
+    }
+
+    func presentProfilePage() {
+        router?.presentProfilePage()
+    }
+
+    func reloadCategories() {
+        interactor?.loadCategories()
     }
 }

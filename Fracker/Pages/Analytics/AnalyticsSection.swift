@@ -15,4 +15,5 @@ struct AnalyticsSection {
     let title: String?
     let description: String?
     var rows: [AnalyticsRow]
+    var isLoading = false
 }

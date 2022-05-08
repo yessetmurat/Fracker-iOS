@@ -36,9 +36,7 @@ class RecordInteractor {
         categoriesService = CategoriesWorker(commonStore: commonStore)
         recordsService = RecordsWorker(commonStore: commonStore)
 
-        categoriesService.createDefaultCategoriesIfNeeded()
         categoriesService.syncronize(completion: nil)
-
         recordsService.syncronize(completion: nil)
     }
 
@@ -50,8 +48,10 @@ class RecordInteractor {
 extension RecordInteractor: RecordInteractorInput {
 
     func didTapOnLeftButton() {
-        guard commonStore.authorizationStatus == .none else { return }
-        view.presentAuthorizationPage()
+        switch commonStore.authorizationStatus {
+        case .authorized: view.presentProfilePage()
+        case .none: view.presentAuthPage()
+        }
     }
 
     func loadCategories() {
@@ -101,6 +101,12 @@ extension RecordInteractor: RecordInteractorInput {
         if textValidator.validateCharacters(in: tempString) {
             amountString = tempString
             let result = textFormatter.apply(to: amountString)
+
+            if let currency = Locale.current.currencySymbol, !currency.isEmpty, !amountString.isEmpty {
+                let currencyString = NSAttributedString(string: currency, attributes: attributes)
+                result.append(currencyString)
+            }
+
             view.setRecord(result: result)
         }
     }

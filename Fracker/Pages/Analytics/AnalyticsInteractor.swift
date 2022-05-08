@@ -17,19 +17,49 @@ class AnalyticsInteractor {
     private var filters: [AnalyticsFilter] = AnalyticsFilter.allCases
     private var selectedFilter: AnalyticsFilter = .week
 
-    init(view: AnalyticsViewInput, commonStore: CommonStore) {
+    private var currency: String { Locale.current.currencySymbol ?? "" }
+
+    init(view: AnalyticsViewInput, commonStore: CommonStore, analyticsService: AnalyticsService) {
         self.view = view
         self.commonStore = commonStore
-        analyticsService = AnalyticsWorker(commonStore: commonStore)
+        self.analyticsService = analyticsService
     }
 
-    private func totalSection(from analytics: Analytics) -> AnalyticsSection {
+    private func loadAnalytics(completion: @escaping () -> Void) {
+        analyticsService.loadAnalytics(filter: selectedFilter) { [weak self] result in
+            guard let interactor = self else { return }
+            defer { completion() }
+            interactor.view.pass(isLoading: false)
+
+            switch result {
+            case .success(let analytics):
+                guard !analytics.categories.isEmpty, let totalSection = interactor.totalSection(from: analytics) else {
+                    return
+                }
+
+                interactor.sections = [
+                    totalSection,
+                    interactor.detailsSection(from: analytics)
+                ]
+            case .failure(let error):
+                interactor.show(networkError: error, view: interactor.view)
+            }
+        }
+    }
+
+    private func totalSection(from analytics: Analytics) -> AnalyticsSection? {
+        guard let amount = analytics.total.optionalFractionDisplayedAmount,
+              let average = (analytics.total / 2).short,
+              let maximum = analytics.total.short else {
+            return nil
+        }
+
         let row = AnalyticsRow(
             id: .chart(
                 data: Chart(
                     minimum: "0",
-                    average: (analytics.total / Decimal(2)).short ?? "",
-                    maximum: analytics.total.short ?? "",
+                    average: average,
+                    maximum: maximum,
                     items: analytics.categories.map(convert)
                 ),
                 filters: filters,
@@ -40,7 +70,7 @@ class AnalyticsInteractor {
         )
         return AnalyticsSection(
             id: .total(didRise: analytics.didRise, percent: analytics.percent),
-            title: (analytics.total.displayedAmount ?? "") + "₸",
+            title: amount + currency,
             description: "Total spend this " + selectedFilter.title.lowercased(),
             rows: [row]
         )
@@ -51,7 +81,7 @@ class AnalyticsInteractor {
             id: .details,
             title: nil,
             description: nil,
-            rows: analytics.categories.map(convert)
+            rows: analytics.categories.compactMap(convert)
         )
     }
 
@@ -59,9 +89,11 @@ class AnalyticsInteractor {
         return Chart.Item(title: category.emoji, value: category.value)
     }
 
-    private func convert(_ category: AnalyticsCategory) -> AnalyticsRow {
+    private func convert(_ category: AnalyticsCategory) -> AnalyticsRow? {
+        guard let amount = category.amount.optionalFractionDisplayedAmount else { return nil }
+
         return AnalyticsRow(
-            id: .category(emoji: category.emoji, amount: (category.amount.displayedAmount ?? "") + "₸"),
+            id: .category(emoji: category.emoji, amount: amount + currency),
             title: category.name,
             description: category.recordsCount.description + " record(s)"
         )
@@ -70,64 +102,57 @@ class AnalyticsInteractor {
 
 extension AnalyticsInteractor: AnalyticsInteractorInput {
 
-    func setSections() {
+    func loadAnalytics() {
         sections = [
             AnalyticsSection(
                 id: .total(),
                 title: nil,
                 description: nil,
-                rows: [
-                    AnalyticsRow(
-                        id: .chart(),
-                        title: nil,
-                        description: nil
-                    )
-                ]
+                rows: [AnalyticsRow(id: .chart(), title: nil, description: nil)]
             ),
             AnalyticsSection(
                 id: .details,
                 title: nil,
                 description: nil,
-                rows: [
-                    AnalyticsRow(id: .category(), title: nil, description: nil),
-                    AnalyticsRow(id: .category(), title: nil, description: nil),
-                    AnalyticsRow(id: .category(), title: nil, description: nil)
-                ]
+                rows: []
             )
         ]
 
         view.pass(sections: sections)
-    }
 
-    func loadAnalytics() {
-        analyticsService.loadAnalytics(filter: selectedFilter) { [weak self] result in
+        loadAnalytics { [weak self] in
             guard let interactor = self else { return }
-
-            defer {
-                interactor.view.pass(isLoading: false)
-                interactor.view.reloadData()
-            }
-
-            switch result {
-            case .success(let analytics):
-                guard !analytics.categories.isEmpty else {
-                    return interactor.view.pass(sections: [])
-                }
-
-                interactor.sections = [
-                    interactor.totalSection(from: analytics),
-                    interactor.detailsSection(from: analytics)
-                ]
-                interactor.view.pass(sections: interactor.sections)
-            case .failure(let error):
-                interactor.show(networkError: error, view: interactor.view)
-            }
+            interactor.view.pass(sections: interactor.sections)
+            interactor.view.reloadData()
         }
     }
 
     func didSelectFilter(at index: Int) {
         guard selectedFilter != filters[index] else { return }
         selectedFilter = filters[index]
-        loadAnalytics()
+
+        guard let totalSectionIndex = sections.firstIndex(where: { section -> Bool in
+            guard case .total = section.id else { return false }
+            return true
+        }) else {
+            return
+        }
+
+        sections[totalSectionIndex].isLoading = true
+        view.update(section: sections[totalSectionIndex], at: totalSectionIndex)
+
+        loadAnalytics { [weak self] in
+            guard let interactor = self else { return }
+
+            interactor.sections[totalSectionIndex].isLoading = false
+            interactor.view.update(section: interactor.sections[totalSectionIndex], at: totalSectionIndex)
+
+            if let index = interactor.sections.firstIndex(where: { section -> Bool in
+                guard case .details = section.id else { return false }
+                return true
+            }) {
+                interactor.view.update(section: interactor.sections[index], at: index)
+            }
+        }
     }
 }

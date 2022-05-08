@@ -11,5 +11,6 @@ struct RecordRequestData: Encodable {
 
     let id: UUID
     let amount: Decimal
+    let createdAt: Date?
     let category: UUID?
 }

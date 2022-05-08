@@ -7,14 +7,19 @@
 //
 
 import NetworkKit
+import BaseKit
 
 class AuthRouter {
 
     private unowned let commonStore: CommonStore
+    private unowned let profileStore: ProfileStore
+    private unowned let parentRouter: ParentRouterInput
     private weak var view: AuthViewInput?
 
-    init(commonStore: CommonStore) {
+    init(commonStore: CommonStore, profileStore: ProfileStore, parentRouter: ParentRouterInput) {
         self.commonStore = commonStore
+        self.profileStore = profileStore
+        self.parentRouter = parentRouter
     }
 
     func compose() -> AuthViewInput {
@@ -22,7 +27,16 @@ class AuthRouter {
         view = viewController
 
         let networkService = NetworkWorker(sessionAdapter: commonStore.sessionAdapter)
-        let interactor = AuthInteractor(view: viewController, commonStore: commonStore, networkService: networkService)
+        let categoriesService = CategoriesWorker(commonStore: commonStore)
+        let recordsService = RecordsWorker(commonStore: commonStore)
+        let interactor = AuthInteractor(
+            view: viewController,
+            commonStore: commonStore,
+            profileStore: profileStore,
+            networkService: networkService,
+            categoriesService: categoriesService,
+            recordsService: recordsService
+        )
         viewController.interactor = interactor
         viewController.router = self
 
@@ -32,4 +46,7 @@ class AuthRouter {
 
 extension AuthRouter: AuthRouterInput {
 
+    func reloadParentData() {
+        parentRouter.reloadData()
+    }
 }

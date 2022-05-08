@@ -22,11 +22,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let window = UIWindow(frame: UIScreen.main.bounds)
         window.makeKeyAndVisible()
         
-        let router = RecordRouter(commonStore: commonStore)
+        let router = InitialRouter(commonStore: commonStore, window: window)
         let viewController = router.compose()
-        let navigationController = BaseNavigationController(rootViewController: viewController)
 
-        window.rootViewController = navigationController
+        window.rootViewController = viewController
 
         self.window = window
 

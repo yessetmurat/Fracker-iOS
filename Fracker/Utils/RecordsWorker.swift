@@ -24,6 +24,7 @@ class RecordsWorker: RecordsService {
         return RecordRequestData(
             id: localRecord.id,
             amount: localRecord.amount.decimalValue,
+            createdAt: localRecord.createdAt,
             category: localRecord.category?.id
         )
     }
@@ -46,7 +47,7 @@ extension RecordsWorker {
     }
 
     func create(with amount: Decimal, category: Category, completion: () -> Void) {
-        let record = RecordRequestData(id: UUID(), amount: amount, category: category.id)
+        let record = RecordRequestData(id: UUID(), amount: amount, createdAt: Date(), category: category.id)
         let predicate = NSPredicate(format: "id = %@", category.id.uuidString)
 
         guard let localCategory: LocalCategory = try? localDatabaseManager.object(with: predicate) else { return }
@@ -54,7 +55,7 @@ extension RecordsWorker {
         localDatabaseManager.create { (object: LocalRecord) in
             object.id = record.id
             object.amount = NSDecimalNumber(decimal: record.amount)
-            object.createdAt = Date()
+            object.createdAt = record.createdAt ?? Date()
             object.category = localCategory
         }
 

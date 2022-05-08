@@ -16,6 +16,6 @@ class AppleSignInNetworkContext: NetworkContext {
     let httpBody: Data?
 
     init(data: SignInData) {
-        httpBody = try? JSONEncoder().encode(data)
+        httpBody = data.encode()
     }
 }

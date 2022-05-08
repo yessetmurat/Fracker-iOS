@@ -20,6 +20,8 @@ class AuthViewController: BaseViewController {
 
     override var preferredStatusBarStyle: UIStatusBarStyle { .lightContent }
 
+    private var isLoading = false
+
     private let loadingStackView = UIStackView()
     private let activityIndicatorView = UIActivityIndicatorView(style: .medium)
     private let loadingLabel = UILabel()
@@ -166,6 +168,8 @@ extension AuthViewController: ASAuthorizationControllerDelegate {
 extension AuthViewController {
 
     var contentViewHeight: CGFloat { 24 + signInStackView.bounds.height + 24 }
+
+    var isDismissEnabled: Bool { !isLoading }
 }
 
 extension AuthViewController: AuthViewInput {
@@ -173,10 +177,7 @@ extension AuthViewController: AuthViewInput {
     func startLoading() {
         dismissSignInStackViewAnimated()
         presentLoadingStackViewAnimated()
-    }
-
-    func configureSignIn() {
-
+        self.isLoading = true
     }
 
     func set(statusText: String) {
@@ -188,5 +189,9 @@ extension AuthViewController: AuthViewInput {
         loadingLabel.layer.add(animation, forKey: CATransitionType.moveIn.rawValue)
 
         loadingLabel.text = statusText
+    }
+
+    func reloadParentData() {
+        router?.reloadParentData()
     }
 }

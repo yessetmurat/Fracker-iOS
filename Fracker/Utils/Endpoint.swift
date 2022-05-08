@@ -12,6 +12,8 @@ enum Endpoint: NetworkEndpoint {
     case apiAuthApple
     case apiAuthGoogle
 
+    case apiProfile
+
     case apiCategories
     case apiCategoriesBatch
     case apiCategoriesId(id: String)
@@ -27,6 +29,8 @@ enum Endpoint: NetworkEndpoint {
         switch self {
         case .apiAuthApple: return "/api/auth/apple"
         case .apiAuthGoogle: return "/api/auth/google"
+
+        case .apiProfile: return "/api/profile"
 
         case .apiCategories: return "/api/categories"
         case .apiCategoriesBatch: return "/api/categories/batch"

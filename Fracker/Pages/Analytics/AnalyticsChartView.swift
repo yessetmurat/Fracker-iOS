@@ -21,13 +21,21 @@ class AnalyticsChartView: UIView {
     private let selectorView = SelectorView()
 
     private var data: Chart?
-    private var filters: [AnalyticsFilter] = []
-    private var selectedFilter: AnalyticsFilter = .week
 
     weak var delegate: AnalyticsChartViewDelegate?
 
     weak var selectorDelegate: SelectorViewDelegate? {
         didSet { selectorView.delegate = selectorDelegate }
+    }
+
+    var selectorTitles: [String] {
+        get { selectorView.titles }
+        set { selectorView.titles = newValue }
+    }
+
+    var selectorSelectedIndex: Int? {
+        get { selectorView.selectedIndex }
+        set { selectorView.selectedIndex = newValue }
     }
 
     override init(frame: CGRect) {
@@ -116,18 +124,12 @@ class AnalyticsChartView: UIView {
         collectionView.register(ChartCell.self)
     }
 
-    func set(data: Chart?, filters: [AnalyticsFilter], selectedFilter: AnalyticsFilter) {
+    func set(data: Chart?) {
         self.data = data
-        self.filters = filters
-        self.selectedFilter = selectedFilter
 
         minimumLabel.text = data?.minimum
         averageLabel.text = data?.average
         maximumLabel.text = data?.maximum
-
-        selectorView.titles = filters.map { $0.title }
-        selectorView.selectedIndex = filters.firstIndex(of: selectedFilter)
-        selectorView.delegate = selectorDelegate
     }
 
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
@@ -176,8 +178,6 @@ extension AnalyticsChartView: ResettableView {
 
     func reset() {
         data = nil
-        filters = []
-        selectedFilter = .week
         delegate = nil
         minimumLabel.text = nil
         averageLabel.text = nil

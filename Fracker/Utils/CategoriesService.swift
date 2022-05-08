@@ -14,7 +14,6 @@ protocol CategoriesService {
     var commonStore: CommonStore { get }
     var networkService: NetworkService { get }
 
-    func createDefaultCategoriesIfNeeded()
     func syncronize(completion: (() -> Void)?)
 
     func load(completion: @escaping (Result<[Category], NetworkError>) -> Void)

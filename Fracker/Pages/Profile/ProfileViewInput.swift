@@ -8,6 +8,7 @@
 
 import BaseKit
 
-protocol ProfileViewInput: BaseViewInput {
+protocol ProfileViewInput: BaseViewInput, DrawerContentViewControllerProtocol {
 
+    func pass(sections: [ProfileSection])
 }

@@ -11,6 +11,6 @@ import BaseKit
 protocol AuthViewInput: BaseViewInput, DrawerContentViewControllerProtocol {
 
     func startLoading()
-    func configureSignIn()
     func set(statusText: String)
+    func reloadParentData()
 }

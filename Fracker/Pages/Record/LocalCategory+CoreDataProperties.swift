@@ -18,6 +18,8 @@ extension LocalCategory {
     @NSManaged public var id: UUID
     @NSManaged public var emoji: String
     @NSManaged public var name: String
+    @NSManaged public var createdAt: Date
+    @NSManaged public var deletedAt: Date?
     @NSManaged public var records: NSSet?
 }
 

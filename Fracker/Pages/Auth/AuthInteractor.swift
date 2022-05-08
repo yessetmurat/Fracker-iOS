@@ -15,19 +15,27 @@ class AuthInteractor {
 
     private unowned let view: AuthViewInput
     private unowned let commonStore: CommonStore
+    private unowned let profileStore: ProfileStore
     private let networkService: NetworkService
-    private let networkManager = NetworkManager()
-    private let procedureCallManager = ProcedureCallManager()
     private let categoriesService: CategoriesService
     private let recordsService: RecordsService
+    private let networkManager = NetworkManager()
+    private let procedureCallManager = ProcedureCallManager()
 
-    init(view: AuthViewInput, commonStore: CommonStore, networkService: NetworkService) {
+    init(
+        view: AuthViewInput,
+        commonStore: CommonStore,
+        profileStore: ProfileStore,
+        networkService: NetworkService,
+        categoriesService: CategoriesService,
+        recordsService: RecordsService
+    ) {
         self.view = view
         self.commonStore = commonStore
+        self.profileStore = profileStore
         self.networkService = networkService
-
-        categoriesService = CategoriesWorker(commonStore: commonStore)
-        recordsService = RecordsWorker(commonStore: commonStore)
+        self.categoriesService = categoriesService
+        self.recordsService = recordsService
     }
 
     private func executeWithDelay(completion: @escaping () -> Void) {
@@ -53,13 +61,39 @@ class AuthInteractor {
             }
         }
 
+        let profileItem = ProcedureCallItem { [weak self] completion in
+            guard let interactor = self else { return }
+
+            interactor.view.set(statusText: "Fetching profile...")
+            interactor.executeWithDelay { [weak interactor] in
+                guard let interactor = interactor else { return }
+
+                let networkContext = ProfileNetworkContext()
+                interactor.networkService.performRequest(using: networkContext) { [weak interactor] response in
+                    guard let interactor = interactor else { return }
+                    defer { completion() }
+
+                    guard response.statusCode != 401, let profile: Profile = response.decode() else {
+                        return interactor.commonStore.clearAuthData()
+                    }
+
+                    interactor.profileStore.profile = profile
+                }
+            }
+        }
+
         procedureCallManager.items.removeAll()
-        procedureCallManager.items = [categoriesItem, recordsItem]
+        procedureCallManager.items = [categoriesItem, recordsItem, profileItem]
         procedureCallManager.perform(inSequence: true) { [weak self] in
             guard let interactor = self else { return }
 
             interactor.view.set(statusText: "Done!")
-            interactor.executeWithDelay { [weak interactor] in interactor?.view.dismissDrawer(completion: nil) }
+            interactor.executeWithDelay { [weak interactor] in
+                guard let interactor = interactor else { return }
+
+                interactor.view.reloadParentData()
+                interactor.view.dismissDrawer(completion: nil)
+            }
         }
     }
 }

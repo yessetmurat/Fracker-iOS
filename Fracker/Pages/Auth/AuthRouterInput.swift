@@ -8,4 +8,5 @@
 
 protocol AuthRouterInput: AnyObject {
 
+    func reloadParentData()
 }

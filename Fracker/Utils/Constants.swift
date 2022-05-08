@@ -17,12 +17,16 @@ class Constants {
 
     class var googleClientId: String { "463288692915-9lojjug3r6toced57r3bpmdc6lu1d6bj.apps.googleusercontent.com" }
 
+    class var supportUrl: String { "https://t.me/yessetm" }
+
     class var defaultCategories: [Category] {
+        let date = Date()
+
         return [
-            Category(id: UUID(), emoji: "🍗", name: "Food"),
-            Category(id: UUID(), emoji: "🏠", name: "Communal payments"),
-            Category(id: UUID(), emoji: "🚗", name: "Transport"),
-            Category(id: UUID(), emoji: "💊", name: "Health")
+            Category(id: UUID(), emoji: "🍗", name: "Food", createdAt: date, deletedAt: nil),
+            Category(id: UUID(), emoji: "🏠", name: "Communal payments", createdAt: date, deletedAt: nil),
+            Category(id: UUID(), emoji: "🚗", name: "Transport", createdAt: date, deletedAt: nil),
+            Category(id: UUID(), emoji: "💊", name: "Health", createdAt: date, deletedAt: nil)
         ]
     }
 }

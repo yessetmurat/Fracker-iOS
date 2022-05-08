@@ -16,6 +16,6 @@ class RecordCreateNetworkContext: NetworkContext {
     let httpBody: Data?
 
     init(data: RecordRequestData) {
-        httpBody = try? JSONEncoder().encode(data)
+        httpBody = data.encode()
     }
 }

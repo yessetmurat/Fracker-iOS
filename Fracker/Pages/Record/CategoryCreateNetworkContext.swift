@@ -16,6 +16,6 @@ class CategoryCreateNetworkContext: NetworkContext {
     let httpBody: Data?
 
     init(data: Category) {
-        httpBody = try? JSONEncoder().encode(data)
+        httpBody = data.encode()
     }
 }

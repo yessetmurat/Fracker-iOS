@@ -9,17 +9,19 @@
 class ProfileRouter {
 
     private unowned let commonStore: CommonStore
+    private unowned let profileStore: ProfileStore
     private weak var view: ProfileViewInput?
 
-    init(commonStore: CommonStore) {
+    init(commonStore: CommonStore, profileStore: ProfileStore) {
         self.commonStore = commonStore
+        self.profileStore = profileStore
     }
 
     func compose() -> ProfileViewInput {
         let viewController = ProfileViewController()
         view = viewController
 
-        let interactor = ProfileInteractor(view: viewController)
+        let interactor = ProfileInteractor(view: viewController, commonStore: commonStore, profileStore: profileStore)
         viewController.interactor = interactor
         viewController.router = self
 

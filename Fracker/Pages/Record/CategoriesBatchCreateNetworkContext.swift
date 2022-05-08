@@ -16,6 +16,6 @@ class CategoriesBatchCreateNetworkContext: NetworkContext {
     let httpBody: Data?
 
     init(categories: [Category]) {
-        httpBody = try? JSONEncoder().encode(categories)
+        httpBody = categories.encode()
     }
 }

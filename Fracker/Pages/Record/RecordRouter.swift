@@ -7,14 +7,17 @@
 //
 
 import NetworkKit
+import BaseKit
 
 class RecordRouter {
 
     private unowned let commonStore: CommonStore
+    private let profileStore: ProfileStore
     private weak var view: RecordViewInput?
 
-    init(commonStore: CommonStore) {
+    init(commonStore: CommonStore, profileStore: ProfileStore) {
         self.commonStore = commonStore
+        self.profileStore = profileStore
     }
 
     func compose() -> RecordViewInput {
@@ -29,10 +32,25 @@ class RecordRouter {
     }
 }
 
+extension RecordRouter: ParentRouterInput {
+
+    func reloadData() {
+        view?.pass(isLoading: true)
+        view?.reloadCategories()
+    }
+}
+
 extension RecordRouter: RecordRouterInput {
 
-    func presentAuthorizationPage() {
-        let router = AuthRouter(commonStore: commonStore)
+    func presentAuthPage() {
+        let router = AuthRouter(commonStore: commonStore, profileStore: profileStore, parentRouter: self)
+        let viewController = router.compose()
+
+        view?.presentBottomDrawerViewController(with: viewController)
+    }
+
+    func presentProfilePage() {
+        let router = ProfileRouter(commonStore: commonStore, profileStore: profileStore)
         let viewController = router.compose()
 
         view?.presentBottomDrawerViewController(with: viewController)

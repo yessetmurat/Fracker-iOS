@@ -20,7 +20,7 @@ class SelectorView: UIView {
             guard let selectedIndex = selectedIndex else { return }
 
             collectionView.selectItem(
-                at: IndexPath(item: selectedIndex, section: 0), animated: true, scrollPosition: .left
+                at: IndexPath(item: selectedIndex, section: 0), animated: false, scrollPosition: .left
             )
         }
     }

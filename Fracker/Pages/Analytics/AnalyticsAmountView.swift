@@ -10,13 +10,15 @@ import BaseKit
 
 class AnalyticsAmountView: UIView {
 
-    private let stackView = UIStackView()
+    private let horizontalStackView = UIStackView()
+    private let verticalStackView = UIStackView()
     private let titleLabel = UILabel()
     private let descriptionStackView = UIStackView()
     private let descriptionLabel = UILabel()
     private let percentStackView = UIStackView()
     private let imageView = UIImageView()
     private let percentLabel = UILabel()
+    private let activityIndicatorView = UIActivityIndicatorView()
 
     var title: String? {
         get { titleLabel.text }
@@ -45,6 +47,12 @@ class AnalyticsAmountView: UIView {
         set { percentLabel.text = newValue }
     }
 
+    var isLoading = false {
+        didSet {
+            isLoading ? activityIndicatorView.startAnimating() : activityIndicatorView.stopAnimating()
+        }
+    }
+
     override init(frame: CGRect) {
         super.init(frame: frame)
 
@@ -54,9 +62,11 @@ class AnalyticsAmountView: UIView {
     }
 
     private func addSubviews() {
-        addSubview(stackView)
-        stackView.addArrangedSubview(titleLabel)
-        stackView.addArrangedSubview(descriptionStackView)
+        addSubview(horizontalStackView)
+        horizontalStackView.addArrangedSubview(verticalStackView)
+        horizontalStackView.addArrangedSubview(activityIndicatorView)
+        verticalStackView.addArrangedSubview(titleLabel)
+        verticalStackView.addArrangedSubview(descriptionStackView)
         descriptionStackView.addArrangedSubview(descriptionLabel)
         descriptionStackView.addArrangedSubview(percentStackView)
         percentStackView.addArrangedSubview(imageView)
@@ -66,8 +76,8 @@ class AnalyticsAmountView: UIView {
     private func setLayoutConstraints() {
         var layoutConstraints = [NSLayoutConstraint]()
 
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        layoutConstraints += stackView.getLayoutConstraints(over: self, margin: 8)
+        horizontalStackView.translatesAutoresizingMaskIntoConstraints = false
+        layoutConstraints += horizontalStackView.getLayoutConstraints(over: self, margin: 8)
 
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         layoutConstraints += [titleLabel.heightAnchor.constraint(equalToConstant: 32)]
@@ -78,14 +88,17 @@ class AnalyticsAmountView: UIView {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         layoutConstraints += [imageView.widthAnchor.constraint(equalToConstant: 16)]
 
+        activityIndicatorView.translatesAutoresizingMaskIntoConstraints = false
+        layoutConstraints += [activityIndicatorView.widthAnchor.constraint(equalToConstant: 32)]
+
         NSLayoutConstraint.activate(layoutConstraints)
     }
 
     private func stylize() {
         backgroundColor = BaseColor.white
 
-        stackView.axis = .vertical
-        stackView.alignment = .leading
+        verticalStackView.axis = .vertical
+        verticalStackView.alignment = .leading
 
         titleLabel.font = BaseFont.semibold.withSize(32)
         titleLabel.textColor = BaseColor.black
@@ -104,6 +117,8 @@ class AnalyticsAmountView: UIView {
 
         percentLabel.font = BaseFont.semibold.withSize(14)
         percentLabel.textColor = BaseColor.green
+
+        activityIndicatorView.color = BaseColor.blue
     }
 
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
@@ -116,5 +131,6 @@ extension AnalyticsAmountView: ResettableView {
         descriptionString = nil
         didRise = nil
         percent = nil
+        isLoading = false
     }
 }

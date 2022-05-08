@@ -6,6 +6,10 @@
 //  Copyright (c) 2022 ___ORGANIZATIONNAME___. All rights reserved.
 //
 
+import Foundation
+
 protocol ProfileInteractorInput: AnyObject {
 
+    func setSections()
+    func didSelectRow(at indexPath: IndexPath)
 }

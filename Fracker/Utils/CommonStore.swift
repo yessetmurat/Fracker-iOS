@@ -50,6 +50,8 @@ class CommonStore {
         return sslCertUrls.compactMap { NSData(contentsOfFile: $0.path) }
     }
 
+    var version: String? { Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String }
+
     init() {
         sessionConfiguarion.timeoutIntervalForRequest = 30
         session = URLSession(configuration: sessionConfiguarion, delegate: sessionAdapter, delegateQueue: .main)
@@ -65,5 +67,10 @@ class CommonStore {
 
     private func updateAdditionalHTTPHeaders() {
         sessionAdapter.additionalHTTPHeaders = additionalHTTPHeaders
+    }
+
+    func clearAuthData() {
+        accessToken = nil
+        KeyValueStore().removeValue(for: .token)
     }
 }

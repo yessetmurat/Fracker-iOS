@@ -43,7 +43,6 @@ class AnalyticsViewController: BaseTableViewController {
         tableView.register(ContentCell<AnalyticsCategoryView>.self)
 
         if let interactor = interactor {
-            interactor.setSections()
             interactor.loadAnalytics()
         }
     }
@@ -52,22 +51,27 @@ class AnalyticsViewController: BaseTableViewController {
 extension AnalyticsViewController {
 
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        switch sections[section].id {
-        case .total(let didRise, let percent):
-            if isLoading {
+        if isLoading {
+            if section == 0 {
                 let headerView: ContentHeaderFooterView<AnalyticsAmountShimmerView> =
-                    tableView.dequeueReusableHeaderFooter()
+                tableView.dequeueReusableHeaderFooter()
                 headerView.setMargins(bottom: 4)
                 headerView.view.startAnimating()
                 return headerView
+            } else {
+                return nil
             }
+        }
 
+        switch sections[section].id {
+        case .total(let didRise, let percent):
             let headerView: ContentHeaderFooterView<AnalyticsAmountView> = tableView.dequeueReusableHeaderFooter()
             headerView.setMargins(bottom: 4)
             headerView.view.title = sections[section].title
             headerView.view.descriptionString = sections[section].description
             headerView.view.didRise = didRise
             headerView.view.percent = percent
+            headerView.view.isLoading = sections[section].isLoading
             return headerView
         case .details:
             let headerView: ContentHeaderFooterView<SeparatorView> = tableView.dequeueReusableHeaderFooter()
@@ -79,37 +83,45 @@ extension AnalyticsViewController {
 
 extension AnalyticsViewController {
 
-    override func numberOfSections(in tableView: UITableView) -> Int { sections.count }
+    override func numberOfSections(in tableView: UITableView) -> Int { isLoading ? 2 : sections.count }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if isLoading {
+            return section == 0 ? 1 : 3
+        }
         return sections[section].rows.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let row = sections[indexPath.section].rows[indexPath.row]
-
-        switch row.id {
-        case .chart(let data, let filters, let selectedFilter):
-            if isLoading {
+        if isLoading {
+            if indexPath.section == 0 {
                 let cell: ContentCell<AnalyticsChartShimmerView> = tableView.dequeueReusableCell(for: indexPath)
                 cell.setMargins(left: 0, right: 0)
                 cell.contentSelectionStyle = .none
                 cell.view.startAnimating()
                 return cell
+            } else {
+                let cell: ContentCell<AnalyticsCategoryShimmerView> = tableView.dequeueReusableCell(for: indexPath)
+                cell.contentSelectionStyle = .none
+                cell.view.startAnimating()
+                return cell
             }
+        }
+
+        let row = sections[indexPath.section].rows[indexPath.row]
+
+        switch row.id {
+        case .chart(let data, let filters, let selectedFilter):
             let cell: ContentCell<AnalyticsChartView> = tableView.dequeueReusableCell(for: indexPath)
             cell.setMargins(left: 0, right: 0)
             cell.contentSelectionStyle = .none
             cell.view.delegate = self
             cell.view.selectorDelegate = self
-            cell.view.set(data: data, filters: filters, selectedFilter: selectedFilter)
+            cell.view.set(data: data)
+            cell.view.selectorTitles = filters.map { $0.title }
+            cell.view.selectorSelectedIndex = filters.firstIndex(of: selectedFilter)
             return cell
         case .category(let emoji, let amount):
-            if isLoading {
-                let cell: ContentCell<AnalyticsCategoryShimmerView> = tableView.dequeueReusableCell(for: indexPath)
-                cell.view.startAnimating()
-                return cell
-            }
             let cell: ContentCell<AnalyticsCategoryView> = tableView.dequeueReusableCell(for: indexPath)
             cell.view.emoji = emoji
             cell.view.title = row.title
@@ -149,15 +161,30 @@ extension AnalyticsViewController: AnalyticsViewInput {
         tableView.reloadData()
     }
 
-    func update(row: AnalyticsRow, at indexPath: IndexPath) {
-        sections[indexPath.section].rows[indexPath.row] = row
+    func update(section: AnalyticsSection, at index: Int) {
+        self.sections[index] = section
 
-        switch row.id {
-        case .chart(let data, let filters, let selectedFilter):
-            guard let cell = tableView.cellForRow(at: indexPath) as? ContentCell<AnalyticsChartView> else { return }
-            cell.view.set(data: data, filters: filters, selectedFilter: selectedFilter)
-        default:
-            return
+        switch section.id {
+        case .total(let didRise, let percent):
+            if let headerView =
+                tableView.headerView(forSection: index) as? ContentHeaderFooterView<AnalyticsAmountView> {
+                headerView.view.title = section.title
+                headerView.view.descriptionString = section.description
+                headerView.view.didRise = didRise
+                headerView.view.percent = percent
+                headerView.view.isLoading = section.isLoading
+            }
+
+            for (rowIndex, row) in section.rows.enumerated() {
+                let indexPath = IndexPath(row: rowIndex, section: index)
+
+                if case .chart(let data, _, _) = row.id,
+                   let cell = tableView.cellForRow(at: indexPath) as? ContentCell<AnalyticsChartView> {
+                    cell.view.set(data: data)
+                }
+            }
+        case .details:
+            tableView.reloadSections(IndexSet(integer: index), with: .none)
         }
     }
 }

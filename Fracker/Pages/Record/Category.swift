@@ -12,6 +12,8 @@ struct Category: Codable, Hashable {
     let id: UUID
     let emoji: String
     let name: String
+    let createdAt: Date?
+    let deletedAt: Date?
 }
 
 extension Category {

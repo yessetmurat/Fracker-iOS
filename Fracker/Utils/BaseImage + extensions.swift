@@ -22,4 +22,8 @@ extension BaseImage {
     static var arrowUp: BaseImage { .init(from: .main) }
     static var minus: BaseImage { .init(from: .main) }
     static var sad: BaseImage { .init(from: .main) }
+    static var support: BaseImage { .init(from: .main) }
+    static var logout: BaseImage { .init(from: .main) }
+    static var arrowRight: BaseImage { .init(from: .main) }
+    static var alertCircle: BaseImage { .init(from: .main) }
 }

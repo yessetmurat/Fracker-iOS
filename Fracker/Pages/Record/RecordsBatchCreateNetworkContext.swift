@@ -16,6 +16,6 @@ class RecordsBatchCreateNetworkContext: NetworkContext {
     let httpBody: Data?
 
     init(records: [RecordRequestData]) {
-        httpBody = try? JSONEncoder().encode(records)
+        httpBody = records.encode()
     }
 }

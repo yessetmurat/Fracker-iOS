@@ -8,7 +8,6 @@
 
 protocol AnalyticsInteractorInput: AnyObject, InteractorInput {
 
-    func setSections()
     func loadAnalytics()
     func didSelectFilter(at index: Int)
 }

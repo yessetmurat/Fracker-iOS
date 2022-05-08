@@ -47,9 +47,19 @@ class LocalDatabaseManager {
         return result.first
     }
 
-    func all<T: NSManagedObject>(with predicate: NSPredicate? = nil) throws -> [T] {
+    func update<T: NSManagedObject>(with predicate: NSPredicate, completion: (T) -> Void) throws {
+        guard let object: T = try object(with: predicate) else { return }
+        completion(object)
+        saveContext()
+    }
+
+    func all<T: NSManagedObject>(
+        with predicate: NSPredicate? = nil,
+        sortDescriptors: [NSSortDescriptor]? = nil
+    ) throws -> [T] {
         let request: NSFetchRequest<T> = NSFetchRequest<T>(entityName: String(describing: T.self))
         request.predicate = predicate
+        request.sortDescriptors = sortDescriptors
         request.returnsObjectsAsFaults = false
 
         let result = try context.fetch(request)
