@@ -35,6 +35,8 @@ class CommonStore {
             headers["Authorization"] = "Bearer " + accessToken
         }
 
+        headers["Language"] = Locale.current.languageCode ?? "en"
+
         return headers
     }
 

@@ -69,7 +69,6 @@ class AnalyticsCategoryShimmerView: UIView {
     }
 
     private func stylize() {
-        stackView.axis = .horizontal
         stackView.spacing = 12
         stackView.alignment = .center
 

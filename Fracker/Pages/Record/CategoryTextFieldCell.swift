@@ -73,8 +73,6 @@ class CategoryTextFieldCell: UICollectionViewCell {
         containerView.layer.cornerRadius = 10
         containerView.clipsToBounds = true
 
-        stackView.axis = .horizontal
-
         emojiTextField.font = BaseFont.semibold.withSize(14)
         emojiTextField.textColor = BaseColor.black
 

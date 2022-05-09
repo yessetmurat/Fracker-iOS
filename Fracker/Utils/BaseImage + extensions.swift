@@ -18,6 +18,7 @@ extension BaseImage {
     static var eye: BaseImage { .init(from: .main) }
     static var eyeOff: BaseImage { .init(from: .main) }
     static var google: BaseImage { .init(from: .main) }
+    static var apple: BaseImage { .init(from: .main) }
     static var arrowDown: BaseImage { .init(from: .main) }
     static var arrowUp: BaseImage { .init(from: .main) }
     static var minus: BaseImage { .init(from: .main) }

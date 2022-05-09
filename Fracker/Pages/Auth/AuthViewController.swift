@@ -84,7 +84,6 @@ class AuthViewController: BaseViewController {
         loadingStackView.axis = .vertical
         loadingStackView.spacing = 16
 
-        loadingLabel.text = "Signing in..."
         loadingLabel.font = BaseFont.semibold
         loadingLabel.textAlignment = .center
         loadingLabel.textColor = BaseColor.gray
@@ -99,7 +98,7 @@ class AuthViewController: BaseViewController {
         googleSignInButton.setImage(
             BaseImage.google.uiImage?.fitThenCenter(in: CGSize(width: 16, height: 16)), for: .normal
         )
-        googleSignInButton.setTitle("Sign in with Google", for: .normal)
+        googleSignInButton.setTitle("Auth.google".localized, for: .normal)
         googleSignInButton.tintColor = BaseColor.white
         googleSignInButton.titleLabel?.font = BaseFont.medium.withSize(20)
         googleSignInButton.titleEdgeInsets.left = 15

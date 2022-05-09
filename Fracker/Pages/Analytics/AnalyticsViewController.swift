@@ -25,9 +25,10 @@ class AnalyticsViewController: BaseTableViewController {
     }
 
     private func stylize() {
-        title = "Analytics"
+        title = "Analytics.title".localized
         view.backgroundColor = BaseColor.white
 
+        tableView.showsVerticalScrollIndicator = false
         tableView.tableHeaderView = UIView(frame: UIConstants.invisibleViewFrame)
         tableView.tableFooterView = UIView(frame: UIConstants.invisibleViewFrame)
         tableView.sectionFooterHeight = 0
@@ -158,7 +159,10 @@ extension AnalyticsViewController: AnalyticsViewInput {
     }
 
     func reloadData() {
-        tableView.reloadData()
+        let indexSets = sections.indices.map { IndexSet(integer: $0) }
+        tableView.performBatchUpdates {
+            indexSets.forEach { tableView.reloadSections($0, with: .fade) }
+        }
     }
 
     func update(section: AnalyticsSection, at index: Int) {
@@ -184,7 +188,7 @@ extension AnalyticsViewController: AnalyticsViewInput {
                 }
             }
         case .details:
-            tableView.reloadSections(IndexSet(integer: index), with: .none)
+            tableView.reloadSections(IndexSet(integer: index), with: .automatic)
         }
     }
 }

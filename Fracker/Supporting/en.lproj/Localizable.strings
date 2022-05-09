@@ -6,3 +6,31 @@
   
 */
 
+"Common.cancel" = "Cancel";
+"Common.attention" = "Attention!";
+"Common.appVersion" = "App version:";
+
+"Error.unknown" = "The service is temporarily unavailable. Please try again later";
+"Error.cancelled" = "Unexpected error!";
+"Error.dataLoad" = "There was a problem during the data load";
+"Error.timedOut" = "The request timed out";
+
+"Auth.google" = "Sign in with Google";
+"Auth.signingIn" = "Signing in...";
+"Auth.syncingCategories" = "Syncing categories...";
+"Auth.syncingRecords" = "Syncing records...";
+"Auth.fetchingProfile" = "Fetching profile...";
+"Auth.done" = "Done!";
+"Auth.credentialsError" = "Unable to get credentials";
+
+"Profile.support" = "Contact support";
+"Profile.logout" = "Log out";
+"Profile.logoutInfo" = "Your records will only be stored on your phone, are you sure you want to log out?";
+
+"Analytics.title" = "Analytics";
+"Analytics.spend" = "Total spend this ";
+"Analytics.thisWeek" = "week";
+"Analytics.week" = "Week";
+"Analytics.month" = "Month";
+"Analytics.year" = "Year";
+"Analytics.records" = "record(s)";

@@ -6,3 +6,31 @@
   
 */
 
+"Common.cancel" = "Отмена";
+"Common.attention" = "Внимание!";
+"Common.appVersion" = "Версия приложения:";
+
+"Error.unknown" = "Сервис временно недоступна. Пожалуйста, повторите попытку позже";
+"Error.cancelled" = "Неожиданная ошибка!";
+"Error.dataLoad" = "Возникла проблема во время загрузки данных";
+"Error.timedOut" = "Время запроса истекло";
+
+"Auth.google" = "Вход с Google";
+"Auth.signingIn" = "Вход...";
+"Auth.syncingCategories" = "Синхронизация категорий...";
+"Auth.syncingRecords" = "Синхронизация записей...";
+"Auth.fetchingProfile" = "Получение профиля...";
+"Auth.done" = "Готово!";
+"Auth.credentialsError" = "Не удалось получить учетные данные";
+
+"Profile.support" = "Связаться со службой поддержки";
+"Profile.logout" = "Выйти";
+"Profile.logoutInfo" = "Ваши записи будут храниться только на вашем телефоне. Вы уверены, что хотите выйти?";
+
+"Analytics.title" = "Аналитика";
+"Analytics.spend" = "Общие расходы за";
+"Analytics.thisWeek" = "неделю";
+"Analytics.week" = "Неделя";
+"Analytics.month" = "Месяц";
+"Analytics.year" = "Год";
+"Analytics.records" = "запись(ей)";

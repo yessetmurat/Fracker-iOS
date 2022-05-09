@@ -16,6 +16,7 @@ class RecordInteractor {
     private unowned let commonStore: CommonStore
     private let categoriesService: CategoriesService
     private let recordsService: RecordsService
+    private let procedureCallManager = ProcedureCallManager()
 
     private var attributes: [NSAttributedString.Key: Any] {
         return [.font: BaseFont.semibold.withSize(64), .foregroundColor: BaseColor.black]
@@ -40,6 +41,21 @@ class RecordInteractor {
         recordsService.syncronize(completion: nil)
     }
 
+    private func loadCategories(completion: (() -> Void)?) {
+        categoriesService.load { [weak self] result in
+            guard let interactor = self else { return }
+            defer { completion?() }
+
+            switch result {
+            case .success(let categories):
+                interactor.categories = categories
+                interactor.view.pass(categories: interactor.categories)
+            case .failure:
+                return
+            }
+        }
+    }
+
     private func deselectWithDelay(at indexPath: IndexPath) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in self?.view.deselectItem(at: indexPath) }
     }
@@ -55,24 +71,18 @@ extension RecordInteractor: RecordInteractorInput {
     }
 
     func loadCategories() {
-        categoriesService.load { [weak self] result in
-            guard let interactor = self else { return }
-
-            interactor.view.pass(isLoading: false)
-
-            switch result {
-            case .success(let categories):
-                interactor.categories = categories
-                interactor.view.pass(categories: interactor.categories)
-                interactor.view.reloadCollectionView()
-            case .failure:
-                return
-            }
-        }
+        loadCategories { [weak self] in self?.view.pass(isLoading: false) }
     }
 
     func createCategory(withEmoji emoji: String, name: String) {
-        categoriesService.create(withEmoji: emoji, name: name) { [weak self] in self?.loadCategories() }
+        categoriesService.create(withEmoji: emoji, name: name) { [weak self] in
+            self?.loadCategories { [weak self] in
+                guard let interactor = self else { return }
+                let indexPath = IndexPath(item: interactor.categories.count - 1, section: 0)
+                interactor.view.insert(at: [indexPath])
+                interactor.view.scrollToItem(at: indexPath)
+            }
+        }
     }
 
     func removeCategory(at indexPath: IndexPath) {
@@ -83,7 +93,7 @@ extension RecordInteractor: RecordInteractorInput {
 
             interactor.categories.remove(at: indexPath.item)
             interactor.view.pass(categories: interactor.categories)
-            interactor.view.reloadCollectionView()
+            interactor.view.delete(at: [indexPath])
         }
     }
 

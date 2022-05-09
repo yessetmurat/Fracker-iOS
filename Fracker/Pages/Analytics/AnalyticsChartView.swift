@@ -95,7 +95,6 @@ class AnalyticsChartView: UIView {
         contentView.layer.cornerRadius = 10
         contentView.clipsToBounds = true
 
-        stackView.axis = .horizontal
         stackView.spacing = 16
         stackView.alignment = .top
 

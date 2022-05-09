@@ -71,7 +71,7 @@ class AnalyticsInteractor {
         return AnalyticsSection(
             id: .total(didRise: analytics.didRise, percent: analytics.percent),
             title: amount + currency,
-            description: "Total spend this " + selectedFilter.title.lowercased(),
+            description: "Analytics.spend".localized + " " + selectedFilter.description,
             rows: [row]
         )
     }
@@ -95,7 +95,7 @@ class AnalyticsInteractor {
         return AnalyticsRow(
             id: .category(emoji: category.emoji, amount: amount + currency),
             title: category.name,
-            description: category.recordsCount.description + " record(s)"
+            description: category.recordsCount.description + " " + "Analytics.records".localized
         )
     }
 }
@@ -103,27 +103,12 @@ class AnalyticsInteractor {
 extension AnalyticsInteractor: AnalyticsInteractorInput {
 
     func loadAnalytics() {
-        sections = [
-            AnalyticsSection(
-                id: .total(),
-                title: nil,
-                description: nil,
-                rows: [AnalyticsRow(id: .chart(), title: nil, description: nil)]
-            ),
-            AnalyticsSection(
-                id: .details,
-                title: nil,
-                description: nil,
-                rows: []
-            )
-        ]
-
-        view.pass(sections: sections)
-
         loadAnalytics { [weak self] in
             guard let interactor = self else { return }
             interactor.view.pass(sections: interactor.sections)
-            interactor.view.reloadData()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { [weak interactor] in
+                interactor?.view.reloadData()
+            }
         }
     }
 

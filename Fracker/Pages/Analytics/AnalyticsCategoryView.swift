@@ -73,7 +73,6 @@ class AnalyticsCategoryView: UIView {
     }
 
     private func stylize() {
-        horizontalStackView.axis = .horizontal
         horizontalStackView.spacing = 12
         horizontalStackView.distribution = .fill
 

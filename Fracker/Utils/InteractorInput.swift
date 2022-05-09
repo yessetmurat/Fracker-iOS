@@ -19,16 +19,20 @@ extension InteractorInput {
         guard !response.success else { return false }
 
         let errorDescription = ErrorDescriptor.convert(response).text
-        view.showAlert(message: errorDescription)
+        view.showAlert(
+            title: "Common.attention".localized,
+            message: errorDescription,
+            image: BaseImage.alertCircle.uiImage
+        )
 
         return true
     }
 
     func show(error: DisplayedError, view: BaseViewInput) {
         if let title = error.title {
-            view.showAlert(title: title, message: error.text)
+            view.showAlert(title: title, message: error.text, image: BaseImage.alertCircle.uiImage)
         } else {
-            view.showAlert(message: error.text)
+            view.showAlert(message: error.text, image: BaseImage.alertCircle.uiImage)
         }
     }
 

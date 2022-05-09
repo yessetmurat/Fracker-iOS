@@ -13,9 +13,16 @@ enum AnalyticsFilter: String, CaseIterable {
 
     var title: String {
         switch self {
-        case .week: return "Week"
-        case .month: return "Month"
-        case .year: return "Year"
+        case .week: return "Analytics.week".localized
+        case .month: return "Analytics.month".localized
+        case .year: return "Analytics.year".localized
+        }
+    }
+
+    var description: String {
+        switch self {
+        case .week: return "Analytics.thisWeek".localized
+        default: return title.lowercased()
         }
     }
 }

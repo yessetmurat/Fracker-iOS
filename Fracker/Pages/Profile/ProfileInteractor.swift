@@ -38,10 +38,20 @@ extension ProfileInteractor: ProfileInteractorInput {
                 title: name,
                 description: email,
                 rows: [
-                    ProfileRow(id: .support, title: "Support", image: .support, accessoryImage: .arrowRight),
-                    ProfileRow(id: .logout, title: "Log out", image: .logout, accessoryImage: nil)
+                    ProfileRow(
+                        id: .support,
+                        title: "Profile.support".localized,
+                        image: .support,
+                        accessoryImage: .arrowRight
+                    ),
+                    ProfileRow(
+                        id: .logout,
+                        title: "Profile.logout".localized,
+                        image: .logout,
+                        accessoryImage: nil
+                    )
                 ],
-                value: "Version " + version
+                value: "Common.appVersion".localized + " " + version
             )
         ]
 
@@ -58,16 +68,20 @@ extension ProfileInteractor: ProfileInteractorInput {
                 UIApplication.shared.open(url)
             }
         case .logout:
-            let okAction = BaseAlertAction(title: "Log out", isBold: true, isWarning: true) { [weak self] in
+            let okAction = BaseAlertAction(
+                title: "Profile.logout".localized,
+                isBold: true,
+                isWarning: true
+            ) { [weak self] in
                 guard let interactor = self else { return }
                 interactor.commonStore.clearAuthData()
                 interactor.view.dismissDrawer(completion: nil)
             }
-            let cancelAction = BaseAlertAction(title: "Cancel")
+            let cancelAction = BaseAlertAction(title: "Common.cancel".localized)
 
             view.showAlert(
-                title: "Attention!",
-                message: "Your records will only be stored on your phone, are you sure you want to log out?",
+                title: "Common.attention".localized,
+                message: "Profile.logoutInfo".localized,
                 image: BaseImage.alertCircle.uiImage,
                 yesAction: okAction,
                 noAction: cancelAction

@@ -24,7 +24,7 @@ class ErrorDescriptor {
         } else if let error = response.error as NSError? {
             text = error.description
         } else {
-            text = "The service is temporarily unavailable. Please try again later"
+            text = "Error.unknown".localized
         }
 
         return DisplayedError(text: text)
@@ -34,10 +34,10 @@ class ErrorDescriptor {
         let text: String
 
         switch networkError {
-        case .unknown: text = "The service is temporarily unavailable. Please try again later"
-        case .cancelled: text = "Unexpected error!"
-        case .dataLoad: text = "There was a problem during the data load"
-        case .timedOut: text = "The request timed out"
+        case .unknown: text = "Error.unknown".localized
+        case .cancelled: text = "Error.cancelled".localized
+        case .dataLoad: text = "Error.dataLoad".localized
+        case .timedOut: text = "Error.timedOut".localized
         default: return convert(networkError: .unknown)
         }
 
@@ -48,7 +48,7 @@ class ErrorDescriptor {
         let text: String
 
         switch localError {
-        case .unknown: text = "he service is temporarily unavailable. Please try again later"
+        case .unknown: text = "Error.unknown".localized
         case .message(let string): text = string
         }
 

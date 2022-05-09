@@ -97,19 +97,19 @@ class AnalyticsAmountView: UIView {
     private func stylize() {
         backgroundColor = BaseColor.white
 
+        horizontalStackView.alignment = .top
+
         verticalStackView.axis = .vertical
         verticalStackView.alignment = .leading
 
         titleLabel.font = BaseFont.semibold.withSize(32)
         titleLabel.textColor = BaseColor.black
 
-        descriptionStackView.axis = .horizontal
         descriptionStackView.spacing = 8
 
         descriptionLabel.font = BaseFont.semibold.withSize(14)
         descriptionLabel.textColor = BaseColor.gray
 
-        percentStackView.axis = .horizontal
         percentStackView.spacing = 4
 
         imageView.image = BaseImage.arrowDown.uiImage

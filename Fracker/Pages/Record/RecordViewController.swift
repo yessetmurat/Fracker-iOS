@@ -341,8 +341,20 @@ extension RecordViewController: RecordViewInput {
         reloadWithAnimation()
     }
 
+    func insert(at indexPaths: [IndexPath]) {
+        collectionView.performBatchUpdates {
+            collectionView.insertItems(at: indexPaths)
+        }
+    }
+
+    func delete(at indexPaths: [IndexPath]) {
+        collectionView.performBatchUpdates {
+            collectionView.deleteItems(at: indexPaths)
+        }
+    }
+
     func scrollToItem(at indexPath: IndexPath) {
-        collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        collectionView.scrollToItem(at: indexPath, at: .right, animated: true)
     }
 
     func setRecord(result: NSAttributedString) {

@@ -46,7 +46,7 @@ class AuthInteractor {
         let categoriesItem = ProcedureCallItem { [weak self] completion in
             guard let interactor = self else { return }
 
-            interactor.view.set(statusText: "Syncing categories...")
+            interactor.view.set(statusText: "Auth.syncingCategories".localized)
             interactor.executeWithDelay { [weak interactor] in
                 interactor?.categoriesService.syncronize(completion: completion)
             }
@@ -55,7 +55,7 @@ class AuthInteractor {
         let recordsItem = ProcedureCallItem { [weak self] completion in
             guard let interactor = self else { return }
 
-            interactor.view.set(statusText: "Syncing records...")
+            interactor.view.set(statusText: "Auth.syncingRecords".localized)
             interactor.executeWithDelay { [weak interactor] in
                 interactor?.recordsService.syncronize(completion: completion)
             }
@@ -64,7 +64,7 @@ class AuthInteractor {
         let profileItem = ProcedureCallItem { [weak self] completion in
             guard let interactor = self else { return }
 
-            interactor.view.set(statusText: "Fetching profile...")
+            interactor.view.set(statusText: "Auth.fetchingProfile".localized)
             interactor.executeWithDelay { [weak interactor] in
                 guard let interactor = interactor else { return }
 
@@ -87,7 +87,7 @@ class AuthInteractor {
         procedureCallManager.perform(inSequence: true) { [weak self] in
             guard let interactor = self else { return }
 
-            interactor.view.set(statusText: "Done!")
+            interactor.view.set(statusText: "Auth.done".localized)
             interactor.executeWithDelay { [weak interactor] in
                 guard let interactor = interactor else { return }
 
@@ -104,11 +104,11 @@ extension AuthInteractor: AuthInteractorInput {
         guard let credential = authorization.credential as? ASAuthorizationAppleIDCredential,
               let identityToken = credential.identityToken,
               let identityTokenString = String(data: identityToken, encoding: .utf8) else {
-            return view.showAlert(message: "Unable to get credentials")
+            return view.showAlert(message: "Auth.credentialsError".localized)
         }
 
         view.startLoading()
-        view.set(statusText: "Signing in...")
+        view.set(statusText: "Auth.signingIn".localized)
 
         let data = SignInData(
             idToken: identityTokenString,
@@ -133,7 +133,7 @@ extension AuthInteractor: AuthInteractorInput {
 
     func signInWithGoogle() {
         view.startLoading()
-        view.set(statusText: "Signing in...")
+        view.set(statusText: "Auth.signingIn".localized)
 
         let configuration = GIDConfiguration(clientID: Constants.googleClientId)
         GIDSignIn.sharedInstance.signIn(with: configuration, presenting: view) { [weak self] user, error in

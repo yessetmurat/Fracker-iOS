@@ -14,6 +14,8 @@ protocol RecordViewInput: BaseViewInput, ShakableView {
     func pass(isLoading: Bool)
     func pass(categories: [Category])
     func reloadCollectionView()
+    func insert(at indexPaths: [IndexPath])
+    func delete(at indexPaths: [IndexPath])
     func scrollToItem(at indexPath: IndexPath)
     func setRecord(result: NSAttributedString)
     func deselectItem(at indexPath: IndexPath)
