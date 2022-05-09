@@ -65,6 +65,7 @@ extension ProfileViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let footerView: ContentHeaderFooterView<ProfileVersionView> = tableView.dequeueReusableHeaderFooter()
+        footerView.setMargins(top: 8, bottom: 8)
         footerView.view.text = sections[section].value
         return footerView
     }

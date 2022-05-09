@@ -151,7 +151,6 @@ extension AnalyticsViewController: AnalyticsViewInput {
 
     func pass(sections: [AnalyticsSection]) {
         self.sections = sections
-        tableView.backgroundView = sections.isEmpty ? NothingToShowView() : nil
     }
 
     func pass(isLoading: Bool) {
@@ -159,10 +158,16 @@ extension AnalyticsViewController: AnalyticsViewInput {
     }
 
     func reloadData() {
-        let indexSets = sections.indices.map { IndexSet(integer: $0) }
-        tableView.performBatchUpdates {
-            indexSets.forEach { tableView.reloadSections($0, with: .fade) }
+        if sections.isEmpty {
+            tableView.reloadData()
+        } else {
+            let indexSets = sections.indices.map { IndexSet(integer: $0) }
+            tableView.performBatchUpdates {
+                indexSets.forEach { tableView.reloadSections($0, with: .fade) }
+            }
         }
+
+        tableView.backgroundView = sections.isEmpty ? NothingToShowView() : nil
     }
 
     func update(section: AnalyticsSection, at index: Int) {
