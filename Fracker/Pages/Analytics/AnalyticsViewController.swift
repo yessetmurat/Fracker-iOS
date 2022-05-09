@@ -42,6 +42,7 @@ class AnalyticsViewController: BaseTableViewController {
         tableView.register(ContentHeaderFooterView<SeparatorView>.self)
         tableView.register(ContentCell<AnalyticsCategoryShimmerView>.self)
         tableView.register(ContentCell<AnalyticsCategoryView>.self)
+        tableView.register(ContentHeaderFooterView<LabelView>.self)
 
         if let interactor = interactor {
             interactor.loadAnalytics()
@@ -62,6 +63,10 @@ extension AnalyticsViewController {
             } else {
                 return nil
             }
+        } else if sections.isEmpty {
+            let headerView: ContentHeaderFooterView<LabelView> = tableView.dequeueReusableHeaderFooter()
+            headerView.view.text = "Analytics.nothingToShow".localized
+            return headerView
         }
 
         switch sections[section].id {
@@ -84,13 +89,16 @@ extension AnalyticsViewController {
 
 extension AnalyticsViewController {
 
-    override func numberOfSections(in tableView: UITableView) -> Int { isLoading ? 2 : sections.count }
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        guard !isLoading else { return 2 }
+        return sections.isEmpty ? 1 : sections.count
+    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isLoading {
             return section == 0 ? 1 : 3
         }
-        return sections[section].rows.count
+        return sections.isEmpty ? 0 : sections[section].rows.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -166,8 +174,6 @@ extension AnalyticsViewController: AnalyticsViewInput {
                 indexSets.forEach { tableView.reloadSections($0, with: .fade) }
             }
         }
-
-        tableView.backgroundView = sections.isEmpty ? NothingToShowView() : nil
     }
 
     func update(section: AnalyticsSection, at index: Int) {

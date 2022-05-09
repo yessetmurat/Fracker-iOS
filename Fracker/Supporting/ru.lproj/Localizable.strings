@@ -34,3 +34,4 @@
 "Analytics.month" = "Месяц";
 "Analytics.year" = "Год";
 "Analytics.records" = "запись(ей)";
+"Analytics.nothingToShow" = "Нечего показывать. Попробуйте позже...";

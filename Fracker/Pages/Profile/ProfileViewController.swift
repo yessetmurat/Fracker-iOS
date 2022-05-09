@@ -46,7 +46,7 @@ class ProfileViewController: BaseViewController {
         tableView.dataSource = self
         tableView.register(ContentHeaderFooterView<ProfileView>.self)
         tableView.register(ContentCell<ProfileActionView>.self)
-        tableView.register(ContentHeaderFooterView<ProfileVersionView>.self)
+        tableView.register(ContentHeaderFooterView<LabelView>.self)
 
         if let interactor = interactor {
             interactor.setSections()
@@ -64,7 +64,7 @@ extension ProfileViewController: UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let footerView: ContentHeaderFooterView<ProfileVersionView> = tableView.dequeueReusableHeaderFooter()
+        let footerView: ContentHeaderFooterView<LabelView> = tableView.dequeueReusableHeaderFooter()
         footerView.setMargins(top: 8, bottom: 8)
         footerView.view.text = sections[section].value
         return footerView

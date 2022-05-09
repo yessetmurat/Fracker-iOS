@@ -25,7 +25,6 @@
 		410D63E52826C0A400901296 /* AnalyticsChartShimmerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410D63E42826C0A400901296 /* AnalyticsChartShimmerView.swift */; };
 		410D63E72826C0C800901296 /* AnalyticsCategoryShimmerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410D63E62826C0C800901296 /* AnalyticsCategoryShimmerView.swift */; };
 		410D63EA2826FC2900901296 /* AnalyticsNetworkContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410D63E92826FC2900901296 /* AnalyticsNetworkContext.swift */; };
-		410D63EC2826FF7700901296 /* NothingToShowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410D63EB2826FF7600901296 /* NothingToShowView.swift */; };
 		411714F9281D3F5B004D2509 /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411714F8281D3F5B004D2509 /* Record.swift */; };
 		4129231B281489FB0001086C /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4129231A281489FB0001086C /* CategoryCell.swift */; };
 		4129231D28148E990001086C /* CategoryAddCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4129231C28148E990001086C /* CategoryAddCell.swift */; };
@@ -79,10 +78,10 @@
 		41C69D492814B2BD0076B354 /* LocalError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C69D482814B2BD0076B354 /* LocalError.swift */; };
 		41C69D4B2814B30B0076B354 /* NetworkError + extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C69D4A2814B30B0076B354 /* NetworkError + extensions.swift */; };
 		41C69D4D2814B74B0076B354 /* yessetmurat.com.crt in Resources */ = {isa = PBXBuildFile; fileRef = 41C69D4C2814B74B0076B354 /* yessetmurat.com.crt */; };
+		41C7D6BD28294FDA0032638A /* LabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C7D6BC28294FDA0032638A /* LabelView.swift */; };
 		41CA852C28291D8A00D00395 /* String + extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CA852B28291D8A00D00395 /* String + extensions.swift */; };
 		41CA86592827CDAB007B8C3C /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CA86582827CDAB007B8C3C /* ProfileView.swift */; };
 		41CA865B2827E293007B8C3C /* ProfileActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CA865A2827E293007B8C3C /* ProfileActionView.swift */; };
-		41CA865D2827E83B007B8C3C /* ProfileVersionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CA865C2827E83A007B8C3C /* ProfileVersionView.swift */; };
 		41CA86632827ECFD007B8C3C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 41CA86652827ECFD007B8C3C /* Localizable.strings */; };
 		41CA866D2827F266007B8C3C /* ProfileSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CA866C2827F266007B8C3C /* ProfileSection.swift */; };
 		41CA866F2827F28F007B8C3C /* ProfileRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CA866E2827F28F007B8C3C /* ProfileRow.swift */; };
@@ -160,7 +159,6 @@
 		410D63E42826C0A400901296 /* AnalyticsChartShimmerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsChartShimmerView.swift; sourceTree = "<group>"; };
 		410D63E62826C0C800901296 /* AnalyticsCategoryShimmerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsCategoryShimmerView.swift; sourceTree = "<group>"; };
 		410D63E92826FC2900901296 /* AnalyticsNetworkContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsNetworkContext.swift; sourceTree = "<group>"; };
-		410D63EB2826FF7600901296 /* NothingToShowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NothingToShowView.swift; sourceTree = "<group>"; };
 		411714F8281D3F5B004D2509 /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
 		4129231A281489FB0001086C /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
 		4129231C28148E990001086C /* CategoryAddCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryAddCell.swift; sourceTree = "<group>"; };
@@ -219,10 +217,10 @@
 		41C69D482814B2BD0076B354 /* LocalError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalError.swift; sourceTree = "<group>"; };
 		41C69D4A2814B30B0076B354 /* NetworkError + extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkError + extensions.swift"; sourceTree = "<group>"; };
 		41C69D4C2814B74B0076B354 /* yessetmurat.com.crt */ = {isa = PBXFileReference; lastKnownFileType = file; path = yessetmurat.com.crt; sourceTree = "<group>"; };
+		41C7D6BC28294FDA0032638A /* LabelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelView.swift; sourceTree = "<group>"; };
 		41CA852B28291D8A00D00395 /* String + extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + extensions.swift"; sourceTree = "<group>"; };
 		41CA86582827CDAB007B8C3C /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		41CA865A2827E293007B8C3C /* ProfileActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileActionView.swift; sourceTree = "<group>"; };
-		41CA865C2827E83A007B8C3C /* ProfileVersionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVersionView.swift; sourceTree = "<group>"; };
 		41CA86612827ECB2007B8C3C /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		41CA86642827ECFD007B8C3C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		41CA86672827ED08007B8C3C /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -590,7 +588,6 @@
 				41CA866B2827F23E007B8C3C /* Entities */,
 				41CA86582827CDAB007B8C3C /* ProfileView.swift */,
 				41CA865A2827E293007B8C3C /* ProfileActionView.swift */,
-				41CA865C2827E83A007B8C3C /* ProfileVersionView.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -722,11 +719,11 @@
 		41F144ED281D6B1B00221A31 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				41C7D6BC28294FDA0032638A /* LabelView.swift */,
 				41F943092825B5C20059C693 /* Selector view */,
 				412E3DA42815CAF200B8D8DD /* ShakableView.swift */,
 				41F144EE281D6B3400221A31 /* EmojiTextField.swift */,
 				410D63C628266A2E00901296 /* SeparatorView.swift */,
-				410D63EB2826FF7600901296 /* NothingToShowView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -921,7 +918,6 @@
 				414BC0002822F06A00A3AAE4 /* LocalCategory+CoreDataProperties.swift in Sources */,
 				41C69D432814ABE30076B354 /* InteractorInput.swift in Sources */,
 				410D63EA2826FC2900901296 /* AnalyticsNetworkContext.swift in Sources */,
-				41CA865D2827E83B007B8C3C /* ProfileVersionView.swift in Sources */,
 				410D63CB28266FD700901296 /* AnalyticsRow.swift in Sources */,
 				41D6B8E428147CDD00595F6C /* PadCellTappable.swift in Sources */,
 				41FD362B2819BE4F004B7A74 /* CategoriesBatchCreateNetworkContext.swift in Sources */,
@@ -959,11 +955,11 @@
 				418F460428250C5B006E6338 /* AnalyticsViewController.swift in Sources */,
 				410D63C928266FB900901296 /* AnalyticsSection.swift in Sources */,
 				410D63DF282692B300901296 /* LocalRecord+CoreDataProperties.swift in Sources */,
-				410D63EC2826FF7700901296 /* NothingToShowView.swift in Sources */,
 				418F460528250C5B006E6338 /* AnalyticsInteractor.swift in Sources */,
 				41B6D543281451AE00798014 /* AuthRouterInput.swift in Sources */,
 				41CA868A2827F4D5007B8C3C /* InitialViewController.swift in Sources */,
 				41CA86882827F4D5007B8C3C /* InitialRouter.swift in Sources */,
+				41C7D6BD28294FDA0032638A /* LabelView.swift in Sources */,
 				41CA86922827F8F0007B8C3C /* ProfileNetworkContext.swift in Sources */,
 				41C69D452814AC520076B354 /* ErrorDescriptor.swift in Sources */,
 				41CA8697282841AB007B8C3C /* CategoriesService.swift in Sources */,
