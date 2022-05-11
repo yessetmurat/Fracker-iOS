@@ -40,9 +40,6 @@ class AnalyticsWorker: AnalyticsService {
         let calendarComponent: Calendar.Component
 
         switch filterType {
-        case .day:
-            fromDate = currentDate.startOfDay
-            calendarComponent = .day
         case .week:
             fromDate = currentDate.startOfWeek
             calendarComponent = .weekOfMonth

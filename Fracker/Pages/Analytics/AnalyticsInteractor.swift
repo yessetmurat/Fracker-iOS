@@ -15,7 +15,7 @@ class AnalyticsInteractor {
     private let analyticsService: AnalyticsService
     private var sections: [AnalyticsSection] = []
     private var filters: [AnalyticsFilter] = AnalyticsFilter.allCases
-    private var selectedFilter: AnalyticsFilter = .day
+    private var selectedFilter: AnalyticsFilter = .week
 
     private var currency: String { Locale.current.currencySymbol ?? "" }
 
