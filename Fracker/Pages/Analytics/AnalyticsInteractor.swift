@@ -15,7 +15,7 @@ class AnalyticsInteractor {
     private let analyticsService: AnalyticsService
     private var sections: [AnalyticsSection] = []
     private var filters: [AnalyticsFilter] = AnalyticsFilter.allCases
-    private var selectedFilter: AnalyticsFilter = .week
+    private var selectedFilter: AnalyticsFilter = .day
 
     private var currency: String { Locale.current.currencySymbol ?? "" }
 
@@ -26,7 +26,7 @@ class AnalyticsInteractor {
     }
 
     private func loadAnalytics(completion: @escaping () -> Void) {
-        analyticsService.loadAnalytics(filter: selectedFilter) { [weak self] result in
+        analyticsService.loadAnalytics(filterType: selectedFilter) { [weak self] result in
             guard let interactor = self else { return }
             defer { completion() }
             interactor.view.pass(isLoading: false)

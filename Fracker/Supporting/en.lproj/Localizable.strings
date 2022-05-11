@@ -28,8 +28,9 @@
 "Profile.logoutInfo" = "Your records will only be stored on your phone, are you sure you want to log out?";
 
 "Analytics.title" = "Analytics";
-"Analytics.spend" = "Total spend this ";
+"Analytics.spend" = "Total spend this";
 "Analytics.thisWeek" = "week";
+"Analytics.day" = "Day";
 "Analytics.week" = "Week";
 "Analytics.month" = "Month";
 "Analytics.year" = "Year";

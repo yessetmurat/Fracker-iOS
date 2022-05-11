@@ -14,7 +14,7 @@ class AnalyticsNetworkContext: NetworkContext {
     var encoding: NetworkEncoding { .url }
     let parameters: [String: Any]
 
-    init(filter: AnalyticsFilter) {
-        parameters = ["filter": filter.rawValue]
+    init(filterType: AnalyticsFilter) {
+        parameters = ["filter": filterType.rawValue]
     }
 }

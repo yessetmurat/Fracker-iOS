@@ -20,52 +20,51 @@ class AnalyticsWorker: AnalyticsService {
         networkService = NetworkWorker(sessionAdapter: commonStore.sessionAdapter)
     }
 
-    private func toDate(for filter: AnalyticsFilter, date: Date) -> Date? {
-        let calendarComponent: Calendar.Component
-
-        switch filter {
-        case .week: calendarComponent = .weekOfMonth
-        case .month: calendarComponent = .month
-        case .year: calendarComponent = .year
-        }
-
-        guard let fromDate = Calendar.current.date(byAdding: calendarComponent, value: -1, to: date) else {
-            return nil
-        }
-        return fromDate
-    }
-
-    private func predicate(for filter: AnalyticsFilter, date: Date) -> NSPredicate? {
-        guard let fromDate = toDate(for: filter, date: date) else { return nil }
-
-        return NSPredicate(
+    private func records(fromDate: Date, toDate: Date) -> [LocalRecord] {
+        let predicate = NSPredicate(
             format: "(createdAt >= %@) AND (createdAt <= %@)",
             fromDate as NSDate,
-            date as NSDate
+            toDate as NSDate
         )
+
+        guard let records: [LocalRecord] = try? localDatabaseManager.all(with: predicate) else { return [] }
+        return records
     }
 
-    private func totalAmount(for filter: AnalyticsFilter, date: Date) -> Decimal? {
-        guard let predicate = predicate(for: filter, date: date),
-              let localRecords: [LocalRecord] = try? localDatabaseManager.all(with: predicate) else {
-            return nil
-        }
-        return localRecords.map { $0.amount.decimalValue }.reduce(0, +)
-    }
-
-    private func loadLocalAnalytics(filter: AnalyticsFilter, completion: (Result<Analytics, NetworkError>) -> Void) {
+    private func loadLocalAnalytics(
+        filterType: AnalyticsFilter,
+        completion: (Result<Analytics, NetworkError>) -> Void
+    ) {
         let currentDate = Date()
+        let fromDate: Date?
+        let calendarComponent: Calendar.Component
 
-        guard let predicate = predicate(for: filter, date: currentDate),
-              let localRecords: [LocalRecord] = try? localDatabaseManager.all(with: predicate),
-              let currentAmount = totalAmount(for: filter, date: currentDate),
-              let previousDate = toDate(for: filter, date: currentDate) else {
-            return completion(.failure(.unknown))
+        switch filterType {
+        case .day:
+            fromDate = currentDate.startOfDay
+            calendarComponent = .day
+        case .week:
+            fromDate = currentDate.startOfWeek
+            calendarComponent = .weekOfMonth
+        case .month:
+            fromDate = currentDate.startOfMonth
+            calendarComponent = .month
+        case .year:
+            fromDate = currentDate.startOfYear
+            calendarComponent = .year
         }
 
-        let previousAmount = totalAmount(for: filter, date: previousDate)
+        guard let fromDate = fromDate, let previousDate = fromDate.previous(calendarComponent) else {
+            return completion(.failure(.dataLoad))
+        }
 
-        let localCategories = localRecords.compactMap { $0.category }.unique
+        let currentRecords = records(fromDate: fromDate, toDate: currentDate)
+        let previousRecords = records(fromDate: previousDate, toDate: fromDate)
+
+        let currentAmount = currentRecords.compactMap { $0.amount.decimalValue }.reduce(0, +)
+        let previousAmount = previousRecords.compactMap { $0.amount.decimalValue }.reduce(0, +)
+
+        let localCategories = currentRecords.compactMap { $0.category }.unique
         let categories = localCategories.compactMap { localCategory -> AnalyticsCategory? in
             guard let recordsSet = localCategory.records, let records = recordsSet.allObjects as? [LocalRecord] else {
                 return nil
@@ -81,12 +80,12 @@ class AnalyticsWorker: AnalyticsService {
                 amount: amount,
                 value: NSDecimalNumber(decimal: amount / currentAmount).floatValue
             )
-        }.sorted(by: { $0.amount > $1.amount })
+        }.sorted { $0.amount > $1.amount }
 
         var didRise: Bool?
         var percent: Decimal = 0
 
-        if let previousAmount = previousAmount, !previousAmount.isZero {
+        if !previousAmount.isZero {
             didRise = currentAmount > previousAmount
             percent = ((currentAmount - previousAmount) / currentAmount) * 100
         }
@@ -101,22 +100,22 @@ class AnalyticsWorker: AnalyticsService {
     }
 
     private func loadRemoteAnalytics(
-        filter: AnalyticsFilter,
+        filterType: AnalyticsFilter,
         completion: @escaping (Result<Analytics, NetworkError>) -> Void
     ) {
-        let networkContext = AnalyticsNetworkContext(filter: filter)
+        let networkContext = AnalyticsNetworkContext(filterType: filterType)
         networkService.performRequest(using: networkContext, completion: completion)
     }
 }
 
 extension AnalyticsWorker {
 
-    func loadAnalytics(filter: AnalyticsFilter, completion: @escaping (Result<Analytics, NetworkError>) -> Void) {
+    func loadAnalytics(filterType: AnalyticsFilter, completion: @escaping (Result<Analytics, NetworkError>) -> Void) {
         switch commonStore.authorizationStatus {
         case .authorized:
-            loadRemoteAnalytics(filter: filter, completion: completion)
+            loadRemoteAnalytics(filterType: filterType, completion: completion)
         case .none:
-            loadLocalAnalytics(filter: filter, completion: completion)
+            loadLocalAnalytics(filterType: filterType, completion: completion)
         }
     }
 }

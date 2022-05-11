@@ -34,6 +34,7 @@
 		4147FE102822BA3100813606 /* RecordRequestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4147FE0F2822BA3100813606 /* RecordRequestData.swift */; };
 		414BBFFF2822F06A00A3AAE4 /* LocalCategory+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414BBFFB2822F06A00A3AAE4 /* LocalCategory+CoreDataClass.swift */; };
 		414BC0002822F06A00A3AAE4 /* LocalCategory+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414BBFFC2822F06A00A3AAE4 /* LocalCategory+CoreDataProperties.swift */; };
+		41612BB8282C329700D35306 /* Date + extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41612BB7282C329700D35306 /* Date + extensions.swift */; };
 		41881FD028155BDA00FFA4E2 /* CategoriesNetworkContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41881FCF28155BDA00FFA4E2 /* CategoriesNetworkContext.swift */; };
 		41881FD228155C9600FFA4E2 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41881FD128155C9600FFA4E2 /* Category.swift */; };
 		41881FD4281560E100FFA4E2 /* CategoryShimmerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41881FD3281560E100FFA4E2 /* CategoryShimmerCell.swift */; };
@@ -169,6 +170,7 @@
 		4147FE0F2822BA3100813606 /* RecordRequestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordRequestData.swift; sourceTree = "<group>"; };
 		414BBFFB2822F06A00A3AAE4 /* LocalCategory+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocalCategory+CoreDataClass.swift"; sourceTree = "<group>"; };
 		414BBFFC2822F06A00A3AAE4 /* LocalCategory+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocalCategory+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		41612BB7282C329700D35306 /* Date + extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date + extensions.swift"; sourceTree = "<group>"; };
 		41881FCF28155BDA00FFA4E2 /* CategoriesNetworkContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesNetworkContext.swift; sourceTree = "<group>"; };
 		41881FD128155C9600FFA4E2 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		41881FD3281560E100FFA4E2 /* CategoryShimmerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryShimmerCell.swift; sourceTree = "<group>"; };
@@ -568,6 +570,7 @@
 				41F9430128259F260059C693 /* UIConstants.swift */,
 				41CA869928284F3C007B8C3C /* Encodable + extensions.swift */,
 				41CA852B28291D8A00D00395 /* String + extensions.swift */,
+				41612BB7282C329700D35306 /* Date + extensions.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -910,6 +913,7 @@
 				41D6B8D7281476ED00595F6C /* RecordInteractorInput.swift in Sources */,
 				410D63E32826C09200901296 /* AnalyticsAmountShimmerView.swift in Sources */,
 				41F9430228259F260059C693 /* UIConstants.swift in Sources */,
+				41612BB8282C329700D35306 /* Date + extensions.swift in Sources */,
 				410D63C528264CCB00901296 /* AnalyticsCategoryView.swift in Sources */,
 				41881FD628158D5100FFA4E2 /* CategoryRemoveNetworkContext.swift in Sources */,
 				412E3DA52815CAF200B8D8DD /* ShakableView.swift in Sources */,

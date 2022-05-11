@@ -13,5 +13,5 @@ protocol AnalyticsService {
     var commonStore: CommonStore { get }
     var networkService: NetworkService { get }
 
-    func loadAnalytics(filter: AnalyticsFilter, completion: @escaping (Result<Analytics, NetworkError>) -> Void)
+    func loadAnalytics(filterType: AnalyticsFilter, completion: @escaping (Result<Analytics, NetworkError>) -> Void)
 }

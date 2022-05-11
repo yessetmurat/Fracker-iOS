@@ -9,10 +9,11 @@ import Foundation
 
 enum AnalyticsFilter: String, CaseIterable {
 
-    case week, month, year
+    case day, week, month, year
 
     var title: String {
         switch self {
+        case .day: return "Analytics.day".localized
         case .week: return "Analytics.week".localized
         case .month: return "Analytics.month".localized
         case .year: return "Analytics.year".localized

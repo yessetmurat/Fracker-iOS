@@ -14,7 +14,7 @@ struct AnalyticsRow {
         case chart(
             data: Chart? = nil,
             filters: [AnalyticsFilter] = AnalyticsFilter.allCases,
-            selectedFilter: AnalyticsFilter = .week
+            selectedFilter: AnalyticsFilter = .day
         )
         case category(emoji: String? = nil, amount: String? = nil)
     }
