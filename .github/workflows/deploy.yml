@@ -28,10 +28,10 @@ jobs:
           KEYCHAIN_PASSWORD: ${{ secrets.KEYCHAIN_PASSWORD }}
         run: |
           # create variables
-          BUILD_CERTIFICATE_PATH=$RUNNER_TEMP/build_certificate.p12
-          EXPORT_CERTIFICATE_PATH=$RUNNER_TEMP/export_certificate.p12
-          BUILD_PP_PATH=$RUNNER_TEMP/build_pp.mobileprovision
-          EXPORT_PP_PATH=$RUNNER_TEMP/export_pp.mobileprovision
+          BUILD_CERTIFICATE_PATH=$RUNNER_TEMP/development.p12
+          EXPORT_CERTIFICATE_PATH=$RUNNER_TEMP/ios_distribution.p12
+          BUILD_PP_PATH=$RUNNER_TEMP/Development.mobileprovision
+          EXPORT_PP_PATH=$RUNNER_TEMP/Production.mobileprovision
           KEYCHAIN_PATH=$RUNNER_TEMP/app-signing.keychain-db
 
           # import certificate and provisioning profile from secrets
@@ -55,7 +55,6 @@ jobs:
           mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
           cp $BUILD_PP_PATH ~/Library/MobileDevice/Provisioning\ Profiles
           cp $EXPORT_PP_PATH ~/Library/MobileDevice/Provisioning\ Profiles
-          ls ~/Library/MobileDevice/Provisioning\ Profiles
       - name: Archive
         run: xcodebuild -scheme "Fracker" clean archive -archivePath $RUNNER_TEMP/build/Fracker.xcarchive -configuration "Release" | xcpretty
       - name: Export
