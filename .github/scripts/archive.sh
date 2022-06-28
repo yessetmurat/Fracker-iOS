@@ -4,6 +4,6 @@ set -eo pipefail
 
 xcodebuild -scheme Fracker \
             -sdk iphoneos \
-            -configuration AppStoreDistribution \
+            -configuration Release \
             -archivePath $PWD/build/Fracker.xcarchive \
             clean archive | xcpretty
