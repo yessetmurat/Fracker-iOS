@@ -54,7 +54,7 @@ jobs:
         run: |
           EXPORT_PLIST_PATH=$RUNNER_TEMP/ExportOptions.plist
           echo -n "$EXPORT_PLIST" | base64 --decode --output $EXPORT_PLIST_PATH
-          xcodebuild -exportArchive -archivePath $RUNNER_TEMP/build/Fracker.xcarchive -exportOptions $EXPORT_PLIST_PATH -exportPath $RUNNER_TEMP/export | xcpretty
+          xcodebuild -exportArchive -archivePath $RUNNER_TEMP/build/Fracker.xcarchive -exportOptionsPlist $EXPORT_PLIST_PATH -exportPath $RUNNER_TEMP/export | xcpretty
       - name: Decode auth api key
         env:
           API_KEY_BASE64: ${{ secrets.APPSTORE_API_PRIVATE_KEY }}
