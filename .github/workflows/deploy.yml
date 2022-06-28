@@ -55,6 +55,7 @@ jobs:
           mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
           cp $BUILD_PP_PATH ~/Library/MobileDevice/Provisioning\ Profiles
           cp $EXPORT_PP_PATH ~/Library/MobileDevice/Provisioning\ Profiles
+          ls ~/Library/MobileDevice/Provisioning\ Profiles
       - name: Archive
         run: xcodebuild -scheme "Fracker" clean archive -archivePath $RUNNER_TEMP/build/Fracker.xcarchive -configuration "Release" | xcpretty
       - name: Export
