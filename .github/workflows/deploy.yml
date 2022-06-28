@@ -56,7 +56,7 @@ jobs:
           cp $BUILD_PP_PATH ~/Library/MobileDevice/Provisioning\ Profiles
           cp $EXPORT_PP_PATH ~/Library/MobileDevice/Provisioning\ Profiles
       - name: Archive
-        run: xcodebuild -scheme "Fracker" clean archive -archivePath $RUNNER_TEMP/build/Fracker.xcarchive -configuration "Release" | xcpretty
+        run: xcodebuild -scheme "Fracker" clean archive -archivePath $RUNNER_TEMP/build/Fracker.xcarchive -configuration "Release" -sdk "iphoneos" | xcpretty
       - name: Export
         env:
           EXPORT_PLIST: ${{ secrets.IOS_EXPORT_PRODUCTION }}
