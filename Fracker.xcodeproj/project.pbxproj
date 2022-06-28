@@ -55,7 +55,6 @@
 		418F460428250C5B006E6338 /* AnalyticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418F45FE28250C5B006E6338 /* AnalyticsViewController.swift */; };
 		418F460528250C5B006E6338 /* AnalyticsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418F45FF28250C5B006E6338 /* AnalyticsInteractor.swift */; };
 		418F460628250C5B006E6338 /* AnalyticsRouterInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418F460028250C5B006E6338 /* AnalyticsRouterInput.swift */; };
-		41AE3249286B0F6700815579 /* ExportOptions.plist in Resources */ = {isa = PBXBuildFile; fileRef = 41AE3248286B0F6700815579 /* ExportOptions.plist */; };
 		41B6D50128144F7E00798014 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B6D50028144F7E00798014 /* AppDelegate.swift */; };
 		41B6D50D28144F8000798014 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41B6D50C28144F8000798014 /* Assets.xcassets */; };
 		41B6D51028144F8000798014 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41B6D50E28144F8000798014 /* LaunchScreen.storyboard */; };
@@ -191,7 +190,6 @@
 		418F45FE28250C5B006E6338 /* AnalyticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsViewController.swift; sourceTree = "<group>"; };
 		418F45FF28250C5B006E6338 /* AnalyticsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsInteractor.swift; sourceTree = "<group>"; };
 		418F460028250C5B006E6338 /* AnalyticsRouterInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsRouterInput.swift; sourceTree = "<group>"; };
-		41AE3248286B0F6700815579 /* ExportOptions.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ExportOptions.plist; sourceTree = "<group>"; };
 		41B6D4FD28144F7E00798014 /* Fracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		41B6D50028144F7E00798014 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		41B6D50A28144F7E00798014 /* Fracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Fracker.xcdatamodel; sourceTree = "<group>"; };
@@ -487,7 +485,6 @@
 				41B6D51128144F8000798014 /* Info.plist */,
 				41B6D50928144F7E00798014 /* Fracker.xcdatamodeld */,
 				41CA86652827ECFD007B8C3C /* Localizable.strings */,
-				41AE3248286B0F6700815579 /* ExportOptions.plist */,
 			);
 			path = Supporting;
 			sourceTree = "<group>";
@@ -881,7 +878,6 @@
 				41B6D51028144F8000798014 /* LaunchScreen.storyboard in Resources */,
 				41C69D4D2814B74B0076B354 /* yessetmurat.com.crt in Resources */,
 				41B6D50D28144F8000798014 /* Assets.xcassets in Resources */,
-				41AE3249286B0F6700815579 /* ExportOptions.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
