@@ -12,8 +12,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v1
-      - name: Install openssl
-        run: brew reinstall openssl@1.1
       - name: Install gpg
         run: brew install gnupg
       - name: Setup provisioning profile
